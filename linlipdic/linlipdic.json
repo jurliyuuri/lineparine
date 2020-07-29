@@ -26,7 +26,7 @@
     "tags" : [ "1.23 人物", "1.24 成員", "1.30 心" ],
     "contents" : [ {
       "title" : "リパラオネ伝統筆順",
-      "text" : "縦横折横縦"
+      "text" : "五画：縦横折横縦"
     }, {
       "title" : "意味",
       "text" : "皇神、皇論における最高神。一般的な神、特にリパラオネ教のアレフィス。\n皇帝、王、統治者、スカルムレイ。"
@@ -42,6 +42,265 @@
     }, {
       "title" : "古語",
       "text" : "alefis, lrad, garder"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/huang"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 2,
+      "form" : "神"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "werlfurp" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "werlfurpen" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.45 道具", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：行折鉤"
+    }, {
+      "title" : "意味",
+      "text" : "ウェールフープ。"
+    }, {
+      "title" : "例文",
+      "text" : "我行神 / mi es werlfurp'i / 私はウェールフープをする。"
+    }, {
+      "title" : "熟語",
+      "text" : "神人 / werlfurper / ケートニアー\n神言 / werlfurpuvirle / 呪文\n神機 / werlfurpaxm / ウェールフープ機械、魔法機械"
+    }, {
+      "title" : "熟字訓",
+      "text" : "神人 / kertni'ar / ケートニアー"
+    }, {
+      "title" : "古語",
+      "text" : "werlfurp"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shen"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 3,
+      "form" : "一"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "panqa" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "faso" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "faserl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasal" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasil" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasel" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasol" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "fas" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：縦"
+    }, {
+      "title" : "意味",
+      "text" : "一、ひとつ。\n始める、始まり、はじめ。"
+    }, {
+      "title" : "例文",
+      "text" : "哩人一神機 / lipalaoneer fas werlfurpaxm. / リパラオネ人はウェールフープ機械を起動する。"
+    }, {
+      "title" : "古語",
+      "text" : "own, jciih, phaphtal"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/yi"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 4,
+      "form" : "九"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fentiqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：横曲点"
+    }, {
+      "title" : "意味",
+      "text" : "九。"
+    }, {
+      "title" : "例文",
+      "text" : "九之哩人在 / fentiqa'd lipalaoneer mol. / 九人のリパラオネ人が居る。"
+    }, {
+      "title" : "古語",
+      "text" : "nine"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/jiu"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 5,
+      "form" : "火"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dexafel" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "dexafelen" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "dexafeles" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：撃曲点"
+    }, {
+      "title" : "意味",
+      "text" : "火、火の、放火する、火を放つ、火を付ける。"
+    }, {
+      "title" : "例文",
+      "text" : "九之哩人火神機 / fentiqa'd lipalaoneer dexafeles werlfurpaxm. / 九人のリパラオネ人がウェールフープ機械に放火する。"
+    }, {
+      "title" : "古語",
+      "text" : "fire, firen, kasaladau"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/huo#TOC--26"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 6,
+      "form" : "哩"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lipalaone" ]
+    } ],
+    "tags" : [ "1.24 成員", "1.23 人物" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "十七画："
+    }, {
+      "title" : "意味",
+      "text" : "リパラオネ。"
+    }, {
+      "title" : "例文",
+      "text" : "哩皇火人等 / lipalaone'd tonir dexafeles lartass. / リパラオネ教の神は人々を燃やす。"
+    }, {
+      "title" : "熟語",
+      "text" : "哩人 / lipalaoneer / リパラオネ人"
+    }, {
+      "title" : "古語",
+      "text" : "lipalaone"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/li-2#TOC--21"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 7,
+      "form" : "水"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "ietost" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "jipev" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "arfes" ]
+    } ],
+    "tags" : [ "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：行点行点"
+    }, {
+      "title" : "意味",
+      "text" : "水、液体、流れる、流される。"
+    }, {
+      "title" : "例文",
+      "text" : "九之神機水哩人 / fentiqa'd werlfurpaxm arfes lipalaoneer. / 九つのウェールフープ機械がリパラオネ人を流す。"
+    }, {
+      "title" : "古語",
+      "text" : "roore, justauijal, justat"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shui#TOC--25"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 8,
+      "form" : "闇"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "kujit" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "raldenarl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "deln" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "karnivan" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "koni'ende" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "xorln" ]
+    } ],
+    "tags" : [ "3.13 様相", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "六画：行撃縦鉤点曲"
+    }, {
+      "title" : "意味",
+      "text" : "黒、闇、不思議（の）、謎の。"
+    }, {
+      "title" : "例文",
+      "text" : "闇神機壊人 / karnivan werlfurpaxm reto larta. / 謎のウェールフープ機械が人を殺す。"
+    }, {
+      "title" : "古語",
+      "text" : "doken, sljuadi, bloco, lipha, ukounnen"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/an"
     } ],
     "variations" : [ ],
     "relations" : [ ]
