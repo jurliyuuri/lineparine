@@ -304,6 +304,454 @@
     } ],
     "variations" : [ ],
     "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 9,
+      "form" : "六"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "xantaqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "六"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 10,
+      "form" : "七"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "xenqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "七"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 11,
+      "form" : "八"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lekqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "八"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 12,
+      "form" : "光"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "kafi'a" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "kafi'a" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "光、光る"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 13,
+      "form" : "人"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "larta" ]
+    }, {
+      "title" : "接辞",
+      "forms" : [ "-er" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "人間、人、～する人"
+    }, {
+      "title" : "熟語",
+      "text" : "学人 / lersser / 学生\n学人 / kantier / 教師\n哩人 / lipalaoneer / リパラオネ人"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 14,
+      "form" : "手"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "ledyd" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "shobe" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "letix" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "手、持つ、つかむ"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 15,
+      "form" : "筆"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dustej" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 16,
+      "form" : "字"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lyjot" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "krante" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "文字、書く"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 17,
+      "form" : "言"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lkurftless" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "lkurf" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "dekut" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "言語、喋る、話す、会話する"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 18,
+      "form" : "在"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "es e'i" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "teles" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "mol" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "molo" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "molerl" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "在ること、存在、行う、存在する"
+    }, {
+      "title" : "備考",
+      "text" : "行うの文脈の場合、目的語があるならtelesで、無い場合はes e'iで訓読する。"
+    }, {
+      "title" : "熟語",
+      "text" : "真在 / xinien la deliume / 本分、本来の義務"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 19,
+      "form" : "無"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "ieseles" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "iesel" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "iu" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "iu" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "mol niv" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "無いこと、ゼロ、無い、存在しない"
+    }, {
+      "title" : "備考",
+      "text" : "mol nivはまれ。"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 20,
+      "form" : "二"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "qa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "二、二つ"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 21,
+      "form" : "三"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "三"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 22,
+      "form" : "四"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "iupqa" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "四"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 23,
+      "form" : "五"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "neoqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "五"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 24,
+      "form" : "心"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fusaf" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "tisod" ]
+    }, {
+      "title" : "助動詞",
+      "forms" : [ "jol" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "心、思う、考える、信仰する、～するつもりだ、～かもしれない、～しそうだ、～だろう"
+    }, {
+      "title" : "熟語",
+      "text" : "心光 / tvarcar / 信仰"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 25,
+      "form" : "学"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "lersse" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "kanti" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "kantio" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "学ぶ、教える、学び、教え、教育"
+    }, {
+      "title" : "熟語",
+      "text" : "学人 / lersser / 学生\n学人 / kantier / 教師\n"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 26,
+      "form" : "我"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "mi" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "untirk" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "私、我、自分、自己"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 27,
+      "form" : "真"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "cirla" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "実際、本当、本気、マジ、現実、事実、真実"
+    }, {
+      "title" : "熟語",
+      "text" : "真在 / xinien la deliume / 本分、本来の義務"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 28,
+      "form" : "終"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "lusus" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "終わらせる、終える"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 29,
+      "form" : "論"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "unsarl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "tvasnarl" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "論、論理、理屈、宗教、信仰"
+    }, {
+      "title" : "熟字訓",
+      "text" : "二闇閉論 / lipalaone, lipalain tvasnarl / リパラオネ教"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 30,
+      "form" : "全"
+    },
+    "translations" : [ {
+      "title" : "形容詞",
+      "forms" : [ "als" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "alle" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "fav" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "alson" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "alsat" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "全て、まったく、全てにおいて、全部で、全く"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
   } ],
   "zpdic" : {
     "alphabetOrder" : "",
