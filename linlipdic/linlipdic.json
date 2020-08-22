@@ -315,8 +315,17 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：横縦"
+    }, {
       "title" : "意味",
       "text" : "六"
+    }, {
+      "title" : "古語",
+      "text" : "zicse"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/liu"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -331,8 +340,17 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：縦縦横"
+    }, {
       "title" : "意味",
       "text" : "七"
+    }, {
+      "title" : "古語",
+      "text" : "seven"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/qi"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -347,8 +365,17 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦縦横縦"
+    }, {
       "title" : "意味",
       "text" : "八"
+    }, {
+      "title" : "古語",
+      "text" : "egth"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/ba"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -364,10 +391,22 @@
       "title" : "動詞",
       "forms" : [ "kafi'a" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "1.50 自然" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：点行縦鉤"
+    }, {
       "title" : "意味",
       "text" : "光、光る"
+    }, {
+      "title" : "熟字訓",
+      "text" : "神光 / radinnarl / ラディンナール、神の威光"
+    }, {
+      "title" : "古語",
+      "text" : "kfasfasho, kasaladau, kfasfa"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/guang"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -383,13 +422,22 @@
       "title" : "接辞",
       "forms" : [ "-er" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "1.23 人物" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：横曲点"
+    }, {
       "title" : "意味",
       "text" : "人間、人、～する人"
     }, {
       "title" : "熟語",
       "text" : "学人 / lersser / 学生\n学人 / kantier / 教師\n哩人 / lipalaoneer / リパラオネ人"
+    }, {
+      "title" : "古語",
+      "text" : "hudosl, -er, hufh"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/ren"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -410,8 +458,17 @@
     } ],
     "tags" : [ ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦横縦曲"
+    }, {
       "title" : "意味",
       "text" : "手、持つ、つかむ"
+    }, {
+      "title" : "古語",
+      "text" : "hojih, huheg"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shou"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -440,10 +497,16 @@
       "title" : "動詞",
       "forms" : [ "krante" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "1.31 言語" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "八画：横曲点横曲横曲点"
+    }, {
       "title" : "意味",
       "text" : "文字、書く"
+    }, {
+      "title" : "古語",
+      "text" : "cuhkl, cuhkler"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -462,10 +525,19 @@
       "title" : "動詞",
       "forms" : [ "dekut" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "1.31 言語", "2.31 言語" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦折横横"
+    }, {
       "title" : "意味",
       "text" : "言語、喋る、話す、会話する"
+    }, {
+      "title" : "古語",
+      "text" : "lglien, lghu, wolki, wolke"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/yan"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -490,16 +562,25 @@
       "title" : "名詞",
       "forms" : [ "molerl" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "2.12 存在" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：縦横縦横横"
+    }, {
       "title" : "意味",
       "text" : "在ること、存在、行う、存在する"
     }, {
-      "title" : "備考",
-      "text" : "行うの文脈の場合、目的語があるならtelesで、無い場合はes e'iで訓読する。"
-    }, {
       "title" : "熟語",
       "text" : "真在 / xinien la deliume / 本分、本来の義務"
+    }, {
+      "title" : "古語",
+      "text" : "mol, lihlk, es, lime, sile"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/zai"
+    }, {
+      "title" : "備考",
+      "text" : "行うの文脈の場合、目的語があるならtelesで、無い場合はes e'iで訓読する。"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -512,25 +593,34 @@
       "title" : "動詞",
       "forms" : [ "ieseles" ]
     }, {
+      "title" : "動詞",
+      "forms" : [ "mol niv" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "iu" ]
+    }, {
       "title" : "名詞",
       "forms" : [ "iesel" ]
     }, {
       "title" : "名詞",
       "forms" : [ "iu" ]
-    }, {
-      "title" : "動詞",
-      "forms" : [ "iu" ]
-    }, {
-      "title" : "動詞",
-      "forms" : [ "mol niv" ]
     } ],
-    "tags" : [ ],
+    "tags" : [ "2.12 存在" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：点"
+    }, {
       "title" : "意味",
       "text" : "無いこと、ゼロ、無い、存在しない"
     }, {
       "title" : "備考",
       "text" : "mol nivはまれ。"
+    }, {
+      "title" : "古語",
+      "text" : "mol niv"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/wu-1"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -545,8 +635,17 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：縦縦"
+    }, {
       "title" : "意味",
       "text" : "二、二つ"
+    }, {
+      "title" : "古語",
+      "text" : "tws"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/er"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -561,8 +660,14 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：縦縦縦"
+    }, {
       "title" : "意味",
       "text" : "三"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/san"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -577,8 +682,17 @@
     } ],
     "tags" : [ ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：曲点"
+    }, {
       "title" : "意味",
       "text" : "四"
+    }, {
+      "title" : "古語",
+      "text" : "foth"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/si"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -593,8 +707,17 @@
     } ],
     "tags" : [ "1.19 量" ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：横"
+    }, {
       "title" : "意味",
       "text" : "五"
+    }, {
+      "title" : "古語",
+      "text" : "fith"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/wu"
     } ],
     "variations" : [ ],
     "relations" : [ ]
@@ -747,8 +870,51 @@
     } ],
     "tags" : [ ],
     "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：縦折折点横"
+    }, {
       "title" : "意味",
       "text" : "全て、まったく、全てにおいて、全部で、全く"
+    }, {
+      "title" : "熟字訓",
+      "text" : "全地 / alsalen / 国際的な"
+    }, {
+      "title" : "古語",
+      "text" : "alle, allo"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/quan\nhttps://docs.google.com/spreadsheets/d/1kloecLsJDAhnAsmcacVJnZKVTza2imJh4jgTkZ41yzs/edit?usp=sharing"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 31,
+      "form" : "周"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fka" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "fkaven" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：横横縦縦"
+    }, {
+      "title" : "意味",
+      "text" : "周り、周囲（の）"
+    }, {
+      "title" : "熟語",
+      "text" : "周人 / fkaver / 周人"
+    }, {
+      "title" : "古語",
+      "text" : "tlenttal"
+    }, {
+      "title" : "典拠",
+      "text" : "https://docs.google.com/spreadsheets/d/1kloecLsJDAhnAsmcacVJnZKVTza2imJh4jgTkZ41yzs/edit?usp=sharing"
     } ],
     "variations" : [ ],
     "relations" : [ ]
