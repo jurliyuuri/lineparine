@@ -57,6 +57,9 @@
       "title" : "名詞",
       "forms" : [ "werlfurp" ]
     }, {
+      "title" : "名詞",
+      "forms" : [ "tonirnascher" ]
+    }, {
       "title" : "形容詞",
       "forms" : [ "werlfurpen" ]
     } ],
@@ -915,6 +918,37 @@
     }, {
       "title" : "典拠",
       "text" : "https://docs.google.com/spreadsheets/d/1kloecLsJDAhnAsmcacVJnZKVTza2imJh4jgTkZ41yzs/edit?usp=sharing"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 32,
+      "form" : "戦"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "elm" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "elm" ]
+    } ],
+    "tags" : [ "1.34 行為" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：行横行点行横行点"
+    }, {
+      "title" : "意味",
+      "text" : "戦う、争う"
+    }, {
+      "title" : "熟字訓",
+      "text" : "戦神 / velgana / ヴェルガナ"
+    }, {
+      "title" : "古語",
+      "text" : "lkckn, udaoj"
+    }, {
+      "title" : "典拠",
+      "text" : "https://discordapp.com/channels/695266394614530049/706872696960581663/754758533949685861"
     } ],
     "variations" : [ ],
     "relations" : [ ]
