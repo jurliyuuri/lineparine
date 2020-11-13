@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tmx SYSTEM "tmx11.dtd">
+<tmx version="1.1">
+  <header creationtool="OmegaT" o-tmf="OmegaT TMX" adminlang="EN-US" datatype="plaintext" creationtoolversion="4.3.2_0_6a661c5e" segtype="sentence" srclang="JA"/>
+  <body>
+<!-- Default translations -->
+    <tu>
+      <tuv lang="JA">
+        <seg>「――して、その情報を紛争調停に役立てることだな」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T095118Z" creationid="sashi" creationdate="20201107T083501Z">
+        <seg>"―― mal, acirlanastan suite lus fua konnefelmili'aust."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「……“あんちゃん”はやめてくれ、アレンだ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151741Z" creationid="sashi" creationdate="20201027T151741Z">
+        <seg>“...... sties niv mirg’i xij’c. mi es alen.”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「……それって何の役に立つんだ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T121613Z" creationid="sashi" creationdate="20201103T121613Z">
+        <seg>"...... la lex es penxen fua harmie?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「……へ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T095131Z" creationid="sashi" creationdate="20201107T095131Z">
+        <seg>"...... ar?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「あ、ああ……まあ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151635Z" creationid="sashi" creationdate="20201027T151635Z">
+        <seg>"ar...mer......ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「ああ、居留区行政庁まで頼む。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T180314Z" creationid="sashi" creationdate="20201101T180314Z">
+        <seg>"ar, selene mi tydiest kanfitestavalen febikaxtoval.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「いやあ、ここは車が無いと動きづらいからなあ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135854Z" creationid="sashi" creationdate="20201027T135854Z">
+        <seg>“ja…… fqa io sniertijon destek filx letixol niv tierij.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「これからお仕事ってところか？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151651Z" creationid="sashi" creationdate="20201027T151651Z">
+        <seg>"no ler co virot el en'iar?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「こんなところまでわざわざご苦労さまだ、エレン君」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133536Z" creationid="sashi" creationdate="20201105T133536Z">
+        <seg>"lieste'tj klieo polto xale fqa jelx jol es co'd mevau, elenesti."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「すまない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T171048Z" creationid="sashi" creationdate="20201101T171048Z">
+        <seg>"nace.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「そうだったかね、《《オーレン》》君。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T140405Z" creationid="sashi" creationdate="20201105T140405Z">
+        <seg>"ja nie yrng, orlenesti.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「その研究って何の役に立つんですか？」だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T121755Z" creationid="sashi" creationdate="20201103T121755Z">
+        <seg>la lex es ny la lex. "la lexe'd lbe es penxen fua harmie?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「それでイレーン君。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082950Z" creationid="sashi" creationdate="20201107T082907Z">
+        <seg>"mal, irfel ilernesti,</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「そんなことは良いから乗れよ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T171323Z" creationid="sashi" creationdate="20201101T171323Z">
+        <seg>"la lex es vynut. Nienul ja.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「そんなところだけど、君は誰だ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151706Z" creationid="sashi" creationdate="20201027T151706Z">
+        <seg>"p’ers xale la lex, harmae co es ja?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「だが、私の名前は覚えておいたほうが良い」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T075533Z" creationid="sashi" creationdate="20201107T075533Z">
+        <seg>"pa, mole co tuan mi'd ferlk ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「ちょっと待て、身分証を出せ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151816Z" creationid="sashi" creationdate="20201027T151816Z">
+        <seg>“mili ekcej. karse fels’hais.”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「なるほどなぁ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T125334Z" creationid="sashi" creationdate="20201103T125334Z">
+        <seg>"firlex ja,"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「はあ……」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T140554Z" creationid="sashi" creationdate="20201105T140554Z">
+        <seg>"ar......"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「まあ、そりゃそうだよな……」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T132248Z" creationid="sashi" creationdate="20201026T132248Z">
+        <seg>"mer, la lex es duliet ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「まあ、ラッビヤ人と話せるようになったり、文化や風習が分かれば無駄に俺達と衝突する必要は無くなると思うんだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T123915Z" creationid="sashi" creationdate="20201103T123915Z">
+        <seg>"mer. cene rabbija at cecio lkurf. mal, miss firlex nisse'd meu felx jol wioll niv  ny xynakarif rodestel.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「まあな、こっちは危険な代わりに一攫千金だから出稼ぎに来てる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T175943Z" creationid="sashi" creationdate="20201101T175455Z">
+        <seg>"mer ja, fqa p'es malef, mi is dihat fua fergen'artzo cafi'a'd liqka.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「やあやあ、あんちゃん！</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134935Z" creationid="sashi" creationdate="20201027T134935Z">
+        <seg>"jei salar, xij!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「やっぱり足が無いんじゃないか？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140119Z" creationid="sashi" creationdate="20201027T140119Z">
+        <seg>“co letix destekel dalle tisoderl?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「よろしく、アレン！</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151749Z" creationid="sashi" creationdate="20201027T151749Z">
+        <seg>“plaxci co lu, alenesti!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「アレンです。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T083000Z" creationid="sashi" creationdate="20201107T083000Z">
+        <seg>"mi es alen.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「タール、君はユーゲ人なのか？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T175430Z" creationid="sashi" creationdate="20201101T175430Z">
+        <seg>"tarlasti, co es jurger?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「フィールドワークだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T121305Z" creationid="sashi" creationdate="20201103T121305Z">
+        <seg>"ers svizlatjalust.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「リナエスト人だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T080817Z" creationid="sashi" creationdate="20201107T080817Z">
+        <seg>"mi ilyr linaest.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「委託されてるから実質は民間だよ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T170800Z" creationid="sashi" creationdate="20201101T170800Z">
+        <seg>"miss veles blesvao mag es latucen fal cirla.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「居留区行政庁ってお偉方ばっかのとこだろ？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T070842Z" creationid="sashi" creationdate="20201103T070842Z">
+        <seg>"kanfitestavalen febikaxtoval es nediet lartass leus katurojal?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「珍しいお名前ですね……　生まれはどちらですか？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T080731Z" creationid="sashi" creationdate="20201107T080731Z">
+        <seg>"lu co'd ferlkestan es juluftie lys. harmie co veles lidysto lurng?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「研究者がこんなところに何をしに来るんだ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T120842Z" creationid="sashi" creationdate="20201103T120842Z">
+        <seg>"harmie lberger klie polto xale fqa?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「総務省《KOI》界間《-》外交局《FIWF》……って、まさか政府の人間なのか!?」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T170235Z" creationid="sashi" creationdate="20201101T170235Z">
+        <seg>"ers KOI-FIWF...... zu, co es dznojuli'o'd larta!?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「見えてきたぞ、あれが居留区行政庁だ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T141256Z" creationid="sashi" creationdate="20201103T141256Z">
+        <seg>"cene miss xel ja. la lex es kanfitestavalen febikaxtoval.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「言語特務局ってところから来てるんだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T071244Z" creationid="sashi" creationdate="20201103T071244Z">
+        <seg>"irfel LFA ler mi klie."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「身分証？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151914Z" creationid="sashi" creationdate="20201027T151914Z">
+        <seg>"fels'haisesti?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>「長官……俺はアレン、アレン・ヴィライヤです」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T140312Z" creationid="sashi" creationdate="20201105T140312Z">
+        <seg>"...... dzeparfebikaxtovalasti, mi es alen zu es alen.vilaija.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135720Z" creationid="sashi" creationdate="20201027T135720Z">
+        <seg>"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>」
+「あ、ああ……まあ」
+「これからお仕事ってところか？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135039Z" creationid="sashi" creationdate="20201027T135008Z">
+        <seg>"
+"ar...mer......ja."
+"no ler co virot el en'iar?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>」
+「そんなところだけど、君は誰だ？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135717Z" creationid="sashi" creationdate="20201027T135420Z">
+        <seg>"
+"p’ers xale la lex, harmae co es ja?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>」
+「ちょっと待て、身分証を出せ」
+「身分証？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140149Z" creationid="sashi" creationdate="20201027T140149Z">
+        <seg>"
+“mili ekcej. karse fels’hais.”
+“fels’haisesti?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【タイトル】
+プロローグ：言語調査官アレン・ヴィライヤ</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061138Z" creationid="sashi" creationdate="20201025T061138Z">
+        <seg>【xakantast】
+tletimast : haltxerger lkurftless l'es alen.vilaija.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【タイトル】
+第一話：自分の身は、自分で守れ</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T142022Z" creationid="sashi" creationdate="20201103T142022Z">
+        <seg>【xakantasti】
+1te larfe : deliu come sesnud co'd kiljoi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【作成日時】
+2020-02-29 18:38:54（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061514Z" creationid="sashi" creationdate="20201025T061301Z">
+        <seg>【laoziavil】
+2020-02-29 18:38:54（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【作成日時】
+2020-03-01 13:00:40（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133301Z" creationid="sashi" creationdate="20201105T133301Z">
+        <seg>【laoziavil】
+2020-03-01 13:00:40（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【公開日時】
+2020-05-30 23:44:46（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061519Z" creationid="sashi" creationdate="20201025T061321Z">
+        <seg>【kinunsaresil】
+2020-05-30 23:44:46（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【公開日時】
+2020-05-30 23:45:51（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133312Z" creationid="sashi" creationdate="20201105T133312Z">
+        <seg>【kinunsaresil】
+2020-05-30 23:45:51（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【公開状態】
+公開済</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061504Z" creationid="sashi" creationdate="20201025T061250Z">
+        <seg>【kinunsaresolasti】
+Edixa kinunsares.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【文字数】
+2,309文字</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133347Z" creationid="sashi" creationdate="20201105T133329Z">
+        <seg>【lyjota'd murtmir】
+2,309'd lyjotasti</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【文字数】
+2,342文字</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061450Z" creationid="sashi" creationdate="20201025T061450Z">
+        <seg>【lyjota'd murtmir】
+2,342'd lyjotasti</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【更新日時】
+2020-05-31 09:41:55（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133321Z" creationid="sashi" creationdate="20201105T133321Z">
+        <seg>【cerkmernil】
+2020-05-31 09:41:55（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【更新日時】
+2020-06-13 01:06:27（+09:00）</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061522Z" creationid="sashi" creationdate="20201025T061356Z">
+        <seg>【cerkmernil】
+2020-06-13 01:06:27（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【本文（71行）】</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061547Z" creationid="sashi" creationdate="20201025T061547Z">
+        <seg>【dirxel（71'd leiju）】</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>【本文（74行）】</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T133402Z" creationid="sashi" creationdate="20201105T133402Z">
+        <seg>【dirxel（74'd leiju）】</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>あまり面白くないジョークに苦笑いしながら、タールの車に乗り込む。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T172705Z" creationid="sashi" creationdate="20201101T172705Z">
+        <seg>mi reatetol nefxarnejt piajtis si'dy dlirlo nienul si'd tierije'l.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>あんちゃんも困ってるのかと思って」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151722Z" creationid="sashi" creationdate="20201027T151722Z">
+        <seg>xij at malfarno mels la lex lyme mal……”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>あんちゃんも困ってるのかと思って」
+「……“あんちゃん”はやめてくれ、アレンだ」
+「よろしく、アレン！</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135933Z" creationid="sashi" creationdate="20201027T135933Z">
+        <seg>xij at malfarno mels la lex lyme mal……” 
+“...... sties niv mirg’i xij’c. mi es alen.”
+“plaxci co lu, alenesti!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>えっと、俺はラッビヤ人の言語と文化風習の調査を――」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T083054Z" creationid="sashi" creationdate="20201107T083054Z">
+        <seg>mer, mi klie fua haltxeo rabbijastana'd lkurftless ad meu――"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>お互いに配慮できるようになるだろ？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T124309Z" creationid="sashi" creationdate="20201103T124309Z">
+        <seg>cene miss konpleustes miscaonj ja?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>お前が言うか――という言葉を喉元に押し込み頷く。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T081533Z" creationid="sashi" creationdate="20201107T081533Z">
+        <seg>mi pusnist ny la lex fal vijiele'd vyrisn. "costan faut la lex lkurfer es plelajnef?" mal, edixa mi corshes. </seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>こういった必要のない衝突が減らせる」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T125321Z" creationid="sashi" creationdate="20201103T125321Z">
+        <seg>cene miss celes elx esshovo nefsuiten rodestelo xale la lex."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ここ、ラッビヤ人居留区は近年始まった“連邦”と異世界デュインの邂逅によるいざこざのうちに出来た。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T141846Z" creationid="sashi" creationdate="20201026T141345Z">
+        <seg>fqa l'es rabbija'd kanfitestaval veles lojo fal kalzanen routu'd  vaxirlnil fai viroteino fankas ad dyin z'es waxunde.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>この先にラッビヤ人の世界が広がっていると思えばなんてことはない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134752Z" creationid="sashi" creationdate="20201027T134752Z">
+        <seg>rabbija’d unde es verxen fal fasta. mi alvaik na’c fai tisodo la lex.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>これは連邦本土の風景と何ら変わらない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T065033Z" creationid="sashi" creationdate="20201025T065033Z">
+        <seg>la lex letix niv jurmerl cecioj krafir fon fankasa'd fery</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>しかし、ここは入り口に過ぎない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134652Z" creationid="sashi" creationdate="20201027T134652Z">
+        <seg>pa, fqa es fontakienul las.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>しかし、宗教関係で良く使われることを考えれば、あれは彼らの宗教の聖句とかなのかもしれない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T175407Z" creationid="sashi" creationdate="20201101T175407Z">
+        <seg>pa, la lex veles luso mels tvasnarl. la lex'i tisode melx jol la lex es nisse'd tvasnarla'd fevansnejtua ol et.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>そう、ここは異世界のうちの現世界なのだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T141350Z" creationid="sashi" creationdate="20201026T141132Z">
+        <seg>ja, fqa es norunde xe waxunde da.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>そういって、長官はこちらに名刺を出してきた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T075740Z" creationid="sashi" creationdate="20201107T075740Z">
+        <seg>mal, si ler mi icve olfa snosti.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>そう思うと好奇心に胸が躍る。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142749Z" creationid="sashi" creationdate="20201026T142749Z">
+        <seg>mi jel set lunjafudurk'c fal tisodol la lex.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>その顔と雰囲気にはエリート層の匂いがぷんぷんとしている。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T134625Z" creationid="sashi" creationdate="20201105T134625Z">
+        <seg>fegestan ad nakhirlo letix set lartmarle fon elme.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>その顔に面識はない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134912Z" creationid="sashi" creationdate="20201027T134912Z">
+        <seg>fegestan knon es.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>それにしても読めないあの文字は恐らくププーサ体という字体なのだろう。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T173957Z" creationid="sashi" creationdate="20201101T173957Z">
+        <seg>lirs, la lexe'd lyjot zelx cene niv akranti i elx jol es lirtuel phupurca z'es garfadent.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>そんな疑わなくてもここは政府関係者以外先住民しか居ないぜ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T171040Z" creationid="sashi" creationdate="20201101T170826Z">
+        <seg>co notul xale la lex pa fqa io eter mol niv filx dznojuli'est ja?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ただ、ドキドキとワクワクに胸を一杯にして来たデュインの風景が色褪せた本土のようだったのは少しがっかりだった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134628Z" creationid="sashi" creationdate="20201027T134628Z">
+        <seg>pa, mi jel la plorulu’c mels eso dalle virben fery i krafir dyine’dy zelx liaxa klie katurojolo’tj adircafeno ad vxorlnajto’c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ただ、異邦っぽさがないわけでも無かった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T065133Z" creationid="sashi" creationdate="20201025T065133Z">
+        <seg>pa, la lex letix niv waxicconascho. la lex at es niv julesn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>だからこそ、ここに挨拶しに来たのであるが、長官の態度はどうにも鼻につくものだった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T075442Z" creationid="sashi" creationdate="20201106T131039Z">
+        <seg>mag, mi tuferyns el fqa. pa, mi mecceries kafi'ajtes dzeparfebikaxtovala'd syten.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>だからこそ、今は役人や軍人しか入れない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142126Z" creationid="sashi" creationdate="20201026T142126Z">
+        <seg>mag, cene no io aptmirle ad elminal'd larta lap en.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ちょっと、気が立ってて」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T171135Z" creationid="sashi" creationdate="20201101T171135Z">
+        <seg>mi veles deroko."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>と、そんなことを思っていると視界の端から何かがこちらに近づいているのが見えた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134820Z" creationid="sashi" creationdate="20201027T134820Z">
+        <seg>mi tisod la lex melx liaxa mi xel elx zirler fhasfa’dy lerj ferkaxelal.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ところで、行き先はどこなんだ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T180019Z" creationid="sashi" creationdate="20201101T180019Z">
+        <seg>mal, co tydiestal es harmue?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>へらへらしているのが何かと頭にくる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135836Z" creationid="sashi" creationdate="20201027T135836Z">
+        <seg>si nefluxuluris fai farxa sytenesol si’st.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>へらへらしながら誰かがこちらに近づいてきているようだった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134903Z" creationid="sashi" creationdate="20201027T134903Z">
+        <seg>fhasfa farxa zirl mi’l ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>まあ君の名前など、この居留区ではどうでもいいことだ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T140507Z" creationid="sashi" creationdate="20201105T140507Z">
+        <seg>mer, co'd ferlk las es falamtenen fal kanfitestavalastan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>もっとも、デュインのような異世界ではもちろん話は別だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082317Z" creationid="sashi" creationdate="20201107T082317Z">
+        <seg>lirs, jol la lexe'd unsarl es niv suiten fal waxundestan xale fqa'd dyin.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>アレンってもしかしてお偉いさんなのか？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T071019Z" creationid="sashi" creationdate="20201103T070950Z">
+        <seg>alen metista es nediet larta.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールがそのような犯罪者である可能性は拭いきれない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140312Z" creationid="sashi" creationdate="20201027T140312Z">
+        <seg>liacy cene niv mi nivaines metis eso’dy tarl faut fyrkjaver xale la lex.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールが指差す先に白塗りのまさに役所という感じの建物が見えてくる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T141717Z" creationid="sashi" creationdate="20201103T141717Z">
+        <seg>tarla'st kernumesal io celaium zu deixmelines flan dirmelin desedenascchj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールと名乗った男の背後には車が一台止められていた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140031Z" creationid="sashi" creationdate="20201027T140031Z">
+        <seg>panqa’d tierij veles pusnisto fal polto pesta stieser tarl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールはエンジンを掛け、シフトレバーを操作しながら「ん？」と素っ頓狂な声を出した。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T070546Z" creationid="sashi" creationdate="20201101T180459Z">
+        <seg>tarl fedueslees mal cirmarke'd faista'it farkon ytarta xorlnj "ng?".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールはポケットの中をまさぐって、何かを取り出した。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140916Z" creationid="sashi" creationdate="20201027T140916Z">
+        <seg>tarl cilestaili'ajtes wounsa mal moute fhasfa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールは不思議そうに語尾を上げた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140212Z" creationid="sashi" creationdate="20201027T140212Z">
+        <seg>tarl coyris kornitesonj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タールは視線に気づいたのか、車を一瞥して笑みを浮かべた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140107Z" creationid="sashi" creationdate="20201027T140107Z">
+        <seg>jol tarl firlex mi'd fyrstla'c melx si'd tierij'it ekce xelon tetol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>タール・タクシーは最速でお客様をお届けするぞ！」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T171535Z" creationid="sashi" creationdate="20201101T171535Z">
+        <seg>tison l'es tarl ils jeteson petul enforle!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>デュインは初めてか？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T134940Z" creationid="sashi" creationdate="20201027T134940Z">
+        <seg>nio kliergo dyin es fontles?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>デュインは初めてか？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151617Z" creationid="sashi" creationdate="20201027T151617Z">
+        <seg>nio kliergo dyin es fontles?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>デュインは初めてか？」
+「あ、ああ……まあ」
+「これからお仕事ってところか？」
+「そんなところだけど、君は誰だ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140609Z" creationid="sashi" creationdate="20201027T140609Z">
+        <seg>nio kliergo dyin es fontles?”
+”ar… mer…… ja.”
+”no ler co virot el en’iar?”
+”p’ers xale la lex, harmae co es ja?”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ネクタイは地味な色と柄をしていて、髪は白髪だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T134442Z" creationid="sashi" creationdate="20201105T134442Z">
+        <seg>stisirstan m'es donili'ace dejix ad celti'ao, ledzil es flan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>フィールドワークの慣例として、その土地の政府関係者には話を通しておいたほうが良いというのがある。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201106T122803Z" creationid="sashi" creationdate="20201106T122803Z">
+        <seg>svizlatjalustu'd farfel io tuferynso poltostanen dznojuli'ester es jurlet.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ユーゴック語は“王国”に住むユーゲ人たちの言語だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T173530Z" creationid="sashi" creationdate="20201101T173504Z">
+        <seg>yrgokk es jurgersse'd lkurftless zu sietiv fal la nermetixalastan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>ラッビヤ人の言葉と文化風習を調査して本土に戻って報告する」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T121505Z" creationid="sashi" creationdate="20201103T121505Z">
+        <seg>mi haltxe rabbija'd lkurftlessestan ad meustan mal jostol dosnudonj fery'lt.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>リナエスト系人はリパラオネ系やラネーメ系と共に連邦を構成する三大民族の一つだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T081705Z" creationid="sashi" creationdate="20201107T081705Z">
+        <seg>linaest es panqa faller dqa'd hartlirfa zu celaes fankas lipalain ad lanerme'tj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>リパラオネ系ともラネーメ系とも違う名前の雰囲気に疑問を抱く。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T080524Z" creationid="sashi" creationdate="20201107T080524Z">
+        <seg>la lex waxes ferlke'd lartmarle fon lipalain ol lanerme. edixa mi kornites.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>レーシュネは一つため息をついてから、俺に視線をやった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082844Z" creationid="sashi" creationdate="20201107T082844Z">
+        <seg>lerxne m'esunsar lakeule'i, si marvel fyrstla mi'c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺の任務はそのラッビヤ人の言語と文化風習を調査することだった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142352Z" creationid="sashi" creationdate="20201026T142352Z">
+        <seg>mi'd derokerlust es haltxeo rabbijastana'd lkurftless ad meu.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺はタールと連絡先を交換し別れた後、行政庁の中へと入っていた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T135403Z" creationid="sashi" creationdate="20201105T135403Z">
+        <seg>edixu mi en febikaxtovala'c fastrie edixa amcolil miscaonj tarla'tj faut olfa snosti.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺はタールタイ＝アケーニモム、タールと呼んでくれ！</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135948Z" creationid="sashi" creationdate="20201027T135948Z">
+        <seg>mi es tarltai.akermonim. Sties mirg’i tarl’c!”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺はタールタイ＝アケーニモム、タールと呼んでくれ！」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140640Z" creationid="sashi" creationdate="20201027T140640Z">
+        <seg>mi es tarltai.akermonim. Sties mirg’i tarl’c!”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺は首を振る。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T071110Z" creationid="sashi" creationdate="20201103T071110Z">
+        <seg>mi tydixes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>俺達リパラオネ人が酒を禁忌としていることが分からなかったら、ユーゲ人が葡萄酒《エハムシャスト》を食卓に出すかもしれない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T124810Z" creationid="sashi" creationdate="20201103T124810Z">
+        <seg>miss l'es lipalaine'st dosnetost'it marve'ct iso'i firlex niv felx jol jurg fenxe khanxas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>先住民がいきなりリパライン語を話してきたら言語調査官が灰になって消え去るだろう。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082617Z" creationid="sashi" creationdate="20201107T082617Z">
+        <seg>fi ladira yuihurk lkurf lineparine el fankaser, haltxerger lkurftless snesva isola'tj naxirlelen'c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>反射的に「お前の人生は何の役に立つんですか？」と言いかけてしまうが、出てきそうな言葉を毎度喉元に押し戻している。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T123325Z" creationid="sashi" creationdate="20201103T123325Z">
+        <seg>mi fea ny la lex lkurf xale atasulilo siesejerl metista. "co'd kanrax es penxen fua harmie?" pa, liaxi lkurferl elx pusnist juij fal vijiele'd vyrisn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>受付が直接長官の執務室に通してくれたのは意外だったが、どうやら先んじて｜言語特務局《うえ》が話をしていたらしい。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T140129Z" creationid="sashi" creationdate="20201105T140129Z">
+        <seg>lirs, xeier ny farte karse feyl'i si'd pievytala'l. jol metista, LFA farte tuferyns ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>名刺には「｜ラッビヤ人《ラッビヤスザド》｜居留区《カンフィテスタヴァレン》｜行政庁《　フェビカシュトヴァル》　｜臨時《イーシェ》｜行政長官《　ジェパーフェビカシュト》　レーシュネ・ボーシュニョスツィーニ・シュフイシュコ」と書いてあった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T080356Z" creationid="sashi" creationdate="20201107T080356Z">
+        <seg>cene mi akranti leiju z'es "rabbijassa'd kanfitestavalen febikaxtovala'd irxe dzeparfebikaxto : lerxne.borxnjoszirni.xhujxko" fal la lexe'd vepalea.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>君の任務だが」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082944Z" creationid="sashi" creationdate="20201107T082944Z">
+        <seg>selene mi qune mels co'd felec.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>国内ならまだしも、国外で無断で調査を行えば変な活動と勘違いされて拘束されたりすることがある。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201106T124654Z" creationid="sashi" creationdate="20201106T124654Z">
+        <seg>iccoxy iulo m'es, ny la lex letix niv fafsirlejt. lernicco io farmesenerfe haltxe e'i fiatmo ameles fai viedosten la firlexili'a fon fiun fudiurvo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>国外では睡眠薬強盗などに加え、拉致なども横行する。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140225Z" creationid="sashi" creationdate="20201027T140225Z">
+        <seg>tvarlajto fai sulaunyl ad dzarto es stis eski fankas.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>察しが付いて、ついつい独りごちってしまう。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T141354Z" creationid="sashi" creationdate="20201026T132745Z">
+        <seg>edixa mi varfexerfel mal sittarls xale atasulilo siesejerl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>少し進むたびに舗装されていない道路は車をがくがくと揺らしてくる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T141204Z" creationid="sashi" creationdate="20201103T141204Z">
+        <seg>tierij diurl a ekce tydiestil fai nefjarlimite sniexij.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>建物にはリパライン語で大きく「｜ラッビヤ人《ラッビヤスザド　》｜居留区《カンフィテスタヴァレン　》｜行政庁《フェビカシュトヴァル》」と書かれていた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T141812Z" creationid="sashi" creationdate="20201103T141812Z">
+        <seg>celaium io "rabbijassa'd kanfitestavalen febikaxtoval" veles kranteo fal lineparine.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>彼はふてくされたような顔でこちらを見てきた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T134808Z" creationid="sashi" creationdate="20201105T134808Z">
+        <seg>si xel mi metista beslkaima fege'tj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>挨拶しておけば治安が悪い場所でも適切なサポートや助言が貰える可能性が高まる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201106T130301Z" creationid="sashi" creationdate="20201106T130301Z">
+        <seg>tuferynso kjilf velgan plelajnef celdino ad icveo aubeslkurferl fal anknish molal at.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>敢えて言うなら研究者ってところかな」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T071552Z" creationid="sashi" creationdate="20201103T071552Z">
+        <seg>fein, mi es lberger ja.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>新しい世界の誰も知らない言語を調査できる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142528Z" creationid="sashi" creationdate="20201026T142528Z">
+        <seg>cene mi haltxe dytylunde'd lkurftless zu fhasfa fav qune niv.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>本土で見るような安物とは違って、荷台の部分がしっかりと作られているようだった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140054Z" creationid="sashi" creationdate="20201027T140054Z">
+        <seg>sysit io jelerl xale taltenascho filxj tierij veles lojo mels fanergal ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>本土なら何か起こったのかと疑うくらいの光景だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T132145Z" creationid="sashi" creationdate="20201026T132145Z">
+        <seg>krafirstan es li notulo vlaseol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>本来首につけるようなストラップ付きの身分証、それをこちらに見せてくる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T141821Z" creationid="sashi" creationdate="20201027T141821Z">
+        <seg>mi'l si lurfa ventorvili'a fels'hais fua xinion xaluro e'ct.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>残念だが、疑わざるを得なかった。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151405Z" creationid="sashi" creationdate="20201027T140354Z">
+        <seg>plorul, mi letix niv surul filx notulo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>残念な意味で。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T065225Z" creationid="sashi" creationdate="20201025T065225Z">
+        <seg>Plorul kanteterl io la lex es niv julesn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>毎度名前を読み間違えられるから困ったものだな」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T081107Z" creationid="sashi" creationdate="20201107T081107Z">
+        <seg>ferlkestan jui veles nixakrantio gelx liaoll des efan banerdex ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>泥がはねればすぐに汚れそうだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135814Z" creationid="sashi" creationdate="20201027T135814Z">
+        <seg>nilen falslazio la lexe’l felx jol fyrfsykon tines.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>派手な色のポロシャツに白いズボンを合わせている。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135751Z" creationid="sashi" creationdate="20201027T135751Z">
+        <seg>si xalur tefivilsk dejixe’d nedirxien apart ad flan nais.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>王国と連邦の関係は深く、学校で大概の人間はユーゴック語を学ぶ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T173759Z" creationid="sashi" creationdate="20201101T173525Z">
+        <seg>rattel fon la nermetixalastan ad fankasastan i m'es anka, adenitax larta lersse yrgokk fal jesnypistanass.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>異邦とはこんなものだろうかと首を傾げた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T061715Z" creationid="sashi" creationdate="20201025T061715Z">
+        <seg>waxicco es xale fqa men? edixa mi's tydix'it systus tisodonj la lex'it.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>目の前にいるのはスーツ姿の痩せ気味の中年男性だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201105T134011Z" creationid="sashi" creationdate="20201105T134011Z">
+        <seg>fontalobusen polto io vegirrgertz fontitiol annia zu xalur kestinern sieod i mol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>相手だって悪意があって言っているわけではないだろうし。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T123414Z" creationid="sashi" creationdate="20201103T123414Z">
+        <seg>jol kna at letix niv slyrs.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>納得したタールは頷きながら、ハンドルを回す。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T130300Z" creationid="sashi" creationdate="20201103T130300Z">
+        <seg>lex beslt tarfa'st corsheson halinarves.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>臨時行政長官に挨拶しないといけないんだ」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T180403Z" creationid="sashi" creationdate="20201101T180403Z">
+        <seg>cun, deliu mi virot el irxe dzeparfebikaxto.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>良くある質問、その一。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T121658Z" creationid="sashi" creationdate="20201103T121658Z">
+        <seg>ers jvaccamarle nunerl 1tej.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>街からは大都市と遜色ない賑わいが感じられる。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T063940Z" creationid="sashi" creationdate="20201025T061819Z">
+        <seg>marlastan io mi jel barxondur dalle xerf marlaste.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>見知らぬヤツの口車に乗せられて、乗ったが最後食い物にされる事例は絶えない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140323Z" creationid="sashi" creationdate="20201027T140235Z">
+        <seg>larta nienul fai knonen vileti'st lkurferl mal icve ises. la lex xale lixunafhorn voles datj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>話しかけてきた男は自分と同じくらいの背丈で、顔つきは柔らかな感じだ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T135822Z" creationid="sashi" creationdate="20201027T135822Z">
+        <seg>dettiser’d sytet es mi ce foi mal letix snyxt fegestan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>詳しくは伝えられていないが、ここにはラッビヤ人という異世界人が居るらしい。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142245Z" creationid="sashi" creationdate="20201026T142245Z">
+        <seg>Mi firlex niv tiliest iulo mels ny la lex. Pa, fqa io rabbija zu es waxunderger mol ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>読めないことで有名な字体だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T174409Z" creationid="sashi" creationdate="20201101T174409Z">
+        <seg>la lex es karnicitj garfadent fulx cene niv akrantirgerl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>路肩に止められている車には仰々しい政府の機関の名前ばかりがプリントされている。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T141400Z" creationid="sashi" creationdate="20201026T131954Z">
+        <seg>tierij zu veles pusnisto sniexije'ct i veles sadylo laprysten akrapt fon stesnulo dznojuli'est.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>車のダッシュボードにはユーゴック語のステッカーが貼られていた。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201101T173353Z" creationid="sashi" creationdate="20201101T173353Z">
+        <seg>tierije'd litarleylen vepalea veles nolo yrgokken akrapt.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>車窓から見えるものは連邦本土では見られないような自然だ。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201103T140945Z" creationid="sashi" creationdate="20201103T140945Z">
+        <seg>tierije'd nysnys ler xelerl es xyfoatost zelx cene niv xel fal fery.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>近くまでなら載せてやるぞ？</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140134Z" creationid="sashi" creationdate="20201027T140134Z">
+        <seg>selene co tydiest mel fqa felx cene mi celes elx nienulo co’st.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>近くまでなら載せてやるぞ？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T151758Z" creationid="sashi" creationdate="20201027T151758Z">
+        <seg>selene co tydiest mel fqa felx cene mi celes elx nienulo co’st."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>近くまでなら載せてやるぞ？」
+「ちょっと待て、身分証を出せ」
+「身分証？」</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201027T140726Z" creationid="sashi" creationdate="20201027T140726Z">
+        <seg>selene co tydiest mel fqa felx cene mi celes elx nienulo co’st."
+“mili ekcej. karse fels’hais.”
+“fels’haisesti?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>連邦は多民族国家だから、こういったことが良く起きるが大抵は長官のようにリパライン語が通じるので不便はない。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201107T082121Z" creationid="sashi" creationdate="20201107T082121Z">
+        <seg>fankas es lani'arsnejejten icco. mag, la lex p'es duliet, dzeparfebikaxtoval xale suiterger lineparine mol loler mag es niv nefpenxen fal adenitaxol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>連邦は異世界のうちに居留区を作り、相手側との調整を行っている最中らしい。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T142012Z" creationid="sashi" creationdate="20201026T142012Z">
+        <seg>fankas loj kanfitestaval fal waxunde mal ycax cecioj kna ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>連邦軍の軍服を着て、自動小銃を下げている人間が真顔で横を通り過ぎて行く。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201026T131754Z" creationid="sashi" creationdate="20201025T070249Z">
+        <seg>fitedzastiergen pc'tj xalurmer fankasa'd elminala'd deln axe fegenerfeonj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv lang="JA">
+        <seg>飛行場出口の裾には新聞を読みながら朝をゆったりと過ごすために｜伝統飲料《リウスニータ》のドリンクスタンドに人が集まっている。</seg>
+      </tuv>
+      <tuv lang="LPA-LP" changeid="sashi" changedate="20201025T063929Z" creationid="sashi" creationdate="20201025T063929Z">
+        <seg>li'usnirta'd torma fon dojieje'd feylsti'd mele io lartass cierjustel fua dicatiavo ircalartj nars'it.</seg>
+      </tuv>
+    </tu>
+<!-- Alternative translations -->
+  </body>
+</tmx>
