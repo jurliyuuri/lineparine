@@ -15,3 +15,4 @@ litarleylen vepalea	ダッシュボード	または、計器盤。
 行政庁	febikaxtoval
 長官	dzepar-	dzeparfebikaxtoval　行政庁長官
 喉元	pusnist fal vijiele'd vyrisn	-'sは-'iを言いかけてやめる、言葉を飲み込む、喉元に押し込む
+執務室	pievytal
