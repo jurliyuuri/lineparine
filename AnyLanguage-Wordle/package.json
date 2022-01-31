@@ -1,7 +1,7 @@
 {
     "name": "wordle",
     "version": "0.1.0",
-    "homepage": "http://jurliyuuri.com/lineparine/wordle",
+    "homepage": "http://jurliyuuri.com/lineparine/AnyLanguage-Wordle",
     "private": true,
     "dependencies": {
         "@bcgov/bc-sans": "^1.0.1",

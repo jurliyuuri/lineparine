@@ -5,7 +5,7 @@ export const CONFIG = {
   author: 'Fafs F. Sashimi', // Put your name here so people know who made this Wordle!
   authorWebsite: 'https://w.atwiki.jp/cgwj/pages/42.html', // Put a link to your website or social media here
   wordListSource: 'Lineparine ad japaeovirle cecio levipesta', // Describe the source material for your words here
-  wordListSourceLink: 'http://jurliyuuri.com/lineparine/wordle/list.html', // Put a link to the source material for your words here
+  wordListSourceLink: 'http://jurliyuuri.com/lineparine/AnyLanguage-Wordle/list.html', // Put a link to the source material for your words here
   //
   // THESE NEXT SETTINGS ARE FOR ADVANCED USERS
   //
