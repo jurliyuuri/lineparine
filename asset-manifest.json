@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/lineparine/wordle/static/css/main.e260b4db.css",
+    "main.js": "/lineparine/wordle/static/js/main.fd9b7460.js",
+    "static/js/787.3500bfec.chunk.js": "/lineparine/wordle/static/js/787.3500bfec.chunk.js",
+    "static/media/BCSans-Bold.woff": "/lineparine/wordle/static/media/BCSans-Bold.252ecf87ea37c93b293c.woff",
+    "static/media/BCSans-BoldItalic.woff": "/lineparine/wordle/static/media/BCSans-BoldItalic.73ed5137b2c4a42b754f.woff",
+    "static/media/BCSans-Italic.woff": "/lineparine/wordle/static/media/BCSans-Italic.9c3be03a06d30a6ecff0.woff",
+    "static/media/BCSans-Regular.woff": "/lineparine/wordle/static/media/BCSans-Regular.0079ea8e42d4e81a13d2.woff",
+    "index.html": "/lineparine/wordle/index.html",
+    "main.e260b4db.css.map": "/lineparine/wordle/static/css/main.e260b4db.css.map",
+    "main.fd9b7460.js.map": "/lineparine/wordle/static/js/main.fd9b7460.js.map",
+    "787.3500bfec.chunk.js.map": "/lineparine/wordle/static/js/787.3500bfec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e260b4db.css",
+    "static/js/main.fd9b7460.js"
+  ]
+}
