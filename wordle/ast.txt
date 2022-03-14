@@ -1,4 +1,0 @@
-src/components/modals/内にテキストが集中している。
--AboutModal.tsx（下のリンク）とInfoModal.tsx（？）とStatsModal.tsx（ゲーム終了後の統計）
-
-git commit -m "ducks" --no-verify
