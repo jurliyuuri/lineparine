@@ -18,3 +18,5 @@ litarleylen vepalea	ダッシュボード	または、計器盤。
 執務室	pievytal
 難民キャンプ	anknish anfarmiaval
 居留区	kanfitestaval
+myrdavo es suiten.	細かいことはいい
+中央区画	sysitersnajalo
