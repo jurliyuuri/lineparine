@@ -46,6 +46,20 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「“焼く”も“茹でる”もジェフシュンなんだな？」
+「そう」
+「ヨケルを焼くことは無いのか？」
+「えっと、串に挿して焼く。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T171949Z" creationid="sashi" creationdate="20220522T171949Z">
+        <seg>" la aftlat ad la xupurmes at es dzehuxn ja?"
+"ja."
+"joke'r veles niv aftlato?"
+"mer, kontlerrgon aftlat."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「……」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201118T054823Z" creationid="sashi" creationdate="20201118T054823Z">
@@ -278,6 +292,18 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「しらばっくれるつもりか？」
+「やめろ、彼女はまだ子供なんだぞ……！」
+「泥棒族なんかに掛ける情は無えよ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T075358Z" creationid="sashi" creationdate="20220612T075358Z">
+        <seg>"co loquenes?"
+"pusnist, ci nat es selun......!"
+"miss is arredarr fua tvarleni'ar las. edixa co firlex ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「じゃあ、あんたが服を買い寄せれば早く届くんじゃない⁉」
 「はあ？」
 「だって、政府関係者の荷物は優先して届くわけだし！」</seg>
@@ -286,6 +312,18 @@
         <seg>"mal, co ledi'o xalurmerl melx jol le jeteson sniertarlees ti ja!?"
 "ham?"
 "cun, dznojuli'ester'd fane il farte veles petulo!"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「じゃあ、帰るか」
+「帰る？」
+「ああ、君も病み上がりなのに無理するとまた体調を崩すぞ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T153239Z" creationid="sashi" creationdate="20220526T153239Z">
+        <seg>"mal, lecu miss dosnud."
+"e dosnud?"
+"ja, co mol lernekyticeil gelx mak is ny farkzirvhi fai desteko arsonj.</seg>
       </tuv>
     </tu>
     <tu>
@@ -304,6 +342,16 @@
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210207T085603Z" creationid="sashi" creationdate="20210207T085603Z">
         <seg>"selene kartixmi'astan io mi virot rabbija'd lartassa'c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「そいつはラッビヤ人なんだろ？」
+「……っ！</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T055140Z" creationid="sashi" creationdate="20220612T055140Z">
+        <seg>"fgir es rabbija ja?"
+"hgg......!</seg>
       </tuv>
     </tu>
     <tu>
@@ -372,6 +420,14 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「その子から離れなさい」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T150150Z" creationid="sashi" creationdate="20220630T150150Z">
+        <seg>"lern selunustan ler."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「その研究って何の役に立つんですか？」だ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201103T121755Z" creationid="sashi" creationdate="20201103T121755Z">
@@ -420,10 +476,30 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「それは区別しない？</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T122027Z" creationid="sashi" creationdate="20220525T122027Z">
+        <seg>"la lex veles niv qaditep niv?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「そろそろご飯でも食べに行くか」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220320T073817Z" creationid="sashi" creationdate="20220320T073817Z">
         <seg>"lecu tydiest knloano las ja."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「そろそろ退かねえとぶっ殺すぞ」
+「待て、話を聞――」
+「いい加減退けつってんだよ！」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T101214Z" creationid="sashi" creationdate="20220626T101214Z">
+        <seg>"co kolurt niv felx jol mi issyduj."
+"mili, arcie..."
+"intarmerdett ja!"</seg>
       </tuv>
     </tu>
     <tu>
@@ -444,12 +520,28 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「なあ、お兄さん、ちょっと待てよ」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T074627Z" creationid="sashi" creationdate="20220611T074627Z">
+        <seg>"jei, xij, mili ekcej."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「なにの話だった？」
 「えーと……」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220317T155917Z" creationid="sashi" creationdate="20220317T155917Z">
         <seg>"harmie coss lkurf edixa?"
 "mer......"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「なんだてめえは？」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T152540Z" creationid="sashi" creationdate="20220630T152540Z">
+        <seg>"harmie fgir es ja?"</seg>
       </tuv>
     </tu>
     <tu>
@@ -470,6 +562,16 @@
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211221T153109Z" creationid="sashi" creationdate="20211221T153109Z">
         <seg>"hjaw!"
 "ar, nace ja......</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「ふーっ、見た目の割に結構重かったな」
+「リパレーナンのご飯、おいしかった……」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T124807Z" creationid="sashi" creationdate="20220510T124807Z">
+        <seg>"fhur, edixa la lex ny farte luzedzessyk nacisan ziechija."
+"lipalernan'd knloanerl's...... es doisn edixa......"</seg>
       </tuv>
     </tu>
     <tu>
@@ -576,6 +678,14 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「ジェフシュン」という動詞の表す範囲は結構広いらしい。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T130704Z" creationid="sashi" creationdate="20220522T130704Z">
+        <seg>jol ftona lex kantet "dzehuxn" l'es paltau es kinies.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「タール、病院がどこにあるかは分かるか？」
 「あ、ああ。</seg>
       </tuv>
@@ -598,6 +708,14 @@
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220221T153848Z" creationid="sashi" creationdate="20220220T090634Z">
         <seg>kraxaiun l'es "chetel" elx jol kantet metistaj elx distykol sederle'st i xale kafi'a.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「ツォッフールを串に挿して焼いたり、ユティルを挽いてヨケルにする。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T073010Z" creationid="sashi" creationdate="20220521T073010Z">
+        <seg>"misse's tler'it xipiavon aftlat zoffur'r. et io cianti yti'r mal is la lex'i joke'r'c.</seg>
       </tuv>
     </tu>
     <tu>
@@ -640,6 +758,24 @@
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210728T122822Z" creationid="sashi" creationdate="20210728T122822Z">
         <seg>"buzini'r" l'es kraxaiun es lirna'd nexme ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「ヨケルを焼くのと茹でるのはどうやって区別するんだ？」
+「それは……」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T180659Z" creationid="sashi" creationdate="20220522T180659Z">
+        <seg>"hame coss qaditep joke'r'it aftlato ad xupurmeso?"
+"mer......"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「ラッビヤの奴らはこの戦争で連邦軍の兵士を大量に殺した。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T071227Z" creationid="sashi" creationdate="20220612T071227Z">
+        <seg>"rabbijass dat reto fankasa'd elmerss fal elmestan.</seg>
       </tuv>
     </tu>
     <tu>
@@ -708,6 +844,14 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「リーナ、君たちはどういう料理をするんだ？」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T070233Z" creationid="sashi" creationdate="20220521T070233Z">
+        <seg>"lirnasti, hame coss laozia knloanerl?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「リーナ、大丈夫か!?」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220221T170345Z" creationid="sashi" creationdate="20220221T170345Z">
@@ -736,6 +880,16 @@
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210313T171828Z" creationid="sashi" creationdate="20210313T171828Z">
         <seg>"edixa mi veles deroko qatej fal panqa'd snenik cis.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「一発殴らせろよ」
+「……」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T061619Z" creationid="sashi" creationdate="20220612T061619Z">
+        <seg>"farmes panqavon cuirteo."
+"......"</seg>
       </tuv>
     </tu>
     <tu>
@@ -882,6 +1036,24 @@
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>「君の言葉で“ツォッフールを焼く”ってどういうんだ？」
+「ツォッフールジェフシュン」
+「“ヨケルを茹る”、はどうだ？」
+「ヨケルジェフシュン」
+「……フェンキュツァはどう調理するんだ？」
+「ジェフシュン？」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T091928Z" creationid="sashi" creationdate="20220521T091928Z">
+        <seg>" :aftlato zoffur'r: veles lkurfo fal co'd lkurftless?"
+"zoffur'r dzehzun."
+" :xupurmo joke'r: es fai harmie?"
+"joke'r dzehuxn."
+"...... jujojesel fenkyza es?"
+"dzehuxn?"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>「君を助けられるのが俺しか居なかったから、かな」
 「助けて、どうする？」
 「どうするって、どうもしないよ。</seg>
@@ -1000,6 +1172,14 @@
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210314T144527Z" creationid="sashi" creationdate="20210314T144527Z">
         <seg>"plorul, la lex xale hiurn larta mol niv."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>「気が晴れるなら、幾らでも俺を殴ればいい。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T141534Z" creationid="sashi" creationdate="20220629T141534Z">
+        <seg>"coss destel stopiev faovan ci felx cene co cuirte ekcej.</seg>
       </tuv>
     </tu>
     <tu>
@@ -1337,11 +1517,31 @@ tletimast : haltxerger lkurftless l'es alen.vilaija.</seg>
     <tu>
       <tuv xml:lang="JA">
         <seg>【タイトル】
+第十三話：「焼く」も「煮る」も</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T122622Z" creationid="sashi" creationdate="20220510T122622Z">
+        <seg>【xakantasti】
+13te larfe：aftlato ad xupureso.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【タイトル】
 第十二話：全てに火を通しております</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220320T111507Z" creationid="sashi" creationdate="20220320T111507Z">
         <seg>【xakantasti】
 12te larfa : alsietal</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【タイトル】
+第十四話：荒事は専門外</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T110857Z" creationid="sashi" creationdate="20220529T110857Z">
+        <seg>【xakantasti】
+14te larfe : lernrotist indonerrgust.</seg>
       </tuv>
     </tu>
     <tu>
@@ -1496,6 +1696,26 @@ tletimast : haltxerger lkurftless l'es alen.vilaija.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>【作成日時】
+2020-03-13 06:09:44（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T122630Z" creationid="sashi" creationdate="20220510T122630Z">
+        <seg>【laoziavil】
+2020-03-13 06:09:44（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【作成日時】
+2020-03-14 05:25:01（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T110907Z" creationid="sashi" creationdate="20220529T110907Z">
+        <seg>【laoziavil】
+2020-03-14 05:25:01（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>【公開日時】
 2020-05-30 23:44:46（+09:00）</seg>
       </tuv>
@@ -1626,6 +1846,26 @@ tletimast : haltxerger lkurftless l'es alen.vilaija.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>【公開日時】
+2020-06-10 18:12:44（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T122634Z" creationid="sashi" creationdate="20220510T122634Z">
+        <seg>【kinunsaresil】
+2020-06-10 18:12:44（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【公開日時】
+2020-06-11 20:42:55（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T110910Z" creationid="sashi" creationdate="20220529T110910Z">
+        <seg>【kinunsaresil】
+2020-06-11 20:42:55（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>【公開状態】
 公開済</seg>
       </tuv>
@@ -1647,11 +1887,31 @@ edixa kinunsares.</seg>
     <tu>
       <tuv xml:lang="JA">
         <seg>【文字数】
+2,039文字</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T124146Z" creationid="sashi" creationdate="20220510T124146Z">
+        <seg>【lyjota'd murtmir】
+2,039'd lyjotasti</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【文字数】
 2,044文字</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210628T070616Z" creationid="sashi" creationdate="20210628T070616Z">
         <seg>【lyjota'd murtmir】
 2,044文字</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【文字数】
+2,065文字</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T110931Z" creationid="sashi" creationdate="20220529T110931Z">
+        <seg>【lyjota'd murtmir】
+2,065'd lyjotasti</seg>
       </tuv>
     </tu>
     <tu>
@@ -1887,6 +2147,26 @@ edixa kinunsares.</seg>
     <tu>
       <tuv xml:lang="JA">
         <seg>【更新日時】
+2020-06-10 20:53:44（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T122651Z" creationid="sashi" creationdate="20220510T122651Z">
+        <seg>【cerkmernil】
+2020-06-10 20:53:44（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【更新日時】
+2020-06-11 20:42:55（+09:00）</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T110914Z" creationid="sashi" creationdate="20220529T110914Z">
+        <seg>【cerkmernil】
+2020-06-11 20:42:55（+09:00）</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【更新日時】
 2020-06-13 01:06:27（+09:00）</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201025T061522Z" creationid="sashi" creationdate="20201025T061356Z">
@@ -1900,6 +2180,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210410T073904Z" creationid="sashi" creationdate="20210410T073904Z">
         <seg>【dirxel（51'd leiju）】</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>【本文（59行）】</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220510T124207Z" creationid="sashi" creationdate="20220510T124207Z">
+        <seg>【dirxel（59'd leiju）】</seg>
       </tuv>
     </tu>
     <tu>
@@ -2008,6 +2296,16 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>あと、フェンキュツァの肉は脂が乗ってていい……」
+「あー、なるほどなー」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T080225Z" creationid="sashi" creationdate="20220521T080225Z">
+        <seg>me, fenkyza'd larzi es vynut fai loler xui."
+"ar, firlex."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>あの様子ではレーシュネにすらあっていなさそうだから、許可は降りないだろう。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211024T142358Z" creationid="sashi" creationdate="20211024T142358Z">
@@ -2076,10 +2374,36 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>いずれ自分も温かいヨケル三昧を頂きたいものだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T172809Z" creationid="sashi" creationdate="20220522T172809Z">
+        <seg>selene fhasfail io mi at knloan konlaverl kysen joke'r esm.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>いつの間にか、少女は少し安心したような表情になっていた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T094855Z" creationid="sashi" creationdate="20210609T094855Z">
         <seg>mianastana'd feg quneilenerfe is niurnol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>いや、落ち着いてくれ別に君を責めているわけではない。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T122924Z" creationid="sashi" creationdate="20220525T122924Z">
+        <seg>niv, selene niv mi es cexen'i. don plax ja.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>うぅん、分からない」
+「じゃあ、質問を変える。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T122228Z" creationid="sashi" creationdate="20220525T122228Z">
+        <seg>ar, mi firlex niv."
+"mal, mi furnkie nunerl.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2204,10 +2528,26 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>こちらを睨めつけるその目には敵意を感じる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T080504Z" creationid="sashi" creationdate="20220611T080504Z">
+        <seg>mi jel la zirkrjelen fal fiurs zu nuxierrgon xel mi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>こちらを警戒せずにリラックスした様子だった。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220404T063252Z" creationid="sashi" creationdate="20220404T063252Z">
         <seg>ci's mi'it neflestiferton texlis ci ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>このようにラッビヤ人特有の調理やそのカテゴリーを表す単語は食文化に密接に関係しているはずだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T090921Z" creationid="sashi" creationdate="20220521T090921Z">
+        <seg>jujoj ad la lexe'd falvit'it lex kantet kraxaiunuss melses xale la lex i knloanerle'd meu'c.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2284,6 +2624,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>この言葉は飲み込んで、異世界の少女に睨まれるのに甘んじる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T125256Z" creationid="sashi" creationdate="20220525T125256Z">
+        <seg>lecu mi pusnist fal vijiele'd vyrisn mal veles elx xelo nuxierrgonj waxundergen miana'st.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>これからの起こることに不安を抱きながらも俺はタールに宿舎までの道を伝え、車の荷台に乗り込んだ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210323T165000Z" creationid="sashi" creationdate="20210323T165000Z">
@@ -2296,6 +2644,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210518T104307Z" creationid="sashi" creationdate="20210518T104307Z">
         <seg>lankirler jol vangleustes falsirs fal no'd aduarneo'd kistan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>これはあくまでフィールドワークの一環なのだ――といっても分かってもらえないだろう。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T123722Z" creationid="sashi" creationdate="20220525T123722Z">
+        <seg>nunostan lerneslyrson es svizlatjalustusta da. ...... jol ci firlex niv fai la lex.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2336,6 +2692,16 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220208T100206Z" creationid="sashi" creationdate="20220208T100206Z">
         <seg>mi lurfa letiacirst lirna'c dalle lovik nestil mal ci fiurxeson fyrstlainses aplansala'c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>さっきのは“ヨケルを焼く”という意味にもなったのか？」
+「それは茹でるを言ったから、茹でる」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T122758Z" creationid="sashi" creationdate="20220525T122758Z">
+        <seg>lovik nestile'd krandiurg kantet :aftlato joke'r: ?"
+"edixa mi lkurf xupurmes mag xupurmes."</seg>
       </tuv>
     </tu>
     <tu>
@@ -2408,6 +2774,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220221T161526Z" creationid="sashi" creationdate="20220221T160941Z">
         <seg>lirs, nefxelola'tj cilarp kinen plasio'it l'ankalefenes ci'd anfi'erlenol karse mi'd disien zu knon plasi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>しかし、ドアは何かつっかえにでも引っかかったかのように止まった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T112514Z" creationid="sashi" creationdate="20220529T112514Z">
+        <seg>pa, gelestan pusnist xale systodo fhasfa.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2492,6 +2866,24 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>しかも、連邦軍の兵士の殆どは｜異能保持者《ケートニアー》で構成されている。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220625T112503Z" creationid="sashi" creationdate="20220625T112503Z">
+        <seg>yst mea, fankasa'd elminala'd elmer alfal veles celaes fai kertni'ar.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>しかも折角乱暴な連中から守ってやったというのにキャンプから逃げ出して連邦人を殺し、強盗したらしいじゃねえか」
+「ラッビヤは殺して盗まない」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T071929Z" creationid="sashi" creationdate="20220612T071540Z">
+        <seg>miss yst mea sesnud lerj indonerss pa anknish anfarmiaval ler fittydiest mal reto fankaser mal tvarl edixa. mi senost la lex da."
+"rabbija reto mal tvarl niv."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>しばらくそのまま走ってゆくと、変わっていく風景の中に段々と物騒なものが見え始めた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210223T104429Z" creationid="sashi" creationdate="20210223T104429Z">
@@ -2544,6 +2936,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T093614Z" creationid="sashi" creationdate="20210609T093614Z">
         <seg>mal, ci fas lkurfo fal ytartavertz.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>すると、男たちは今度こそ明け透けに敵対的な態度になっていった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T065849Z" creationid="sashi" creationdate="20220612T065849Z">
+        <seg>mal, anniass is cafi'anasch fal pesta.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2716,6 +3116,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>そこでやっと鼻っ面を殴られたのだと理解できた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T160443Z" creationid="sashi" creationdate="20220626T160443Z">
+        <seg>mal, mi lesback lot firlex cuirteo stielyr.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>そこで一つ思い出したことがあった。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220217T153656Z" creationid="sashi" creationdate="20220217T153656Z">
@@ -2728,6 +3136,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210308T160407Z" creationid="sashi" creationdate="20210308T160407Z">
         <seg>mian z'iesnyx xleanertnirrgonj elj lovik nestil i veles ekcano fal la lexal.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>そこには大柄の男が立っていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T074554Z" creationid="sashi" creationdate="20220611T074554Z">
+        <seg>fgir io nermetixal annia ta liaxu.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2788,6 +3204,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>そのまま別のテーブルへと料理を運んでいった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T073108Z" creationid="sashi" creationdate="20220514T073108Z">
+        <seg>si vergain fenxe jujoj el ete'd nielyp.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>そのスローライフの夢は早くもレーシュネの一言で砕け散った。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201117T115354Z" creationid="sashi" creationdate="20201117T115354Z">
@@ -2820,6 +3244,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>その前にキャンプの連中との確執を解消する必要はありそうだが。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T173227Z" creationid="sashi" creationdate="20220522T173227Z">
+        <seg>jol deliu mi ferles anfarmiavalastanerssen anha'rkhto pesta la lex.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>その周りには野営のためなのかテントや簡易的な宿舎のようなものも立っていた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210224T123654Z" creationid="sashi" creationdate="20210223T112309Z">
@@ -2832,6 +3264,22 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201214T085856Z" creationid="sashi" creationdate="20201214T085856Z">
         <seg>barxondurstan letix nefknonen ytarta.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>その声が聞こえた男は眉間にシワを寄せた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T074914Z" creationid="sashi" creationdate="20220612T074914Z">
+        <seg>ytartastan'i lex senost annia is feg'i jacamala'c.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>その威圧感に腰が引ける。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T081939Z" creationid="sashi" creationdate="20220611T081939Z">
+        <seg>serzemastan is mi'i la kontastili'a'c.</seg>
       </tuv>
     </tu>
     <tu>
@@ -2864,6 +3312,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>その男はこちらに一歩ずつ迫ってきた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T081517Z" creationid="sashi" creationdate="20220611T081517Z">
+        <seg>anniastan zirl a lemonpasta.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>その目は何か疑り深いものを感じているといったような、探るような目だった。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220317T082254Z" creationid="sashi" creationdate="20220317T082254Z">
@@ -2876,6 +3332,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210304T092501Z" creationid="sashi" creationdate="20210304T092501Z">
         <seg>nalastan io tarl kusyst levuf.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>その瞬間、交差点の方の明るみから声がかかった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T145447Z" creationid="sashi" creationdate="20220630T145447Z">
+        <seg>pestastan io fhasfa dettis lerj karsergal fal kanfithlimir.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3012,6 +3476,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>それに札を挟んで待っているとボーイが勝手に持っていって、お釣りがあればテーブルにフォルダが戻ってくるという仕組みになっている。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T071855Z" creationid="sashi" creationdate="20220514T071855Z">
+        <seg>cwanenalust ad renuk veles ferleso fai yst vesesn pesta cwanenal ly. cene niv firlex eso la lex feat cinefъhartkarfel o fyrfsyk.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>それに比べれば、デュインの先住民の発達は前近代的なものだと言われている。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211027T145811Z" creationid="sashi" creationdate="20211027T145811Z">
@@ -3060,6 +3532,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>それはラッビヤ語の調理動詞についてだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T084857Z" creationid="sashi" creationdate="20220521T084857Z">
+        <seg>la lex es rabbijavirle'd ftona mels jujojeso.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>それは恒常的に行われていた彼女への暴行を、キャンプに関わっていた連邦政府の関係者や軍人たちは無視していたということだ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210607T134918Z" creationid="sashi" creationdate="20210607T134918Z">
@@ -3072,6 +3552,22 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210521T104255Z" creationid="sashi" creationdate="20210521T104255Z">
         <seg>la lex es jelerl fal na zu mi celdineffe lex fanken ci z’iesnyx fal xleanertnir.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>それまで動いていなかった男たちはリーナを捕まえようと手を伸ばす。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T144555Z" creationid="sashi" creationdate="20220630T144555Z">
+        <seg>pesta elj lexif fudiur annia fha fulx jol alfo lirna.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>それもおいしい……」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T172006Z" creationid="sashi" creationdate="20220522T172006Z">
+        <seg>la lex at es doisn......"</seg>
       </tuv>
     </tu>
     <tu>
@@ -3156,10 +3652,26 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>そんなことを考えているといつの間にかテーブルの端に黒色のフォルダが戻ってきていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T151055Z" creationid="sashi" creationdate="20220526T151055Z">
+        <seg>mi tisod la lex dlirlo delnen celurse quneilenerfe dosnud el nielypi'd stikiesn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>そんなことを言っているうちに車は発進した。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210210T101233Z" creationid="sashi" creationdate="20210208T064729Z">
         <seg>lkurfil xale la lex io tierij v'infend.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>そんなところでリーナの顔にやっと気づいた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T072528Z" creationid="sashi" creationdate="20220611T072528Z">
+        <seg>pa, mi lesback lot firlex fai lirna'd feg.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3206,6 +3718,22 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>そんな疑念を抱いていると彼女は意識を取り戻したように「あぁ……うん」と弱々しく肯定の言葉を漏らした。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220527T160451Z" creationid="sashi" creationdate="20220527T160451Z">
+        <seg>mi's la lex xale notul mal ci desnuxon lkurf xale iso ny neflixerusten i la corsha'd kraxaiun'i.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>そんな言い訳が脳内を過ぎっているうちに目の前の男たちはどんどん機嫌が悪くなってゆく。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T100911Z" creationid="sashi" creationdate="20220626T100911Z">
+        <seg>yst systusustan'it fiurmil io fontalobusenopherss vejt ve is ny luxul.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>ただ、そういった完全な名前を使うのは相当かしこまった場所になる。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210718T053957Z" creationid="sashi" creationdate="20210718T053957Z">
@@ -3222,6 +3750,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>ただ、何故そんな良家に居そうな給仕役がこの場に居るのか？</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T152528Z" creationid="sashi" creationdate="20220630T152528Z">
+        <seg>pa, jol harmie kaltra flurjnna larta'ct l'uniel fenxerger elx mol fal fqa?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>ただ、異邦っぽさがないわけでも無かった。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201025T065133Z" creationid="sashi" creationdate="20201025T065133Z">
@@ -3230,10 +3766,26 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>だ、だったら何なんだ」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T060050Z" creationid="sashi" creationdate="20220612T060050Z">
+        <seg>mal, harmie cossa'd xelerl es."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>だか、彼女はそれに反感を抱くというより、更に困惑した様子で反応した。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220319T081608Z" creationid="sashi" creationdate="20220319T081608Z">
         <seg>pa, ci fenten niv la lex. lirs, le malfernovon dirjejumes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>だから、俺はあまり外食には行かないわけだが、今回は幸運にもリーナが隣に居る。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T064815Z" creationid="sashi" creationdate="20220514T090011Z">
+        <seg>mag, liaoll mi eski tydiest niv fua knloan. pa, na io lirna bli'erchavon mol mele mi.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3300,6 +3852,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201026T142126Z" creationid="sashi" creationdate="20201026T142126Z">
         <seg>mag, cene no io aptmirle ad elminal'd larta lap en.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>だからこそ、俺が最後の砦となって彼女を護らなければならない。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T133832Z" creationid="sashi" creationdate="20220629T133832Z">
+        <seg>mag, deliu mi fea ci sesnud cixj lesback.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3382,6 +3942,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T080637Z" creationid="sashi" creationdate="20211017T080637Z">
         <seg>pa, ci firlex niv la lex kanteterl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>だが、それはどちらかというと｜言語保障監理官事務所《シェポル》の護憲・法執行部隊のほうが近いものがある。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T095448Z" creationid="sashi" creationdate="20220626T095448Z">
+        <seg>pa, la lex il plelajnefon diurle shepola'd vilinisopitili'a konsopitili'a'c.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3470,6 +4038,16 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220314T121957Z" creationid="sashi" creationdate="20220314T060707Z">
         <seg>pa, si xel lirna zu es dyjet l'en lakime'tj. pesta la lexilece, pusnist si'd liepop.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>だが、彼女は……彼女に手を出すのはやめろ」
+「それは無理な相談だな」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T144706Z" creationid="sashi" creationdate="20220629T144706Z">
+        <seg>pa, normtaves niv ci."
+"la lex es cafi'a karxerl."</seg>
       </tuv>
     </tu>
     <tu>
@@ -3644,6 +4222,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>どうやら、俺の声は聞こえていないらしい。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T082900Z" creationid="sashi" creationdate="20220521T082900Z">
+        <seg>jol ci senost niv mi'd ytarta.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>どうやら、相当お腹が空いていたか、まともな食事を取ってこなかったのだろう。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211007T114656Z" creationid="sashi" creationdate="20211006T145954Z">
@@ -3748,6 +4334,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>なんと言っても一番目に付くのはその服装がロングスカートの｜メイド服《セルディネーラパート》だということだった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T151529Z" creationid="sashi" creationdate="20220630T151529Z">
+        <seg>parxam fattars es eso ci'd xalurmerl feat loler farlea'd celdinerrapart.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>はっきりとしたことは少女に言葉で答えてもらわなければ分からないのだ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210718T051536Z" creationid="sashi" creationdate="20210718T051536Z">
@@ -3830,6 +4424,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>まあ、こんなところで値段を釣り上げても商売にならないだろう。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T082734Z" creationid="sashi" creationdate="20220514T082734Z">
+        <seg>mer, niss artecejtes felx cene niv dotyr fal fqa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>まあ、寸法とかを取るのはまた今度にしてほしいんだが」
 「別に良いけど……　もしかして彼女、服持って無いの？」
 「色々あってな。</seg>
@@ -3866,10 +4468,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>また、ユーゴック語では「煮る」も「炊く」も同じ「ジュイ」という動詞で表されるが、リパライン語では「蒸す」と「炊く」を「ユッガ」という動詞で表し、「煮る」は「シュプーエス」という別の動詞で表す。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T090649Z" creationid="sashi" creationdate="20220521T090534Z">
+        <seg>mal, yrgokk io kanteto la xupures ad la jugga veles luso kraxaiun l'es la "dzui".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>また、頭が痛くなってきた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211024T140523Z" creationid="sashi" creationdate="20211024T140523Z">
         <seg>mi mak fas pikij.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>またもやリーナは「んー」と唸りながら、考え始めた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T180811Z" creationid="sashi" creationdate="20220522T180811Z">
+        <seg>lirna mak joppeson tisod edixi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>まだ気になることがある。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T084519Z" creationid="sashi" creationdate="20220521T084519Z">
+        <seg>mi nat lior ekcej.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3896,6 +4522,14 @@ edixa kinunsares.</seg>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T100124Z" creationid="sashi" creationdate="20210609T100124Z">
         <seg>mi jel fusafa'c xale faorreteser."
 "pa, liaoll cene niv miss torln elx iesnyxer fontalobusala'ct.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>むっとした表情でこちらを見つめられる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T122840Z" creationid="sashi" creationdate="20220525T122840Z">
+        <seg>ci xel mi nefluxulurisol'tj.</seg>
       </tuv>
     </tu>
     <tu>
@@ -3968,6 +4602,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T084613Z" creationid="sashi" creationdate="20211017T084613Z">
         <seg>kanteterlestan nefъhmeinon es fynet.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>もちろん寂しいぼっちが外食しにくれば、この間虚空を見ていることになる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T085941Z" creationid="sashi" creationdate="20220514T085941Z">
+        <seg>corln, site fankonsni'a eski tydest fua knloan fie xel delso fal la lexil.</seg>
       </tuv>
     </tu>
     <tu>
@@ -4134,6 +4776,22 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>キリッとした目元はこちらを威嚇するようだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T151247Z" creationid="sashi" creationdate="20220630T151247Z">
+        <seg>nuxier ferkafiurs es xale xituavo fqa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>コスプレとかではなく、その服装であることが板についているといった感じだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T152209Z" creationid="sashi" creationdate="20220630T152209Z">
+        <seg>la lex es niv tistahs. xalurmolastan elx jol es farfelen lyme.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>サウンシピャ・ユープラの方は｜ウォルツィーリュージェ《青い葉を付けるガマズミ様の常緑低木に付く赤い漿果》のソースと共に挟まれているようだ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220423T083454Z" creationid="sashi" creationdate="20220423T083454Z">
@@ -4146,6 +4804,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220423T060601Z" creationid="sashi" creationdate="20220423T060601Z">
         <seg>xper'd xlear io xedyse'd cela vhens fiurm.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>ズキズキと痛む頭に手を当てると鼻に当たった袖の端が赤く染まった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T160150Z" creationid="sashi" creationdate="20220626T121459Z">
+        <seg>mi fha diunarl zu helzarvon is ixen. mal, flerre'ct lex rodestel nedi'd stikiesn ia ludiexen.</seg>
       </tuv>
     </tu>
     <tu>
@@ -4528,6 +5194,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>ドラマのような戦闘なんてもちろん出来ない職員の方が多いだろう。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T100417Z" creationid="sashi" creationdate="20220626T100417Z">
+        <seg>desteker zelx cene niv es elx elmo'it xale flonnerlo jelx jol jexi'ert es le loler.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>ネクタイは地味な色と柄をしていて、髪は白髪だ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201105T134442Z" creationid="sashi" creationdate="20201105T134442Z">
@@ -4572,6 +5246,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210518T102946Z" creationid="sashi" creationdate="20210518T102946Z">
         <seg>jienieje'ct fyrstla'it marvel mal xel sulaunol ircalartj mian zu veles jel fal lojied.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>ボーイが黒色のフォルダを置いていく。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T072413Z" creationid="sashi" creationdate="20220514T072413Z">
+        <seg>fenxerger amolalst delnen celurse.</seg>
       </tuv>
     </tu>
     <tu>
@@ -4644,6 +5326,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220424T071157Z" creationid="sashi" creationdate="20220424T071157Z">
         <seg>la jukskouxfen'it xifandiumo'tj lirna josxe yrpla ad xper zu lovim voles mal tast i. tisodeliumustan kjilf diunarl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>ヨケルは茹でて草とスープにするのがおいしい。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T073201Z" creationid="sashi" creationdate="20220521T073201Z">
+        <seg>e xanni'e joke'r mal sierosta'tj m'is la lex'i xper, la lex es doisn.</seg>
       </tuv>
     </tu>
     <tu>
@@ -4876,6 +5566,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>リーナの方は言葉通り満足げに頬を緩ませていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T065241Z" creationid="sashi" creationdate="20220514T065241Z">
+        <seg>lirna vynutalon cedi'aves feg dalle ci lkurferl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>リーナの方を向いて言う。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211024T143141Z" creationid="sashi" creationdate="20211024T143141Z">
@@ -4912,6 +5610,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211009T095648Z" creationid="sashi" creationdate="20211009T095648Z">
         <seg>lirna xel la lex mal jusnukon ficixmefi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>リーナはそんな俺の様子を見て顔面蒼白で固まっていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T160550Z" creationid="sashi" creationdate="20220626T160550Z">
+        <seg>cene niv lirna flesvergon destek failx mi'd na.</seg>
       </tuv>
     </tu>
     <tu>
@@ -4972,6 +5678,22 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>リーナは満面の笑みで答える。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T172657Z" creationid="sashi" creationdate="20220522T172657Z">
+        <seg>lirna vietist kontetolajtonj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>リーナは背後で恐怖に震えながらも、はっきりとそう言いきった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T072136Z" creationid="sashi" creationdate="20220612T072136Z">
+        <seg>lirna diurlertz fai ydicelo pesta larfi pa fynet chirfares edixa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>リーナは視線をそらして、静かに考えていた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220412T120635Z" creationid="sashi" creationdate="20220412T120635Z">
@@ -4992,6 +5714,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T085358Z" creationid="sashi" creationdate="20211017T085358Z">
         <seg>lirna systus tydix. mal, feges xale celeso fiurmo hmeinen akrapt efan diunarl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>リーナもそれを見て、焦り気味に席を立つ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T152757Z" creationid="sashi" creationdate="20220526T152757Z">
+        <seg>lirna at xel mi melx jol khmarl ta.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5148,6 +5878,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>一人は腰に手を当て、一人は拳を鳴らしている。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T071018Z" creationid="sashi" creationdate="20220612T071018Z">
+        <seg>panqa larxarfha mal ete'd panqa shoberjerlekantes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>一体どんなテンションで生きてたらああいう人間になれるのだろう。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211024T141639Z" creationid="sashi" creationdate="20211024T141639Z">
@@ -5220,6 +5958,22 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>一瞬何が起こったのか分からなかった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T101255Z" creationid="sashi" creationdate="20220626T101255Z">
+        <seg>edixa mi firlex niv nalostan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>丁度いい機会なのでラッビヤの料理と調理について理解を深めておきたいところだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T070200Z" creationid="sashi" creationdate="20220521T070200Z">
+        <seg>ije'rkhst ijiesn gelx selene mi firlex belx rabbija'd knloanerl ad jujojesel.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>上司に女物の服を送ってくださいと電話で依頼する自分の姿が脳裏に浮かぶ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211023T054756Z" creationid="sashi" creationdate="20211023T054756Z">
@@ -5248,6 +6002,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211024T114843Z" creationid="sashi" creationdate="20211024T114843Z">
         <seg>jiejutuxyal ler moute tydiveste.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>中にはお釣りの10レジュ札六枚がフォルダに挟まれて帰ってきている。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T151606Z" creationid="sashi" creationdate="20220526T151606Z">
+        <seg>la lexexy mol kakitercenonj10'd ledze'd 6'd jexerrte's z'es renuk.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5416,10 +6178,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>体勢を崩して体はまた地面に打ち付けられた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T142206Z" creationid="sashi" creationdate="20220630T142206Z">
+        <seg>lixer veles unseso jarnacisonj ziecijavol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>何かと物価の高い連邦に比べると比較的良心的な価格設定だ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T074149Z" creationid="sashi" creationdate="20220514T074149Z">
+        <seg>alsat esal apo l'es fankas le lesson vynut arte'elo'it snojijo es.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>何か刺々しい空気が辺りに漂っていた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210307T092254Z" creationid="sashi" creationdate="20210307T092254Z">
         <seg>fhasfa'd nacye xale duliet'i arfes.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>何か変なことを言っただろうか？</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T153940Z" creationid="sashi" creationdate="20220526T153841Z">
+        <seg>edixa mi lkurf fiun fhasfa?</seg>
       </tuv>
     </tu>
     <tu>
@@ -5482,6 +6268,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>例えば、我々のリパライン語には「渋みが強いどんぐりを水につけるか、煮沸してあくを抜くこと」を表す「バネーザバフ」という動詞があるが、ユーゴック語では単純に「ジュイ　バネーデシュ」、つまり「どんぐりを煮る」と言う。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T090513Z" creationid="sashi" creationdate="20220521T090513Z">
+        <seg>fal klirma, misse'd lineparine letix ftona xale la banersavakh. pa, yrgokk io la lex veles kanteto "dzui banerdex" zu es la "xupures banerdex".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>俺だけということになる。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210316T140755Z" creationid="sashi" creationdate="20210316T140755Z">
@@ -5518,6 +6312,22 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210718T053909Z" creationid="sashi" creationdate="20210718T053909Z">
         <seg>mi'd ferlk at celternon es alen alen vilaija fon arvi for evirleraptalyr jungkar velaedza.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>俺の所属する言語特務局は一般人から秘密警察っぽい名前だとよく言われる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T093152Z" creationid="sashi" creationdate="20220626T093152Z">
+        <seg>mi'st l'ilyr lfa veles talso cixj flanijurnass farfeler'st.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>俺はさっきのボーイを呼んで、お勘定をお願いする。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T065709Z" creationid="sashi" creationdate="20220514T065709Z">
+        <seg>mi sties fenxergerstan mal derok mels cwanenalust.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5574,6 +6384,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201027T140640Z" creationid="sashi" creationdate="20201027T140640Z">
         <seg>mi es tarltai.akermonim. Sties mirg’i tarl’c!”</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>俺はドアから手を離して背後へと振り返る。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T073530Z" creationid="sashi" creationdate="20220611T073530Z">
+        <seg>mi ny stedel isis mal ijiesnes pesta.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5730,10 +6548,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>全く状況に合わない少女の登場にこの場にいる全員が疑問を抱いていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T152703Z" creationid="sashi" creationdate="20220630T152703Z">
+        <seg>als zu mol fal fqa i letix hmein mian josnyno alsatj filx viroto na.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>全員がこちらに高圧的な視線を向けていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T055111Z" creationid="sashi" creationdate="20220611T082556Z">
+        <seg>als jacalalon lales fyrstla el miss.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>全身が鉛のようにだるい。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210518T101221Z" creationid="sashi" creationdate="20210518T101221Z">
         <seg>firkalixer es alfen dalle anlyrkka.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>全部同じ答えが帰ってきた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T121122Z" creationid="sashi" creationdate="20220521T121122Z">
+        <seg>als es daliu vietisterl.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5774,6 +6616,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210306T062310Z" creationid="sashi" creationdate="20210306T062310Z">
         <seg>elmerss cierjustel lartass fua mi fonti'avo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>兵士であろう男は蔑むような目でリーナを一瞥してから、また俺の方に視線を戻した。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T061505Z" creationid="sashi" creationdate="20220612T061505Z">
+        <seg>ly elmer l'es annia fiuron xel ayplerdonj lirna mal mak lales fyrstla el mi.</seg>
       </tuv>
     </tu>
     <tu>
@@ -5882,6 +6732,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201103T123325Z" creationid="sashi" creationdate="20201103T123325Z">
         <seg>mi fea ny la lex lkurf xale atasulilo siesejerl metista. "co'd kanrax es penxen fua harmie?" pa, liaxi lkurferl elx pusnist juij fal vijiele'd vyrisn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>取り敢えず、さっきの食料の調理動詞を訊いていこう。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T091226Z" creationid="sashi" creationdate="20220521T091226Z">
+        <seg>lecu mi alvaikon nun jujojeso'd ftona mels lovik nestile'd knloanerlestan.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6068,10 +6926,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>回らない頭で兵士たちの前に立ちはだかる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T135422Z" creationid="sashi" creationdate="20220629T135422Z">
+        <seg>dolisn diunarl'tj keledzangon ta fasta elmerss.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>困っていると集められた人のうちから一人が俺の方へと近づいてきた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210307T102448Z" creationid="sashi" creationdate="20210307T102448Z">
         <seg>liaxu mi malfarno melx edixa cierjustelersta'd panqa zirlon klie el mial.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>固まったまま動けない彼女に手が触れる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T144727Z" creationid="sashi" creationdate="20220630T144727Z">
+        <seg>liaxa nestiesolt'tj elx cene niv lex fudiur ci'l ledyd angvirl liax.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>国によっては一々レジの前まで行く必要があるお勘定だが、連邦では伝票を小型のフォルダに挟んで渡してくる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T071136Z" creationid="sashi" creationdate="20220514T070116Z">
+        <seg>fankas io amcol diraverl zu kakitercen jyvied celurse fua cwanenalust pelx deliu iccostan io tydiest fasta cwanenal ly.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6104,6 +6986,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201117T113723Z" creationid="sashi" creationdate="20201117T113723Z">
         <seg>jol laelestan kantet dyin.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>地面に倒れ込む俺を男たちは嘲るように笑った。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T143159Z" creationid="sashi" creationdate="20220630T143159Z">
+        <seg>annia tetol tel mi z'iesnyx avimense'ct.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6222,6 +7112,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>嫌な汗が首元を流れていく。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220618T090122Z" creationid="sashi" creationdate="20220618T090122Z">
+        <seg>eymietas nilion arfes fal larpy.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>嬉しさに心が暖かくなっていて、答えにどもってしまう。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220404T064718Z" creationid="sashi" creationdate="20220404T064718Z">
@@ -6258,6 +7156,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T090945Z" creationid="sashi" creationdate="20210609T090945Z">
         <seg>rabbijavirle'd ces es ny la lex. "da'rn lipalernan?" mag, jol "da'rn ......" kantet "co es......?" ly.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>尋ねるとリーナは「んー」と唸りながら、考える。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T070720Z" creationid="sashi" creationdate="20220521T070720Z">
+        <seg>mal lirna m'joppes xale "n...", tisod.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6398,6 +7304,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>布越しに人肌の温かさと柔らかさを感じる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T063710Z" creationid="sashi" creationdate="20220612T063710Z">
+        <seg>mi jel lartarkysono ad  aus jeteulyostan.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>席に深く座り込んで、ただただ空を見上げる。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210125T074030Z" creationid="sashi" creationdate="20210125T074030Z">
@@ -6406,10 +7320,26 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>店を出て、背後の横開きドアを後ろ手で閉めようとする。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T112259Z" creationid="sashi" creationdate="20220529T112259Z">
+        <seg>mi cuturl diepojastan melx jol pepud gelestan pesta mi'd larfi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>店内に入っていくとその殆どが軍人であるように思えた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220331T103147Z" creationid="sashi" creationdate="20220331T103147Z">
         <seg>mi's dynyjalaxyo'ct enon firlex eso fontalsen enforle'st elmer'ct.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>建て付けの悪いところもあるのだろうと思って、一度押してから引いて閉めようと試みるもなかなか閉まらない。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T071600Z" creationid="sashi" creationdate="20220604T072112Z">
+        <seg>fanxen cela at ve mol. mi tisod la lex mal ankalefenes sulilo ad pepudo. pa, cene niv pepud la lex anax.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6590,6 +7520,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>彼らに答えるだけの勇気はなかったが、俺は無意識的にリーナを背後に押し込む。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T064926Z" creationid="sashi" creationdate="20220612T064926Z">
+        <seg>mi letix niv kaima fua vietisto pa mi dejot xale atasulilo siesejerl i lirna'i pesta larfi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>彼らのタブーに触れたりしたのだろうか。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210307T092324Z" creationid="sashi" creationdate="20210307T092324Z">
@@ -6658,6 +7596,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210521T121927Z" creationid="sashi" creationdate="20210521T121927Z">
         <seg>ci'd fyrstla io e'it tisodo fuaj la fenklorv es delusen.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>彼女の視線は俺の背後に向かっていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T072747Z" creationid="sashi" creationdate="20220611T072747Z">
+        <seg>ci'd fyrstla lales pesta mi'd larfi.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6750,6 +7696,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>彼女は恐怖に抗うように更に力強く握ってきた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T064306Z" creationid="sashi" creationdate="20220612T064306Z">
+        <seg>ci anka lot stedel vatimelj xale fenten ydirgo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>彼女は横になったままアクアマリンのような瞳をこちらに向けてきた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210526T091405Z" creationid="sashi" creationdate="20210526T091405Z">
@@ -6778,6 +7732,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T080550Z" creationid="sashi" creationdate="20211017T080550Z">
         <seg>ci korlixtel lot letix firlexerl inggettento.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>彼女は誰からも見捨てられてきた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T133125Z" creationid="sashi" creationdate="20220629T133125Z">
+        <seg>liaoll lartass fanken ci..</seg>
       </tuv>
     </tu>
     <tu>
@@ -6870,10 +7832,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>恐怖に怯えている様子は彼女が「ブツィニル」という言葉を聞いたときと同じだった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T064030Z" creationid="sashi" creationdate="20220612T064030Z">
+        <seg>ydicelon flesvergolastan es dalle senostil ci feat "buzini'r".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>息の詰まる瞬間が終わり、ため息が自然と出てきた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211007T161854Z" creationid="sashi" creationdate="20211007T161854Z">
         <seg>hwahwovilertz lusus mal lakeule'i tena esunsar edixa.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>情けないという感情よりも今立って彼らを止めなければ次の標的は彼女だという事実に体が駆動していた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T132649Z" creationid="sashi" creationdate="20220629T132649Z">
+        <seg>mi p'jel niv la neflostut, no io ta mal pusnist niv siss fie xeu'd kanteterl feat ci lex es cirla celke mi.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>意識が飛んだのか、受け身を取ることが出来ずに頭を打ち付けたらしい。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T110852Z" creationid="sashi" creationdate="20220626T110852Z">
+        <seg>jol edixa mi ansarx. jol liaxa mi diunarlon unses filx ferl.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6886,10 +7872,26 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>戦えないのだとしても。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T134548Z" creationid="sashi" creationdate="20220629T134548Z">
+        <seg>cene niv mi elm fie pelx deliu es la lex'i.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>所詮、この少女を苦しめてきた連中が餞別として被せた布だ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211009T051009Z" creationid="sashi" creationdate="20211009T051009Z">
         <seg>la lex apasken es jeteulyo zu veles siurno jyledrisersse'st mianastan cixj lernemertaverl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>手持ちの100レジュ札を三枚挟んで、テーブルの端に置いておく。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T084333Z" creationid="sashi" creationdate="20220514T084333Z">
+        <seg>mi kakitercen artemele'd 100'd ledze'd jexerrte'd 3 mal amol la lex ferkanielypi'c.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6952,10 +7954,34 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>整理するなら、単語「ジェフシュン」は「焼く」と「茹でる」のどちらも表し、この判断は文脈によるということだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T145716Z" creationid="sashi" creationdate="20220525T140928Z">
+        <seg>miss f'ycax, kraxaiun l'es :dzehuxn: kantet pitonj :aftlato" ad "xupurmeso" mal kukostan es fai fisart.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>料理を片手に器用なものだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T072650Z" creationid="sashi" creationdate="20220514T072650Z">
+        <seg>ziechija z'amol ledydistanan jujoj i veles xelo mi'st yvidusten larta'it.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>新しい世界の誰も知らない言語を調査できる。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201026T142528Z" creationid="sashi" creationdate="20201026T142528Z">
         <seg>cene mi haltxe dytylunde'd lkurftless zu fhasfa fav qune niv.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>新しくて急ごしらえの食事処だ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220529T162922Z" creationid="sashi" creationdate="20220529T162922Z">
+        <seg>fqa es dynyjal z'es dytysn alvaiken.</seg>
       </tuv>
     </tu>
     <tu>
@@ -6984,6 +8010,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>最初は先程と同じ様子だったが、段々と表情が難しくなっていった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T181043Z" creationid="sashi" creationdate="20220522T181043Z">
+        <seg>fasil io sytenestan p'es dalle lovik nestil, ci vejt ve letix lex malfarno feg.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>最悪の場合、リーナの身は危険になるだろう。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220423T054359Z" creationid="sashi" creationdate="20220423T054359Z">
@@ -7004,6 +8038,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220317T155854Z" creationid="sashi" creationdate="20220317T155854Z">
         <seg>ci nat perne fal avimens.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>未知の未開民族や反政府的な少数民族と戦いながら言語調査をする特殊部隊だという誤解をされている場合が多い。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T093658Z" creationid="sashi" creationdate="20220626T093658Z">
+        <seg>miss m'elm knonen waxalerrelren hartlirfa adit fentedznojuli'oven vers hartlirfa'c, fonti'a lkurftless. ixvarlafirlexo eso la lex xale fhanka alarta es alfal.</seg>
       </tuv>
     </tu>
     <tu>
@@ -7074,6 +8116,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>札を無造作に財布に突っ込むと俺は椅子から立ち上がった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T152017Z" creationid="sashi" creationdate="20220526T152017Z">
+        <seg>mi katurojon en fanxenonj jexerrt enalte'c mal pernal ler ta.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>栄養価が高いとはいえ、飽きるだろ？」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210628T083809Z" creationid="sashi" creationdate="20210628T083809Z">
@@ -7112,6 +8162,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211018T030118Z" creationid="sashi" creationdate="20211018T030118Z">
         <seg>lirna zu perne ektirrgonj i flesve konfiruxesesonj feginsesonj failx jol xelo knon quneerl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>次の瞬間には地面に倒れ込んでいたのだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T101427Z" creationid="sashi" creationdate="20220626T101427Z">
+        <seg>liaxa mi desalon iesnyx fasta nalastan.</seg>
       </tuv>
     </tu>
     <tu>
@@ -7328,6 +8386,22 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>生物（か、はたまた植物か）の名前が何を指しているのか分からないせいで分かったのはフェンキュツァは獣か魚だということだけだ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T083651Z" creationid="sashi" creationdate="20220521T083651Z">
+        <seg>lyned (ol snekuv) 'd ferlk kanteterl es knonj. Mi firlexerl es lapj eso fenkyza faut pyse ol enor.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>生身で訓練された兵士に敵うわけがない。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220621T095925Z" creationid="sashi" creationdate="20220621T095925Z">
+        <seg>cene niv corln elm pleonj fafcivon elmer'tj filx zant.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>男がデザート好きだと悪いのか？」
 「そんなことは言ってない。</seg>
       </tuv>
@@ -7342,6 +8416,22 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210307T153704Z" creationid="sashi" creationdate="20210307T153704Z">
         <seg>anniass solojo xale cuturl mian el fontalobusal mi'dy.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>男の後から更にぞろぞろと軍人連中が出てくる。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T082331Z" creationid="sashi" creationdate="20220611T082331Z">
+        <seg>elmerss vatimel cuturl pesta annia.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>男の胸には連邦軍のワッペンが貼られている。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T074722Z" creationid="sashi" creationdate="20220611T074722Z">
+        <seg>si'd larkra io fankasa'd elminala'd afi'orj mol.</seg>
       </tuv>
     </tu>
     <tu>
@@ -7386,6 +8476,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>目をやると、リーナが泣きそうになりながら掴んでいた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T062940Z" creationid="sashi" creationdate="20220612T062940Z">
+        <seg>mi genaklot xelerl mal lirna stedel mi elx jol lijiestol'tj.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>目蓋を閉めていても強い光が目に入ってきたからだ。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210410T074220Z" creationid="sashi" creationdate="20210410T074220Z">
@@ -7422,6 +8520,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220221T160826Z" creationid="sashi" creationdate="20220221T160826Z">
         <seg>liaxu starnkaxol xale ursxes ad plasi lirna's. veafelze'tj firlex kanteterl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>瞬間、シャツの脇腹の部分が引っ張られるような感覚を覚える。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T062119Z" creationid="sashi" creationdate="20220612T062119Z">
+        <seg>fal pesta, mi jel deroko sidlixer'd flanarsierdesta.</seg>
       </tuv>
     </tu>
     <tu>
@@ -7498,6 +8604,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>立ち上がったばかりで震える足に蹴りが入る。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T150700Z" creationid="sashi" creationdate="20220629T150700Z">
+        <seg>fastailecergon tavol io lex diurl lovim veles dyjoso.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>立ち上がって台所に向かおうとしたところで玄関のドアが独りでに開いた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T095237Z" creationid="sashi" creationdate="20210609T095237Z">
@@ -7510,6 +8624,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210526T091117Z" creationid="sashi" creationdate="20210526T091117Z">
         <seg>nal zu ta io mianastana'd ursx fudiur</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>精算の間は連れと会話して過ごす。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T085318Z" creationid="sashi" creationdate="20220514T085318Z">
+        <seg>cwanenalustil cecio adurterl'tj dekut.</seg>
       </tuv>
     </tu>
     <tu>
@@ -7650,6 +8772,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>腰まで届くストレートの黒髪、瞳は珍しい灰色だ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220630T150448Z" creationid="sashi" creationdate="20220630T150448Z">
+        <seg>ci letix cystfechen denneldien ledzil fita larxa. fiursustan es juluftiej forla.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>臨時行政長官に挨拶しないといけないんだ」</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201101T180403Z" creationid="sashi" creationdate="20201101T180403Z">
@@ -7778,6 +8908,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>荒事は専門外だ。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T100031Z" creationid="sashi" creationdate="20220626T100031Z">
+        <seg>indonerrgustustan es niv lafirmet.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>落ち着いた所で俺は匙を取ってスープから頂く。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220423T120003Z" creationid="sashi" creationdate="20220423T120003Z">
@@ -7898,6 +9036,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>視線をこちらから外して首を傾げ考えていたが、しばらくしてから彼女は急にこちらを向いてきた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220525T121939Z" creationid="sashi" creationdate="20220525T121939Z">
+        <seg>edixu ci lern fyrstla mal tydix'it systuson tisod. pa, ci lernekceilon yuihurk ijiesn mi'l.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>視線を下げて、少女の目の位置と合わせてみた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210524T100952Z" creationid="sashi" creationdate="20210524T100952Z">
@@ -7938,6 +9084,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>言葉を聞いて、彼女はこちらを見ながら数秒間固まっていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T153758Z" creationid="sashi" creationdate="20220526T153758Z">
+        <seg>ci senost mi lkurferl mag nestiest xelonj mi cecioj ekce stususn.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>言語の保護、調査、維持という観点は大多数が話す言葉を共有している場所では理解されない。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T131837Z" creationid="sashi" creationdate="20211017T131837Z">
@@ -7974,6 +9128,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211023T052728Z" creationid="sashi" creationdate="20211023T052728Z">
         <seg>fonti'aver lkurftless mecceries veles moliupi'avo cixj iccer. jol mi es "dznojuli'ester".</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>言語調査官アレン・ヴィライヤは｜異能保持者《ケートニアー》では無い。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220618T093519Z" creationid="sashi" creationdate="20220618T093519Z">
+        <seg>haltxerger lkurftless l'es alen.vilaija es niv kertni'ar.</seg>
       </tuv>
     </tu>
     <tu>
@@ -8042,6 +9204,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>調理動詞は料理文化に強く影響される。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T085232Z" creationid="sashi" creationdate="20220521T085232Z">
+        <seg>ftona fua jujojeso es konitesejten fai jujoj'd meu.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>諦めて目を開ける。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210425T042716Z" creationid="sashi" creationdate="20210425T042716Z">
@@ -8056,6 +9226,22 @@ edixa kinunsares.</seg>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210808T063604Z" creationid="sashi" creationdate="20210808T063604Z">
         <seg>lusarkesejterl mol faller dosyterl?"
 "portvirtax las mol ja......"</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>足が勝手に彼我の距離を取るために動いていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220611T082145Z" creationid="sashi" creationdate="20220611T082145Z">
+        <seg>liepop fitena fudiur fua lersaeso lerj siss.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>足が小刻みに震えていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T060516Z" creationid="sashi" creationdate="20220612T060516Z">
+        <seg>liepop diurlertz.</seg>
       </tuv>
     </tu>
     <tu>
@@ -8146,6 +9332,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>軍人数人に周りを囲まれたんじゃ恐れるのも無理はない。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T060653Z" creationid="sashi" creationdate="20220612T060653Z">
+        <seg>elmerss ferkata mi mal mi ydicelo. la lex es duliet. 恐れるのも無理はない。</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>辺りが静かになるとリーナは疲れた様子で「ふぁぁ……」とあくびをした。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220317T155728Z" creationid="sashi" creationdate="20220317T155728Z">
@@ -8162,6 +9356,14 @@ edixa kinunsares.</seg>
         <seg>selene co tydiest mel fqa felx cene mi celes elx nienulo co’st."
 “mili ekcej. karse fels’hais.”
 “fels’haisesti?</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>退かないってんなら、お前もまとめてぶちのめしてやる」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T081704Z" creationid="sashi" creationdate="20220612T081704Z">
+        <seg>co tisod fankeno niv mal miss celes deso efan banerdex."</seg>
       </tuv>
     </tu>
     <tu>
@@ -8194,6 +9396,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20211017T085519Z" creationid="sashi" creationdate="20211017T085519Z">
         <seg>laivne'ct fiurmerl angvirl ci'd la jukskouxfen.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>連戦のボクサーさながらに体がふらふらしていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220629T140257Z" creationid="sashi" creationdate="20220629T140257Z">
+        <seg>mi fabier xale is dolysnitj.</seg>
       </tuv>
     </tu>
     <tu>
@@ -8304,6 +9514,30 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>適当な返答をした俺を尻目にリーナは脂の乗ったフェンキュツァを想像しているのか、喉鼓を鳴らしていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220521T082455Z" creationid="sashi" creationdate="20220521T082455Z">
+        <seg>mi fanxenon vietist. selstaal io lirna celfin zaezal failx jol tisodo konxuijten fenkyza.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>部屋に戻って休んだほうがいい」</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220526T153309Z" creationid="sashi" creationdate="20220526T153309Z">
+        <seg>dosnud snutoka'c melx deliu co desniex."</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>酸欠の時に似たような感覚がする。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T104832Z" creationid="sashi" creationdate="20220626T104832Z">
+        <seg>mi jel xale tedu'rdzfolo.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>長官が先に手回しをしてくれたおかげか、トラブルは全く発生しなかった。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210306T062223Z" creationid="sashi" creationdate="20210306T062223Z">
@@ -8324,6 +9558,22 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20201214T084643Z" creationid="sashi" creationdate="20201214T084643Z">
         <seg>fontalobusen krafir es under nefdalle dzeparfebikaxtoval lkurferl.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>開いて伝票を見ると、全部で｜240レジュ《約1200円》と書いてあった。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220514T073303Z" creationid="sashi" creationdate="20220514T073303Z">
+        <seg>edixa mi xel diraverl. la lex alsat es 240'd ledz.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>隣に居るリーナは心配そうにこちらを見上げていた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220612T061215Z" creationid="sashi" creationdate="20220612T061215Z">
+        <seg>mele'd lirna xeleffe mi xis.</seg>
       </tuv>
     </tu>
     <tu>
@@ -8388,6 +9638,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210609T090725Z" creationid="sashi" creationdate="20210609T090725Z">
         <seg>fae flonoslazac. pa, edixa mi firlex panqa fal no. deliu mi ycax jol.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>頭の片隅でそんなことを考えながら、俺は彼女に重大な質問を突きつけた。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220522T173400Z" creationid="sashi" creationdate="20220522T173400Z">
+        <seg>mi fiur la lex dlirlo nun jurleten fafsirl edixa.</seg>
       </tuv>
     </tu>
     <tu>
@@ -8472,6 +9730,14 @@ edixa kinunsares.</seg>
     </tu>
     <tu>
       <tuv xml:lang="JA">
+        <seg>驚異的な回復能力と｜異能《ウェールフープ》を持ち合わせる彼らとまともに殴り合えば骨折どころでは済まないだろう。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220625T131612Z" creationid="sashi" creationdate="20220625T113222Z">
+        <seg>miss fabilst lerj niss zu letix set morliulanfy ad werlfurp felx cene niv intant lap io lusus.</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
         <seg>高いフェンスの壁が延々と続いていた。</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20210305T063258Z" creationid="sashi" creationdate="20210305T063258Z">
@@ -8548,6 +9814,14 @@ edixa kinunsares.</seg>
       </tuv>
       <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220416T163954Z" creationid="sashi" creationdate="20220416T163954Z">
         <seg>co lkurf mels niochija ja? pa, fqa es niv dolt'cervaval lys...!</seg>
+      </tuv>
+    </tu>
+    <tu>
+      <tuv xml:lang="JA">
+        <seg>｜言特《レーファ》は内実は言語調査の専門家の集団でしか無い。</seg>
+      </tuv>
+      <tuv xml:lang="LPA-LP" changeid="sashi" changedate="20220626T095738Z" creationid="sashi" creationdate="20220626T095738Z">
+        <seg>lfa lapon es lafirmeterium fon fonti'avo lkurftless fal cirla.</seg>
       </tuv>
     </tu>
 <!-- Alternative translations -->
