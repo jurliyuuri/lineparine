@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>テキストファイル一覧（JS版）</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+        h1 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { padding: 12px 20px; background: #007cba; color: white; text-decoration: none; border-radius: 5px; }
+        a:hover { background: #005a87; }
+    </style>
+</head>
+<body>
+    <h1>テキストファイル一覧</h1>
+    <ul id="list"></ul>
+
+    <script>
+        // 注意：この方法は http(s):// で簡易サーバー起動時のみ動作します
+        fetch('.')  // 現在のディレクトリを参照
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const links = doc.querySelectorAll('a[href$=".txt"]');
+                const list = document.getElementById('list');
+                
+                if (links.length === 0) {
+                    list.innerHTML = '<li>テキストファイルがありません。</li>';
+                    return;
+                }
+                
+                links.forEach(link => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = link.href;
+                    a.textContent = decodeURIComponent(link.href.split('/').pop());
+                    a.target = '_blank';
+                    li.appendChild(a);
+                    list.appendChild(li);
+                });
+            })
+            .catch(err => {
+                document.getElementById('list').innerHTML = '<li>一覧を取得できませんでした（ローカルファイルでは動作しません）</li>';
+            });
+    </script>
+</body>
+</html>
