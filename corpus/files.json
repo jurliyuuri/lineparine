@@ -252,10 +252,22 @@
     "name": "Kanteluescosti_fon_Akrantiain.txt"
   },
   {
+    "name": "klirmass_50_extract.txt"
+  },
+  {
+    "name": "klirmass_fua_penul_hartlirfa_extract.txt"
+  },
+  {
     "name": "Kranteerl_fua_lersseer_pemecepelukupp.txt"
   },
   {
+    "name": "kyowoikinuku_extract.txt"
+  },
+  {
     "name": "L'arfes_melferter.txt"
+  },
+  {
+    "name": "larter_lkurftlesse'd_zuo.txt"
   },
   {
     "name": "lerne.1-1-1.txt"
@@ -271,6 +283,9 @@
   },
   {
     "name": "lerne.1-2-1.txt"
+  },
+  {
+    "name": "ringobun_respect_extract.txt"
   },
   {
     "name": "sans_ad_ergano'd_klirmass.txt"
@@ -579,6 +594,9 @@
     "name": "Skyl.X-X（y9）.txt"
   },
   {
+    "name": "snienoxil_maqen.txt"
+  },
+  {
     "name": "valgante_ad_cilis（la_kosnyl）.txt"
   },
   {
@@ -595,8 +613,5 @@
   },
   {
     "name": "yuesleone'd_xola'd_FKL_extract.txt"
-  },
-  {
-    "name": "Yuesleone’d_xola’d_FKL_(TRPG).txt"
   }
 ]
