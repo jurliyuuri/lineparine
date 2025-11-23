@@ -1,0 +1,115 @@
+﻿Yuesleone’d xola’d FKL (TRPG) :
+  
+
+middzerlnir leus skarsna ivane enectorija laozia aklurpti'a.
+Harmie FKL fon yuesleone’d xol?
+        Yuesleone’d xola’d FKL (xut keluxerlestan)  es FKL fua jeskavera’d kaltarvelmer. Coss z’es sisnester icco'd malcajt tisodel jelx deliu jecsuk mevau fua tilieno yuesleone’d xol.
+        Ban missen tonir l’es birleen alefisesti! Akraptes fhjacafiss!!
+Karxerlesti fua keluxo
+* Keluxer… mol niv melx cene niv kelux! (Cene co kelux cixj fankonsni'a.)
+* Cerxe… veles luso fua fonti'avo desteko. Cene co lus ciurl fua cerke.
+Lojelesti keliser
+        Deliu co loj keliser fulx keluxo keluxerlestan.
+        Lecu co snojij ferlk adit larva, snosti, cilci, lani’ar, et mels co’d keliser.
+Co’d keliser fergen'artz jeskavera molkkavo gelx cene co tisod mels ni’d MLAY’d lelxfa.
+Ciurleselesti
+        Keluxo votyn fal 3’d ciurlesel cerxe.
+        Ciurleso jennirka ad ciurleso icveo celes votyno larfa’st.
+        Ciurlesosti paskelmo veles luso ciurleselestan fal paskflonno lap.
+        Mels asvierle’d celtmarsanasch kjilferl, keluxer ad letiser snynisn skurla.
+Ciurlesosti jennirka
+        Co ciurles fai ciurl ol cerxe mal asvierl kjilf larfa.
+
+
+ciurl:
+	cerxe:
+	voleso:
+	0
+	1
+	Co virot fentexoler! Elm!
+	1
+	2
+	Liaxa cene niv co beslt ektir’d marlerss!
+	2
+	3
+	Edixa jol niv co letix kuha fanme!
+	3
+	4
+	MLAY’d aptumirle klie el miss kenisile’dy linzklar!
+	4
+	5
+	Co’d flern jeska’d jynut snesva!
+	5
+	6
+	Co notules el jeskaveraust.
+	
+
+Ciurlesosti icveo
+        Co ciurles fai ciurl ol cerxe mal asvierl kjilf keliser icveo.
+
+
+ciurl:
+	cerxe:
+	Icvergerl:
+	0
+	1
+	Zantasti
+	1
+	2
+	Knloanerlesti
+	2
+	3
+	Celaiumusten surulusti
+	3
+	4
+	Lertasa’d anfi’esti
+	4
+	5
+	Eifli'eyadirsti
+	5
+	6
+	Lipakorla’d fhankasti
+	Ciurlesosti paskelmo
+        Co lus ciurleselestan fal paskflonno lap.
+
+
+ciurl:
+	cerxe:
+	voleso:
+	0
+	1
+	Fentexolerss josnyn! Letixejip zantass!
+	1
+	2
+	Co jel lex vodyp marlerss! Harmie’i es?
+	2
+	3
+	Co jel dernar zu malfarno. Harmie’i es?
+	3
+	4
+	Ni es yfi’a!? Hame ni mol fal nytyr??
+	4
+	5
+	Xolen vortag velgustes co! Deliu stiesain suitej!
+	5
+	6
+	Selene niss celes colojo co’st fratrir’it efan nevis!
+	
+
+Keluxo anenkelesti
+        Keluxo anenk xale xut dire.
+
+
+1. Ternejafnavosti xol 
+Als suiten keliser es ciurleso icveo ad ciurleso jennirka’i.
+Ciurleso’d dieniepe’d terk is 2~3.
+Deliu co’d keliser vinslortes jeskavera mal farnen votyn xol iseso!
+
+2. Paskflonnosti
+Nodelm is la esten elmi’esm fal no. Jeska kin blurjeveis mal chirfarves tilieno xol.
+Co’d keliser ataalarta el elmostan. Deliu co lus icverl fal 1te dire mal votyn!
+Als keliser 1teust es ciurleso paskelmo’i melx shrlo als keliser celdinon iffinzernca mevau!
+
+3. Lesbacka’d larfa
+Edixa co’d keliser ad niss tilien xol mal jeska chirfarves inisopit.
+Hame co’d keliser lusus fqa’d larfa?
