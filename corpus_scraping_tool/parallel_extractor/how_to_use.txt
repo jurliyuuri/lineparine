@@ -1,0 +1,8 @@
+日本語とリパライン語が一行ずつ書かれているところから、リパライン語を取り出すスクリプト
+
+日本語が先の場合（デフォルト）:
+parallel_extractor.py /path/to/directory
+リパライン語が先の場合:
+parallel_extractor.py /path/to/directory --order replin_first
+
+スクリプトは指定ディレクトリ内のすべての .txt ファイルを処理し、各ファイルごとにリパライン語の行を抽出して (元ファイル名)_extract.txt として同じディレクトリに出力します。行は strip() で余分な空白を除去して出力します。ファイルが UTF-8 エンコーディングであることを想定しています。
