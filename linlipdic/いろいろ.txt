@@ -1,0 +1,36 @@
+《書筆哩清　kranteerl kranteel lipalain linzklar》
+
+《訳語》
+現代語の辞書に沿う
+
+《タグ》
+http://www.coelang.tufs.ac.jp/mt/es/vmod/v_bunrui.php
+を踏襲する。
+
+《内容》
+・筆順
+https://sites.google.com/site/linzizihai/lin-di-zi-mu#TOC--6
+に沿って燐字で表記
+
+・意味
+意味に関して表記
+
+・字素
+https://docs.google.com/document/d/1XXBLLds5xtC4BFFWAe3XuvCHN_ieaIj6N-eue4pGfQE/edit#
+https://docs.google.com/spreadsheets/d/1OEgROcJ9MYRRY5OKKiaIZO6H8cDyH5TP2lLtwQMew0k/edit?usp=sharing
+
+・字源
+字源を持ってくる
+
+・例文、熟語、熟字訓
+燐字 / 理語 / 意味
+の順番で書く
+熟語はその字から始まるもののみを扱う。
+
+・古語
+古理語の対応語を列挙
+
+・典拠
+引用した文章。
+新規で作った場合は「新造」
+

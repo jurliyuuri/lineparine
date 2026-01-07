@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>コーパスファイル一覧</title>
+    <style>
+        body {font-family: system-ui, sans-serif; background:#f4f6f9; padding:30px; margin:0;}
+        .container {max-width:900px; margin:0 auto; background:white; border-radius:16px; padding:40px; box-shadow:0 10px 40px rgba(0,0,0,0.1);}
+        h1 {text-align:center; color:#222;}
+        ul {list-style:none; padding:0;}
+        li {margin:15px 0;}
+        a {display:block; padding:20px; background:linear-gradient(135deg,#667eea,#764ba2); color:white; text-decoration:none; border-radius:12px; font-size:18px; box-shadow:0 6px 20px rgba(102,126,234,.4); transition:.3s;}
+        a:hover {transform:translateY(-4px); box-shadow:0 12px 30px rgba(102,126,234,.6);}
+        .empty {text-align:center; color:#888; font-size:20px; padding:80px 20px;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>コーパスファイル一覧</h1>
+        <ul id="fileList"><li class="empty">読み込み中...</li></ul>
+    </div>
+
+    <script>
+        fetch('files.json?' + Date.now())  // キャッシュ回避
+            .then(r => r.json())
+            .then(files => {
+                const list = document.getElementById('fileList');
+                list.innerHTML = '';
+                const txtFiles = files.filter(f => f.name.endsWith('.txt'))
+                                      .sort((a,b) => a.name.localeCompare(b.name));
+
+                if (txtFiles.length === 0) {
+                    list.innerHTML = '<li class="empty">テキストファイルがありません。</li>';
+                    return;
+                }
+                txtFiles.forEach(file => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = file.name;
+                    a.textContent = file.name;
+                    a.target = '_blank';
+                    li.appendChild(a);
+                    list.appendChild(li);
+                });
+            })
+            .catch(() => {
+                document.getElementById('fileList').innerHTML = 
+                    '<li class="empty">files.jsonが見つかりません。<br>「node update-list.js」を実行してください！</li>';
+            });
+    </script>
+</body>
+</html>

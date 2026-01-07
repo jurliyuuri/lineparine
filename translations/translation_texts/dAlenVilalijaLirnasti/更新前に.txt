@@ -1,0 +1,8 @@
+http://etc.webclap.com/string_replacer/index.html
+
+投稿前にフォント用記法に上記URLのサイトなど用いて変換する。
+規則は以下の通り。
+大文字を先に処理すること！　でないとfh→F→fになってしまうから！
+ 
+F→f V→v X→x
+fh→F vh→V dz→X ъ→ (空白)

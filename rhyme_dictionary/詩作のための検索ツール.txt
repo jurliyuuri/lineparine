@@ -1,0 +1,50 @@
+目標「詩作のための検索ツールが作りたい」
+→「長短を指定すると検索できるツールが欲しい」
+→「長短は今の所、長母音か或いは音節末に子音があるかどうかで区別している」
+→「後者は音節を分割出来なければ実現できない」
+→「音節を分割するには音節分割のルールが必要である」
+→それでは考えてみる。
+・CVはCVで分ければいい
+Ex) tena -> te/na
+・CVCを基本とするため、CVCCVCはCVC/CVCで分けられる。CVCCVはCVC/CV
+Ex)alvektus -> al/vek/tus
+・「閉鎖音＋流音」「s+閉鎖音」は分離しない
+閉鎖音： 無声音（p, t, k, q）、有声音（b, d, g）+f,ph
+流音： l, r
+Ex)akrante -> a/kran/te
+→ではCV(C)nVはどう分割すべきか？
+Ex)verliestra -> ver/lies/tra この場合は閉鎖音流音規則で解決。
+Ex)alefiseeunascher -> a/le/fi/se/eu/nas/cher この場合はchは一子音である。
+Ex)adkonsterlz -> ad/kon/(s)/terlz
+→st非分離規則を立てたのでad/kon/sterlz
+
+2019年時点でリパライン語には子音は4つまでしか連ならないことが分かっている。
+algfrerg, ankxvalo, faltknoaなど……
+直観的にはalg/frerg, ank/xva/lo, falt/kno/a
+
+どっちつかずな音はより聞こえ度の高い子音の方に付く？
+algfrerg -> al(g)frerg -> f(無声子音)よりもl(側面接近音)のほうが聞こえ度が高い
+
+faltknoa -> fal/(tk)/no/a -> falt/kno/a
+
+→ここまででできた手法
+0. C/Vを分割する
+：jalestrilys -> jC/aV/lC/eV/sC/tC/rC/iV/lC/yV/sC
+：ajasnielista
+しかし、「閉鎖音＋流音」(「s+閉鎖音」?)は分離しない。閉鎖音： 無声音（p, t, k, q）、有声音（b, d, g）+f,ph 流音： l, r
+
+1. 先頭からCVをまず全て分割する。CodaのCなど孤立した子音は聞こえ度の左右の文字のうち高い方に付ける。
+t(無声子音)より、e(母音)のほうが聞こえ度が高いのでeに付く。
+：jC/aV/lC/eV/sC/tC/rC/iV/lC/yV/sC -> -> ja/les/tri/lys
+
+《聞こえ度》
+7. 無声子音
+6. 有声破裂音
+5. 有声摩擦音
+4. 側面接近音・鼻音
+3. ふるえ音・はじき音
+2. 狭母音
+1. 広母音
+
+ie/tos/tre/na/le/ner/greu/fe/dir/ga/la/nas/cherl
+→音節分化のルールは完璧になった。

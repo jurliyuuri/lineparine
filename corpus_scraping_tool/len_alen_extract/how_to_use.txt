@@ -1,0 +1,2 @@
+1. htmlファイルをスクリプトと同じディレクトリに入れる。
+2. python len_alen.extract.pyを実行

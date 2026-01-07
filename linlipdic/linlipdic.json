@@ -1,0 +1,978 @@
+{
+  "words" : [ {
+    "entry" : {
+      "id" : 1,
+      "form" : "皇"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "tharm" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "tonir" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "alefis" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "xert" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "cukalmrei" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "takang" ]
+    } ],
+    "tags" : [ "1.23 人物", "1.24 成員", "1.30 心" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：縦横折横縦"
+    }, {
+      "title" : "意味",
+      "text" : "皇神、皇論における最高神。一般的な神、特にリパラオネ教のアレフィス。\n皇帝、王、統治者、スカルムレイ。"
+    }, {
+      "title" : "例文",
+      "text" : "我此皇 / mi es tharm. / 私はタムである。"
+    }, {
+      "title" : "熟語",
+      "text" : "皇言 / takangvirle / タカン語"
+    }, {
+      "title" : "熟字訓",
+      "text" : "哩皇 / alefis / アレフィス、リパラオネ教の唯一神"
+    }, {
+      "title" : "古語",
+      "text" : "alefis, lrad, garder"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/huang"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 2,
+      "form" : "神"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "werlfurp" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "tonirnascher" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "werlfurpen" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.45 道具", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：行折鉤"
+    }, {
+      "title" : "意味",
+      "text" : "ウェールフープ。"
+    }, {
+      "title" : "例文",
+      "text" : "我行神 / mi es werlfurp'i / 私はウェールフープをする。"
+    }, {
+      "title" : "熟語",
+      "text" : "神人 / werlfurper / ケートニアー\n神言 / werlfurpuvirle / 呪文\n神機 / werlfurpaxm / ウェールフープ機械、魔法機械"
+    }, {
+      "title" : "熟字訓",
+      "text" : "神人 / kertni'ar / ケートニアー"
+    }, {
+      "title" : "古語",
+      "text" : "werlfurp"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shen"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 3,
+      "form" : "一"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "panqa" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "faso" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "faserl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasal" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasil" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasel" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "fasol" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "fas" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：縦"
+    }, {
+      "title" : "意味",
+      "text" : "一、ひとつ。\n始める、始まり、はじめ。"
+    }, {
+      "title" : "例文",
+      "text" : "哩人一神機 / lipalaoneer fas werlfurpaxm. / リパラオネ人はウェールフープ機械を起動する。"
+    }, {
+      "title" : "古語",
+      "text" : "own, jciih, phaphtal"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/yi"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 4,
+      "form" : "九"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fentiqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：横曲点"
+    }, {
+      "title" : "意味",
+      "text" : "九。"
+    }, {
+      "title" : "例文",
+      "text" : "九之哩人在 / fentiqa'd lipalaoneer mol. / 九人のリパラオネ人が居る。"
+    }, {
+      "title" : "古語",
+      "text" : "nine"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/jiu"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 5,
+      "form" : "火"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dexafel" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "dexafelen" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "dexafeles" ]
+    } ],
+    "tags" : [ "1.34 行為", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：撃曲点"
+    }, {
+      "title" : "意味",
+      "text" : "火、火の、放火する、火を放つ、火を付ける。"
+    }, {
+      "title" : "例文",
+      "text" : "九之哩人火神機 / fentiqa'd lipalaoneer dexafeles werlfurpaxm. / 九人のリパラオネ人がウェールフープ機械に放火する。"
+    }, {
+      "title" : "古語",
+      "text" : "fire, firen, kasaladau"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/huo#TOC--26"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 6,
+      "form" : "哩"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lipalaone" ]
+    } ],
+    "tags" : [ "1.24 成員", "1.23 人物", "リパラオネ固有字" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "十七画："
+    }, {
+      "title" : "意味",
+      "text" : "リパラオネ。"
+    }, {
+      "title" : "例文",
+      "text" : "哩皇火人等 / lipalaone'd tonir dexafeles lartass. / リパラオネ教の神は人々を燃やす。"
+    }, {
+      "title" : "熟語",
+      "text" : "哩人 / lipalaoneer / リパラオネ人"
+    }, {
+      "title" : "古語",
+      "text" : "lipalaone"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/li-2#TOC--21"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 7,
+      "form" : "水"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "ietost" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "jipev" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "arfes" ]
+    } ],
+    "tags" : [ "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：行点行点"
+    }, {
+      "title" : "意味",
+      "text" : "水、液体、流れる、流される。"
+    }, {
+      "title" : "例文",
+      "text" : "九之神機水哩人 / fentiqa'd werlfurpaxm arfes lipalaoneer. / 九つのウェールフープ機械がリパラオネ人を流す。"
+    }, {
+      "title" : "古語",
+      "text" : "roore, justauijal, justat"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shui#TOC--25"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 8,
+      "form" : "闇"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "kujit" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "raldenarl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "deln" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "karnivan" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "koni'ende" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "xorln" ]
+    } ],
+    "tags" : [ "3.13 様相", "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "六画：行撃縦鉤点曲"
+    }, {
+      "title" : "意味",
+      "text" : "黒、闇、不思議（の）、謎の。"
+    }, {
+      "title" : "例文",
+      "text" : "闇神機壊人 / karnivan werlfurpaxm reto larta. / 謎のウェールフープ機械が人を殺す。"
+    }, {
+      "title" : "古語",
+      "text" : "doken, sljuadi, bloco, lipha, ukounnen"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/an"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 9,
+      "form" : "六"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "xantaqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：横縦"
+    }, {
+      "title" : "意味",
+      "text" : "六"
+    }, {
+      "title" : "古語",
+      "text" : "zicse"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/liu"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 10,
+      "form" : "七"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "xenqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：縦縦横"
+    }, {
+      "title" : "意味",
+      "text" : "七"
+    }, {
+      "title" : "古語",
+      "text" : "seven"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/qi"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 11,
+      "form" : "八"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lekqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦縦横縦"
+    }, {
+      "title" : "意味",
+      "text" : "八"
+    }, {
+      "title" : "古語",
+      "text" : "egth"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/ba"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 12,
+      "form" : "光"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "kafi'a" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "kafi'a" ]
+    } ],
+    "tags" : [ "1.50 自然" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：点行縦鉤"
+    }, {
+      "title" : "意味",
+      "text" : "光、光る"
+    }, {
+      "title" : "熟字訓",
+      "text" : "神光 / radinnarl / ラディンナール、神の威光"
+    }, {
+      "title" : "古語",
+      "text" : "kfasfasho, kasaladau, kfasfa"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/guang"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 13,
+      "form" : "人"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "larta" ]
+    }, {
+      "title" : "接辞",
+      "forms" : [ "-er" ]
+    } ],
+    "tags" : [ "1.23 人物" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：横曲点"
+    }, {
+      "title" : "意味",
+      "text" : "人間、人、～する人"
+    }, {
+      "title" : "熟語",
+      "text" : "学人 / lersser / 学生\n学人 / kantier / 教師\n哩人 / lipalaoneer / リパラオネ人"
+    }, {
+      "title" : "古語",
+      "text" : "hudosl, -er, hufh"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/ren"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 14,
+      "form" : "手"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "ledyd" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "shobe" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "letix" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦横縦曲"
+    }, {
+      "title" : "意味",
+      "text" : "手、持つ、つかむ"
+    }, {
+      "title" : "古語",
+      "text" : "hojih, huheg"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/shou"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 15,
+      "form" : "筆"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dustej" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 16,
+      "form" : "字"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lyjot" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "krante" ]
+    } ],
+    "tags" : [ "1.31 言語" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "八画：横曲点横曲横曲点"
+    }, {
+      "title" : "意味",
+      "text" : "文字、書く"
+    }, {
+      "title" : "古語",
+      "text" : "cuhkl, cuhkler"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 17,
+      "form" : "言"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "lkurftless" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "lkurf" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "dekut" ]
+    } ],
+    "tags" : [ "1.31 言語", "2.31 言語" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：縦折横横"
+    }, {
+      "title" : "意味",
+      "text" : "言語、喋る、話す、会話する"
+    }, {
+      "title" : "古語",
+      "text" : "lglien, lghu, wolki, wolke"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/yan"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 18,
+      "form" : "在"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "es e'i" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "teles" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "mol" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "molo" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "molerl" ]
+    } ],
+    "tags" : [ "2.12 存在" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：縦横縦横横"
+    }, {
+      "title" : "意味",
+      "text" : "在ること、存在、行う、存在する"
+    }, {
+      "title" : "熟語",
+      "text" : "真在 / xinien la deliume / 本分、本来の義務"
+    }, {
+      "title" : "古語",
+      "text" : "mol, lihlk, es, lime, sile"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/zai"
+    }, {
+      "title" : "備考",
+      "text" : "行うの文脈の場合、目的語があるならtelesで、無い場合はes e'iで訓読する。"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 19,
+      "form" : "無"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "ieseles" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "mol niv" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "iu" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "iesel" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "iu" ]
+    } ],
+    "tags" : [ "2.12 存在" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：点"
+    }, {
+      "title" : "意味",
+      "text" : "無いこと、ゼロ、無い、存在しない"
+    }, {
+      "title" : "備考",
+      "text" : "mol nivはまれ。"
+    }, {
+      "title" : "古語",
+      "text" : "mol niv"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/wu-1"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 20,
+      "form" : "二"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "qa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：縦縦"
+    }, {
+      "title" : "意味",
+      "text" : "二、二つ"
+    }, {
+      "title" : "古語",
+      "text" : "tws"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/er"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 21,
+      "form" : "三"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "dqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "三画：縦縦縦"
+    }, {
+      "title" : "意味",
+      "text" : "三"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/san"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 22,
+      "form" : "四"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "iupqa" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "二画：曲点"
+    }, {
+      "title" : "意味",
+      "text" : "四"
+    }, {
+      "title" : "古語",
+      "text" : "foth"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/si"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 23,
+      "form" : "五"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "neoqa" ]
+    } ],
+    "tags" : [ "1.19 量" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "一画：横"
+    }, {
+      "title" : "意味",
+      "text" : "五"
+    }, {
+      "title" : "古語",
+      "text" : "fith"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/wu"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 24,
+      "form" : "心"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fusaf" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "tisod" ]
+    }, {
+      "title" : "助動詞",
+      "forms" : [ "jol" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "心、思う、考える、信仰する、～するつもりだ、～かもしれない、～しそうだ、～だろう"
+    }, {
+      "title" : "熟語",
+      "text" : "心光 / tvarcar / 信仰"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 25,
+      "form" : "学"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "lersse" ]
+    }, {
+      "title" : "動詞",
+      "forms" : [ "kanti" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "kantio" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "学ぶ、教える、学び、教え、教育"
+    }, {
+      "title" : "熟語",
+      "text" : "学人 / lersser / 学生\n学人 / kantier / 教師\n"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 26,
+      "form" : "我"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "mi" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "untirk" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "私、我、自分、自己"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 27,
+      "form" : "真"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "cirla" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "実際、本当、本気、マジ、現実、事実、真実"
+    }, {
+      "title" : "熟語",
+      "text" : "真在 / xinien la deliume / 本分、本来の義務"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 28,
+      "form" : "終"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "lusus" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "終わらせる、終える"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 29,
+      "form" : "論"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "unsarl" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "tvasnarl" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "意味",
+      "text" : "論、論理、理屈、宗教、信仰"
+    }, {
+      "title" : "熟字訓",
+      "text" : "二闇閉論 / lipalaone, lipalain tvasnarl / リパラオネ教"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 30,
+      "form" : "全"
+    },
+    "translations" : [ {
+      "title" : "形容詞",
+      "forms" : [ "als" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "alle" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "fav" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "alson" ]
+    }, {
+      "title" : "副詞",
+      "forms" : [ "alsat" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：縦折折点横"
+    }, {
+      "title" : "意味",
+      "text" : "全て、まったく、全てにおいて、全部で、全く"
+    }, {
+      "title" : "熟字訓",
+      "text" : "全地 / alsalen / 国際的な"
+    }, {
+      "title" : "古語",
+      "text" : "alle, allo"
+    }, {
+      "title" : "典拠",
+      "text" : "https://sites.google.com/site/linzizihai/akaibu/quan\nhttps://docs.google.com/spreadsheets/d/1kloecLsJDAhnAsmcacVJnZKVTza2imJh4jgTkZ41yzs/edit?usp=sharing"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 31,
+      "form" : "周"
+    },
+    "translations" : [ {
+      "title" : "名詞",
+      "forms" : [ "fka" ]
+    }, {
+      "title" : "形容詞",
+      "forms" : [ "fkaven" ]
+    } ],
+    "tags" : [ ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "四画：横横縦縦"
+    }, {
+      "title" : "意味",
+      "text" : "周り、周囲（の）"
+    }, {
+      "title" : "熟語",
+      "text" : "周人 / fkaver / 周人"
+    }, {
+      "title" : "古語",
+      "text" : "tlenttal"
+    }, {
+      "title" : "典拠",
+      "text" : "https://docs.google.com/spreadsheets/d/1kloecLsJDAhnAsmcacVJnZKVTza2imJh4jgTkZ41yzs/edit?usp=sharing"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  }, {
+    "entry" : {
+      "id" : 32,
+      "form" : "戦"
+    },
+    "translations" : [ {
+      "title" : "動詞",
+      "forms" : [ "elm" ]
+    }, {
+      "title" : "名詞",
+      "forms" : [ "elm" ]
+    } ],
+    "tags" : [ "1.34 行為" ],
+    "contents" : [ {
+      "title" : "リパラオネ伝統筆順",
+      "text" : "五画：行横行点行横行点"
+    }, {
+      "title" : "意味",
+      "text" : "戦う、争う"
+    }, {
+      "title" : "熟字訓",
+      "text" : "戦神 / velgana / ヴェルガナ"
+    }, {
+      "title" : "古語",
+      "text" : "lkckn, udaoj"
+    }, {
+      "title" : "典拠",
+      "text" : "https://discordapp.com/channels/695266394614530049/706872696960581663/754758533949685861"
+    } ],
+    "variations" : [ ],
+    "relations" : [ ]
+  } ],
+  "zpdic" : {
+    "alphabetOrder" : "",
+    "wordOrderType" : "UNICODE",
+    "punctuations" : [ ",", "、" ],
+    "ignoredTranslationRegex" : "",
+    "pronunciationTitle" : null,
+    "plainInformationTitles" : [ ],
+    "informationTitleOrder" : null,
+    "formFontFamily" : null,
+    "defaultWord" : {
+      "entry" : {
+        "id" : -1,
+        "form" : ""
+      },
+      "translations" : [ ],
+      "tags" : [ ],
+      "contents" : [ ],
+      "variations" : [ ],
+      "relations" : [ ]
+    }
+  },
+  "snoj" : null
+}

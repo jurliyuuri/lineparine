@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>philifiarsti</title>
+  <style>
+    @font-face {
+  font-family: "Cirlxarli";
+  src: url("https://jurliyuuri.com/lineparine/fonts/Cirlxarli.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  }
+    :root {
+      --bg: #0b0c10;
+      --panel: #12141b;
+      --panel2: #171a23;
+      --text: #e8eaf0;
+      --muted: #a8afc3;
+      --line: #24283a;
+      --accent: #7aa2f7;
+      --warn: #f7768e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Cirlxarli", system-ui, -apple-system, "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, var(--bg), #07080c);
+      color: var(--text);
+    }
+    header {
+      padding: 20px 16px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(18,20,27,0.75);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    label {
+      font-family: "Cirlxarli", system-ui, -apple-system, "Noto Sans JP", sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    input[type="number"], select {
+      font-family: "Cirlxarli", system-ui, -apple-system, "Noto Sans JP", sans-serif;
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 10px;
+      outline: none;
+      min-width: 140px;
+    }
+    button {
+      font-family: "Cirlxarli", system-ui, -apple-system, "Noto Sans JP", sans-serif;
+      background: var(--accent);
+      border: 0;
+      color: #0b0c10;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(122,162,247,0.14);
+      border: 1px solid rgba(122,162,247,0.28);
+      color: var(--text);
+      font-size: 12px;
+    }
+    .pill.warn {
+      background: rgba(247,118,142,0.12);
+      border-color: rgba(247,118,142,0.25);
+    }
+
+    main { padding: 18px 16px 40px; }
+    .year-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 980px) { .year-grid { grid-template-columns: repeat(2, minmax(240px, 1fr)); } }
+    @media (max-width: 640px) { .year-grid { grid-template-columns: 1fr; } }
+
+    .month-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+    }
+    .month-head {
+      padding: 12px 12px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+    }
+    .month-title { font-weight: 800; letter-spacing: 0.3px; }
+    .month-sub { color: var(--muted); font-size: 12px; }
+
+    .dow, .days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+    .dow div {
+      padding: 8px 6px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+    }
+    .days div {
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      font-size: 13px;
+    }
+    .days div:nth-child(7n) { border-right: 0; }
+    .days .empty { background: rgba(255,255,255,0.01); color: transparent; }
+    .days .day { background: rgba(255,255,255,0.02); }
+
+    /* 閏日を目立たせる */
+    .days .leapday {
+      background: rgba(247,118,142,0.12);
+      border-color: rgba(247,118,142,0.25);
+      font-weight: 800;
+      position: relative;
+    }
+    .days .leapday::after{
+      content: "cent.";
+      position: absolute;
+      top: 0px;
+      right: 4px;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 1100px;
+    }
+    code {
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <div>
+      <div style="font-weight:900; font-size:16px;">philifiarsti</div>
+      <div class="meta">
+      </div>
+    </div>
+
+    <div class="controls">
+      <div>
+        <label for="year">rout :</label><br />
+        <input id="year" type="number" step="1" value="1" />
+      </div>
+      <div>
+        <label for="view">einesel :</label><br />
+        <select id="view">
+          <option value="year" selected>rout</option>
+          <option value="month">stujesn</option>
+        </select>
+      </div>
+      <div>
+        <label for="month">stujesn :</label><br />
+        <select id="month"></select>
+      </div>
+      <div style="align-self:end;">
+        <button id="render">laozia</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="status" class="note"></div>
+  <div id="calendar"></div>
+</main>
+
+<script>
+  // ===== 暦仕様 =====
+  const MONTHS = [
+    { name: "lenasti", days: 31 },
+    { name: "fyrasti", days: 30 },
+    { name: "yszaplorcasti", days: 30 },
+    { name: "keintelesti", days: 31 },
+    { name: "xturgasti", days: 30 },
+    { name: "xutzarsti", days: 30 },
+    { name: "jungkarsti", days: 31 },
+    { name: "junaflasti", days: 30 },
+    { name: "xertarsti", days: 30 },
+    { name: "filenasti", days: 31 },
+    { name: "velganasti", days: 30 },
+    { name: "lbarsti", days: 31 }
+  ];
+
+  const DOW = ["dod.","kie.","duk.","dul.","snu.","jyn.","sni."]; // 0..6
+
+  const SPECIAL_LEAP_POS = new Set([250, 750, 1250]); // 2000年周期内の追加閏年位置.
+  const CYCLE = 2000;
+  const LEAPS_PER_CYCLE = 503;
+  const CYCLE_DAYS = CYCLE * 365 + LEAPS_PER_CYCLE; // 730503
+
+  const MONTH_SELECT_LABELS = [
+  "lena","fyra","yszaplorca","keintel","xturga","xutzar",
+  "jungkar","junafla","xertar","filena","velgana","lbar"
+];
+
+// 月セレクトを生成
+const monthSel = document.getElementById("month");
+MONTHS.forEach((m, i) => {
+  const opt = document.createElement("option");
+  opt.value = String(i + 1);                 // ← 値は数字のまま（他の処理を変えないため）
+  opt.textContent = MONTH_SELECT_LABELS[i];  // ← 表示だけローマ字に
+  monthSel.appendChild(opt);
+});
+  // ===== 暦計算ロジック =====
+
+  // 数学的な mod（負数でも 0..m-1 に収める）.
+  function mod(n, m) {
+    return ((n % m) + m) % m;
+  }
+
+  // 年 y の「2000年周期内の位置」(1..2000) と「周期番号」.
+  // ここでは「年1が周期0の位置1」になるように、(y-1) を基準にします.
+  function cycleInfo(y) {
+    const q = Math.floor((y - 1) / CYCLE);          // 周期番号 (…,-2,-1,0,1,2,…)
+    const pos = mod((y - 1), CYCLE) + 1;            // 周期内位置 (1..2000)
+    return { q, pos };
+  }
+
+  function isLeapYear(y) {
+    const { pos } = cycleInfo(y);
+    return (pos % 4 === 0) || SPECIAL_LEAP_POS.has(pos);
+  }
+
+  // 1..n（周期内）に含まれる閏年数 (nは0..2000想定)
+  function prefixLeapsInCycle(n) {
+    if (n <= 0) return 0;
+    let c = Math.floor(n / 4);
+    if (n >= 250) c += 1;
+    if (n >= 750) c += 1;
+    if (n >= 1250) c += 1;
+    return c;
+  }
+
+  // 周期の開始（位置1の年の開始）から、位置pos(1..2000)の年の開始までの日数.
+  function offsetWithinCycleToYearStart(pos) {
+    const prevYears = pos - 1; // その年の前にある年数.
+    return prevYears * 365 + prefixLeapsInCycle(prevYears);
+  }
+
+  // 年yの開始日 (年1の開始=0日) からの通算日数 (負の年もOK)
+  function daysBeforeYear(y) {
+    const { q, pos } = cycleInfo(y);
+    return q * CYCLE_DAYS + offsetWithinCycleToYearStart(pos);
+  }
+
+  // 月頭まで.
+  function daysBeforeMonth(month) {
+    let sum = 0;
+    for (let i = 1; i < month; i++) sum += MONTHS[i - 1].days;
+    return sum;
+  }
+
+  function monthDaysInYear(year, month) {
+    const base = MONTHS[month - 1].days;
+    return (month === 12 && isLeapYear(year)) ? base + 1 : base; // ルバーだけ32日になる.
+  }
+
+  // 曜日 index (0..6) : 0=月曜日。負の通算日でも崩れないよう mod を使う.
+  function weekdayIndexFromEpoch(totalDaysSinceEpoch) {
+    return mod(totalDaysSinceEpoch, 7);
+  }
+
+  function buildMonthCard(year, month) {
+    const m = MONTHS[month - 1];
+    const monthLen = monthDaysInYear(year, month);
+
+    const startDays = daysBeforeYear(year) + daysBeforeMonth(month);
+    const startW = weekdayIndexFromEpoch(startDays); // 0..6
+
+    const card = document.createElement("div");
+    card.className = "month-card";
+
+    const head = document.createElement("div");
+    head.className = "month-head";
+    head.innerHTML = `
+      <div class="month-title">${m.name}</div>
+      <div class="month-sub">${monthLen}'d snenikesti</div>
+    `;
+    card.appendChild(head);
+
+    const dow = document.createElement("div");
+    dow.className = "dow";
+    for (let i = 0; i < 7; i++) {
+      const d = document.createElement("div");
+      d.textContent = DOW[i];
+      dow.appendChild(d);
+    }
+    card.appendChild(dow);
+
+    const days = document.createElement("div");
+    days.className = "days";
+
+    // 前の空白.
+    for (let i = 0; i < startW; i++) {
+      const e = document.createElement("div");
+      e.className = "empty";
+      e.textContent = ".";
+      days.appendChild(e);
+    }
+
+    // 日付 (ルバー閏年なら 32 まで表示)
+    for (let day = 1; day <= monthLen; day++) {
+      const isLeapDayCell = (month === 12 && isLeapYear(year) && day === 32);
+      const cell = document.createElement("div");
+      cell.className = isLeapDayCell ? "day leapday" : "day";
+      cell.textContent = String(day);
+      if (isLeapDayCell) cell.title = "閏日（ルバー32日）";
+      days.appendChild(cell);
+    }
+
+    // 最終行の欠けを埋める.
+    const totalCells = startW + monthLen;
+    const pad = (7 - (totalCells % 7)) % 7;
+    for (let i = 0; i < pad; i++) {
+      const e = document.createElement("div");
+      e.className = "empty";
+      e.textContent = ".";
+      days.appendChild(e);
+    }
+
+    card.appendChild(days);
+    return card;
+  }
+
+  function renderCalendar() {
+    const yRaw = Number(document.getElementById("year").value);
+    const y = Number.isFinite(yRaw) ? Math.trunc(yRaw) : 1;
+    document.getElementById("year").value = String(y);
+
+    const view = document.getElementById("view").value;
+    const m = Math.min(12, Math.max(1, Math.trunc(Number(document.getElementById("month").value || 1))));
+
+    const cal = document.getElementById("calendar");
+    cal.innerHTML = "";
+
+    const leap = isLeapYear(y);
+    const { q, pos } = cycleInfo(y);
+
+    // ステータス表示.
+    const reasons = [];
+    if (pos % 4 === 0) reasons.push("周期内位置が4の倍数");
+    if (SPECIAL_LEAP_POS.has(pos)) reasons.push("周期内位置が特別年(250/750/1250)");
+
+    const status = document.getElementById("status");
+    status.innerHTML = `
+      <div>
+        <span class="pill">rout : ${y}</span>
+        <!-- <span class="pill">周期番号 ${q} / 周期内 ${pos}年目</span> -->
+        <span class="pill ${leap ? "warn" : ""}">${leap ? "centerkesti" : "farfelen routasti"}</span>
+        <!-- ${leap ? `<span class="pill warn">snalu :${reasons.join(" / ")}</span>` : ""} -->
+      </div>
+    `;
+
+    if (view === "month") {
+      const wrap = document.createElement("div");
+      wrap.className = "year-grid";
+      wrap.style.gridTemplateColumns = "minmax(240px, 520px)";
+      wrap.appendChild(buildMonthCard(y, m));
+      cal.appendChild(wrap);
+      return;
+    }
+
+    const grid = document.createElement("div");
+    grid.className = "year-grid";
+    for (let mm = 1; mm <= 12; mm++) {
+      grid.appendChild(buildMonthCard(y, mm));
+    }
+    cal.appendChild(grid);
+  }
+
+  function syncUI() {
+    const view = document.getElementById("view").value;
+    document.getElementById("month").disabled = (view !== "month");
+  }
+
+  document.getElementById("render").addEventListener("click", renderCalendar);
+  document.getElementById("view").addEventListener("change", () => { syncUI(); renderCalendar(); });
+  document.getElementById("year").addEventListener("keydown", (e) => { if (e.key === "Enter") renderCalendar(); });
+  document.getElementById("month").addEventListener("change", renderCalendar);
+
+  // 初期描画.
+  syncUI();
+  renderCalendar();
+</script>
+</body>
+</html>

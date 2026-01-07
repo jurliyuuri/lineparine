@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>フィーク暦</title>
+
+  <style>
+    /* ===== ピリフィアー暦の見た目に寄せたトークン ===== */
+    :root {
+      --bg: #0b0c10;
+      --panel: #12141b;
+      --panel2: #171a23;
+      --text: #e8eaf0;
+      --muted: #a8afc3;
+      --line: #24283a;
+      --accent: #7aa2f7;
+      --warn: #f7768e;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans JP", sans-serif;
+      background: linear-gradient(180deg, var(--bg), #07080c);
+      color: var(--text);
+    }
+    header {
+      padding: 20px 16px 8px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(18,20,27,0.75);
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      z-index: 10;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    label { font-size: 14px; color: var(--muted); }
+    input[type="number"], select {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      color: var(--text);
+      padding: 10px 12px;
+      border-radius: 10px;
+      outline: none;
+      min-width: 140px;
+    }
+    button {
+      background: var(--accent);
+      border: 0;
+      color: #0b0c10;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button:active { transform: translateY(1px); }
+    .meta {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(122,162,247,0.14);
+      border: 1px solid rgba(122,162,247,0.28);
+      color: var(--text);
+      font-size: 12px;
+    }
+    .pill.warn {
+      background: rgba(247,118,142,0.12);
+      border-color: rgba(247,118,142,0.25);
+    }
+
+    main { padding: 18px 16px 40px; }
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 1100px;
+    }
+    code {
+      background: rgba(255,255,255,0.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    /* ===== カレンダー（十曜制に対応） ===== */
+    .year-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(280px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (max-width: 1100px) { .year-grid { grid-template-columns: repeat(2, minmax(280px, 1fr)); } }
+    @media (max-width: 720px)  { .year-grid { grid-template-columns: 1fr; } }
+
+    .month-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+    }
+    .month-head {
+      padding: 12px 12px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent);
+    }
+    .month-title { font-weight: 800; letter-spacing: 0.3px; }
+    .month-sub { color: var(--muted); font-size: 12px; }
+
+    .dow, .days {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr); /* ★十曜制：10列 */
+    }
+    .dow div {
+      padding: 8px 6px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      white-space: nowrap;
+    }
+    .days div {
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      font-size: 13px;
+      background: rgba(255,255,255,0.02);
+    }
+    .days div:nth-child(10n) { border-right: 0; } /* ★10列の行末 */
+    .days .empty { background: rgba(255,255,255,0.01); color: transparent; }
+    
+    /* 追記：日セル内に月相を置く */
+    .days .day { position: relative; }
+
+    .moonmark{
+      position: absolute;
+      top: 3px;
+      left: 4px;
+      font-size: 12px;
+      line-height: 1;
+      font-family: system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+      opacity: .9;
+    }
+
+/* 追記：新月・満月を目立たせる */
+.days .newmoon{
+  outline: 2px solid rgba(247,118,142,0.55);
+  outline-offset: -2px;
+  box-shadow: 0 0 0 3px rgba(247,118,142,0.12) inset;
+}
+.days .fullmoon{
+  outline: 2px solid rgba(122,162,247,0.65);
+  outline-offset: -2px;
+  box-shadow: 0 0 0 3px rgba(122,162,247,0.12) inset;
+}
+
+    /* 閏月（13月）を軽く目立たせる（見出し側で表示） */
+    .month-title .leap-badge{
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 8px;
+      background: rgba(247,118,142,0.12);
+      border: 1px solid rgba(247,118,142,0.25);
+      color: var(--text);
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="row">
+    <div>
+      <div style="font-weight:900; font-size:16px;">フィーク暦</div>
+    </div>
+
+    <div class="controls">
+      <div>
+        <label for="year">年</label><br />
+        <input id="year" type="number" step="1" value="1" />
+      </div>
+      <div>
+        <label for="view">表示</label><br />
+        <select id="view">
+          <option value="year" selected>年（全月）</option>
+          <option value="month">月（1つだけ）</option>
+        </select>
+      </div>
+      <div>
+        <label for="month">月</label><br />
+        <select id="month"></select>
+      </div>
+      <div style="align-self:end;">
+        <button id="render">生成</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="status" class="note"></div>
+  <div id="calendar"></div>
+</main>
+
+<script>
+  // ===== 暦仕様=====
+  const LEAP_POS = new Set([3, 6, 8, 11, 14, 17]); // 17年周期内の閏年
+  const YEAR_CYCLE = 17;
+
+  const COMMON_MONTH_DAYS = [30,29,30,29,30,29,30,29,30,29,30,30];      // 355
+  const LEAP_MONTH_DAYS   = [30,29,30,29,30,29,30,29,30,29,30,29,30];   // 384
+
+  const COMMON_YEAR_DAYS = sum(COMMON_MONTH_DAYS);
+  const LEAP_YEAR_DAYS   = sum(LEAP_MONTH_DAYS);
+
+  // 17年サイクルの年日数（固定）
+  const CYCLE_YEAR_DAYS = Array.from({length: YEAR_CYCLE}, (_, i) => {
+    const r = i + 1;
+    return LEAP_POS.has(r) ? LEAP_YEAR_DAYS : COMMON_YEAR_DAYS;
+  });
+  const CYCLE_DAYS_TOTAL = sum(CYCLE_YEAR_DAYS); // 6209
+
+  // ===== 十曜制 =====
+  const WEEK_LEN = 10;
+  const DOW = ["一","二","三","四","五","六","七","八","九","十"];
+  const EPOCH_DOW0 = 0; // 1年1月1日＝一曜日
+
+  // ===== UI =====
+  const yearEl  = document.getElementById("year");
+  const viewEl  = document.getElementById("view");
+  const monthEl = document.getElementById("month");
+  const statusEl = document.getElementById("status");
+  const calEl = document.getElementById("calendar");
+
+  // 数学的mod（負数でも0..m-1）
+  function mod(n, m) {
+    return ((n % m) + m) % m;
+  }
+
+  // ===== 月齢（朔望月） =====
+const SYNODIC_MONTH = 29.5660340294;
+
+// 1年1月1日の月齢（正確に）
+const EPOCH_LUNAR_AGE = 0.6860292012;
+
+// 8分割の簡易月相
+const PHASES = [
+  { name: "新月",   mark: "🌑" },
+  { name: "三日月", mark: "🌒" },
+  { name: "上弦",   mark: "🌓" },
+  { name: "十三夜", mark: "🌔" },
+  { name: "満月",   mark: "🌕" },
+  { name: "十六夜", mark: "🌖" },
+  { name: "下弦",   mark: "🌗" },
+  { name: "二十六夜", mark: "🌘" },
+];
+
+const MOON_EPS = 1e-6; // 日単位の許容誤差（浮動小数の境界対策）
+
+function lunarAgeAtAbsDay(absDay){
+  // absDay=0 が 1年1月1日（その日の始まり）に対応
+  return mod(EPOCH_LUNAR_AGE + absDay, SYNODIC_MONTH);
+}
+
+function phaseForAge(age){
+  const idx = Math.floor((age / SYNODIC_MONTH) * 8) % 8;
+  return PHASES[idx];
+}
+
+function dayHasNewMoon(absDay){
+  const S = SYNODIC_MONTH;
+  const u = EPOCH_LUNAR_AGE + absDay; // その日の始まり時点の“連続月齢”
+  const a = Math.floor(u / S);
+  const b = Math.floor((u + 1) / S); // 1日後までに境界を跨ぐか
+  const r = mod(u, S);
+  const atBoundary = (r < MOON_EPS) || (S - r < MOON_EPS);
+  return (a !== b) || atBoundary;
+}
+
+function dayHasFullMoon(absDay){
+  const S = SYNODIC_MONTH;
+  // 満月は (k+0.5)S なので、S/2 ずらして “新月判定”と同じ判定をする
+  const u = (EPOCH_LUNAR_AGE + absDay) - (S / 2);
+  const a = Math.floor(u / S);
+  const b = Math.floor((u + 1) / S);
+  const r = mod(u, S);
+  const atBoundary = (r < MOON_EPS) || (S - r < MOON_EPS);
+  return (a !== b) || atBoundary;
+}
+
+  function getYearInfo(Y){
+    const y = Math.trunc(Number(Y) || 1);
+    const cycleIndex = Math.floor((y - 1) / YEAR_CYCLE);        // 0-based
+    const r = mod((y - 1), YEAR_CYCLE) + 1;                     // 1..17
+    const isLeap = LEAP_POS.has(r);
+    const monthDays = isLeap ? LEAP_MONTH_DAYS.slice() : COMMON_MONTH_DAYS.slice();
+    return {
+      y,
+      cycleIndex,
+      yearInCycle: r,
+      isLeap,
+      monthDays,
+      monthsCount: monthDays.length,
+      yearDays: isLeap ? LEAP_YEAR_DAYS : COMMON_YEAR_DAYS
+    };
+  }
+
+  // 年1/月1/日1 からの通算日数（0-based）
+  function daysSinceEpoch(year, monthIndex0, day){
+    const y = Math.trunc(Number(year) || 1);
+    const m = Math.max(0, Math.trunc(Number(monthIndex0) || 0));
+    const d = Math.max(1, Math.trunc(Number(day) || 1));
+
+    const yearsBefore = y - 1;
+
+    // ★負数でもOKな分解（添付ファイル方式）
+    const fullCycles = Math.floor(yearsBefore / YEAR_CYCLE); // …,-2,-1,0,1,2,...
+    const within = mod(yearsBefore, YEAR_CYCLE);             // 0..16
+
+    let total = fullCycles * CYCLE_DAYS_TOTAL;
+
+    // 周期内で year の手前にある年の合計日数を足す
+    for (let i = 0; i < within; i++) total += CYCLE_YEAR_DAYS[i];
+
+    const yi = getYearInfo(y);
+    for (let i = 0; i < m; i++) total += yi.monthDays[i];
+
+    total += (d - 1);
+    return total; // ★負にもなり得る（年0/負年で）
+  }
+
+  // 0=一曜日, ..., 9=十曜日
+  function weekdayIndex(year, monthIndex0, day){
+    const t = daysSinceEpoch(year, monthIndex0, day);
+    return mod(EPOCH_DOW0 + mod(t, WEEK_LEN), WEEK_LEN);
+  }
+
+  function syncMonthOptions(){
+    const info = getYearInfo(yearEl.value);
+    const prev = Number(monthEl.value || 1);
+
+    monthEl.innerHTML = "";
+    for (let i = 1; i <= info.monthsCount; i++){
+      const opt = document.createElement("option");
+      opt.value = String(i);
+      opt.textContent = (info.isLeap && i === 13) ? "閏13月" : `${i}月`;
+      monthEl.appendChild(opt);
+    }
+
+    // できるだけ元の選択を維持
+    const next = Math.min(info.monthsCount, Math.max(1, prev));
+    monthEl.value = String(next);
+
+    // viewがmonthのときだけ有効
+    monthEl.disabled = (viewEl.value !== "month");
+  }
+
+  function buildMonthCard(year, month1){
+    const info = getYearInfo(year);
+    const idx0 = month1 - 1;
+    const daysInMonth = info.monthDays[idx0];
+
+    const startAbs = daysSinceEpoch(info.y, idx0, 1);
+    const startW = weekdayIndex(info.y, idx0, 1); // 0..9
+
+    const card = document.createElement("div");
+    card.className = "month-card";
+
+    const isIntercalary = (info.isLeap && month1 === 13);
+
+    const head = document.createElement("div");
+    head.className = "month-head";
+    head.innerHTML = `
+      <div class="month-title">
+        ${isIntercalary ? `13月 <span class="leap-badge">閏</span>` : `${month1}月`}
+      </div>
+      <div class="month-sub">${daysInMonth}日</div>
+    `;
+    card.appendChild(head);
+
+    const dow = document.createElement("div");
+    dow.className = "dow";
+    for (let i=0; i<WEEK_LEN; i++){
+      const d = document.createElement("div");
+      d.textContent = DOW[i];
+      dow.appendChild(d);
+    }
+    card.appendChild(dow);
+
+    const days = document.createElement("div");
+    days.className = "days";
+
+    // 前の空白
+    for (let i=0; i<startW; i++){
+      const e = document.createElement("div");
+      e.className = "empty";
+      e.textContent = ".";
+      days.appendChild(e);
+    }
+
+    // 日付（＋月相）
+    for (let day=1; day<=daysInMonth; day++){
+      const absDay = startAbs + (day - 1);
+
+      const hasNew  = dayHasNewMoon(absDay);
+      const hasFull = dayHasFullMoon(absDay);
+
+      const age = lunarAgeAtAbsDay(absDay);
+      const phase = phaseForAge(age);
+
+      const cell = document.createElement("div");
+      let cls = "day";
+      if (hasNew)  cls += " newmoon";
+      if (hasFull) cls += " fullmoon";
+      cell.className = cls;
+
+      const moon = document.createElement("span");
+      moon.className = "moonmark";
+      // 新月/満月の日は確実に🌑/🌕
+      moon.textContent = hasNew ? "🌑" : (hasFull ? "🌕" : phase.mark);
+
+      const num = document.createElement("span");
+      num.textContent = String(day);
+
+      cell.appendChild(moon);
+      cell.appendChild(num);
+
+      const w = weekdayIndex(info.y, idx0, day);
+      const tags = [];
+      if (hasNew) tags.push("新月");
+      if (hasFull) tags.push("満月");
+
+      cell.title =
+        `${info.y}年 ${(info.isLeap && (idx0+1)===13) ? "閏13月" : (idx0+1+"月")} ${day}日 / ${DOW[w]}\n` +
+        `月齢 ${age.toFixed(3)}日（${phase.name}）` +
+        (tags.length ? ` / ${tags.join("・")}` : "");
+
+      days.appendChild(cell);
+    }
+
+    // 最終行の欠けを埋める（10列単位）
+    const totalCells = startW + daysInMonth;
+    const pad = mod((WEEK_LEN - mod(totalCells, WEEK_LEN)), WEEK_LEN);
+    for (let i=0; i<pad; i++){
+      const e = document.createElement("div");
+      e.className = "empty";
+      e.textContent = ".";
+      days.appendChild(e);
+    }
+
+    card.appendChild(days);
+    return card;
+  }
+
+  function render(){
+    const info = getYearInfo(yearEl.value);
+    yearEl.value = String(info.y);
+
+    syncMonthOptions();
+
+    // ステータス
+    const cycleNo = info.cycleIndex;
+    statusEl.innerHTML = `
+      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <span class="pill">年 ${info.y}</span>
+        <!-- <span class="pill">周期 ${cycleNo} / 周期内 ${info.yearInCycle}年目</span> -->
+        <span class="pill ${info.isLeap ? "warn" : ""}">${info.isLeap ? "閏年" : "平年"}</span>
+        <!-- <span class="pill">月数 ${info.monthsCount}</span>
+        <span class="pill">年日数 ${info.yearDays}</span> -->
+      </div>
+    `;
+
+    // カレンダー描画
+    calEl.innerHTML = "";
+    const grid = document.createElement("div");
+    grid.className = "year-grid";
+
+    if (viewEl.value === "month"){
+      grid.style.gridTemplateColumns = "minmax(280px, 520px)";
+      const m = Math.min(info.monthsCount, Math.max(1, Math.trunc(Number(monthEl.value || 1))));
+      grid.appendChild(buildMonthCard(info.y, m));
+      calEl.appendChild(grid);
+      return;
+    }
+
+    for (let m=1; m<=info.monthsCount; m++){
+      grid.appendChild(buildMonthCard(info.y, m));
+    }
+    calEl.appendChild(grid);
+  }
+
+  function sum(arr){ return arr.reduce((a,b)=>a+b,0); }
+
+  // イベント
+  document.getElementById("render").addEventListener("click", render);
+  viewEl.addEventListener("change", () => { syncMonthOptions(); render(); });
+  yearEl.addEventListener("keydown", (e) => { if (e.key === "Enter") render(); });
+  monthEl.addEventListener("change", render);
+
+  // 初期化
+  syncMonthOptions();
+  render();
+</script>
+</body>
+</html>
