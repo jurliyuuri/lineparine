@@ -195,6 +195,7 @@
             border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+            min-height: 320px;
         }
 
         .month-head {
@@ -576,6 +577,11 @@
                             <div class="k">修正リパラオネ暦</div>
                             <div class="v mono" id="outP_ripa">—</div>
                         </div>
+                        <div class="out"
+                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
+                            <div class="k">月齢</div>
+                            <div class="v mono" id="outP_lunar">—</div>
+                        </div>
                     </div>
                 </section>
 
@@ -610,6 +616,11 @@
                             <div class="k">修正リパラオネ暦</div>
                             <div class="v mono" id="outF_ripa">—</div>
                         </div>
+                        <div class="out"
+                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
+                            <div class="k">月齢</div>
+                            <div class="v mono" id="outF_lunar">—</div>
+                        </div>
                     </div>
                 </section>
 
@@ -643,6 +654,11 @@
                         <div class="out">
                             <div class="k">フィーク暦</div>
                             <div class="v mono" id="outR_fiik">—</div>
+                        </div>
+                        <div class="out"
+                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
+                            <div class="k">月齢</div>
+                            <div class="v mono" id="outR_lunar">—</div>
                         </div>
                     </div>
                 </section>
@@ -682,21 +698,30 @@
         // 月相（共通）
         // ========================================
         const SYNODIC_MONTH = 29.5660340294;
+        // 月相名: 「朔」「望」は本当の新月・満月のみに使用
         const PHASES = [
-            { name: "新月", mark: "🌑" },
-            { name: "三日月", mark: "🌒" },
-            { name: "上弦", mark: "🌓" },
-            { name: "十三夜", mark: "🌔" },
-            { name: "満月", mark: "🌕" },
-            { name: "十六夜", mark: "🌖" },
-            { name: "下弦", mark: "🌗" },
-            { name: "二十六夜", mark: "🌘" },
+            { name: "新月", mark: "🌑", exactName: "朔" },
+            { name: "三日月", mark: "🌒", exactName: "三日月" },
+            { name: "上弦", mark: "🌓", exactName: "上弦" },
+            { name: "十三夜", mark: "🌔", exactName: "十三夜" },
+            { name: "満月", mark: "🌕", exactName: "望" },
+            { name: "十六夜", mark: "🌖", exactName: "十六夜" },
+            { name: "下弦", mark: "🌗", exactName: "下弦" },
+            { name: "二十六夜", mark: "🌘", exactName: "二十六夜" },
         ];
         const MOON_EPS = 1e-6;
 
-        function phaseForAge(age) {
-            const idx = Math.floor((age / SYNODIC_MONTH) * 8) % 8;
-            return PHASES[idx];
+        // isExact: 本当の新月/満月の場合にtrue
+        function phaseForAge(age, isExact = false) {
+            // 各月相の「中心」を基準にするため、朔望月/16のオフセットを追加
+            // これにより、新月（🌑）は月齢0を中心とした前後に表示される
+            const offset = SYNODIC_MONTH / 16;
+            const idx = Math.floor(mod(age + offset, SYNODIC_MONTH) / SYNODIC_MONTH * 8) % 8;
+            const phase = PHASES[idx];
+            if (isExact && (idx === 0 || idx === 4)) {
+                return { name: phase.exactName, mark: phase.mark };
+            }
+            return { name: phase.name, mark: phase.mark };
         }
 
         // ========================================
@@ -825,23 +850,20 @@
         function phil_dayHasNewMoon(absDay) {
             phil_initNewMoonEpoch();
             const S = SYNODIC_MONTH;
-            const delta = absDay - PHIL_NEW_MOON_EPOCH_DAY;
-            const a = Math.floor(delta / S);
-            const b = Math.floor((delta + 1) / S);
-            const r = mod(delta, S);
-            const atBoundary = (r < MOON_EPS) || (S - r < MOON_EPS);
-            return (a !== b) || atBoundary;
+            // 日の始まり時点での月齢（表示される月齢と同じ）
+            const age = mod(absDay - PHIL_NEW_MOON_EPOCH_DAY, S);
+            // 月齢が0に最も近い日（±0.5日以内）を朔とする
+            return age <= 0.5 || age > S - 0.5;
         }
 
         function phil_dayHasFullMoon(absDay) {
             phil_initNewMoonEpoch();
             const S = SYNODIC_MONTH;
-            const delta = (absDay - PHIL_NEW_MOON_EPOCH_DAY) - (S / 2);
-            const a = Math.floor(delta / S);
-            const b = Math.floor((delta + 1) / S);
-            const r = mod(delta, S);
-            const atBoundary = (r < MOON_EPS) || (S - r < MOON_EPS);
-            return (a !== b) || atBoundary;
+            const halfS = S / 2;
+            // 日の始まり時点での月齢（表示される月齢と同じ）
+            const age = mod(absDay - PHIL_NEW_MOON_EPOCH_DAY, S);
+            // 月齢が朔望月の半分（満月）に最も近い日（±0.5日以内）を望とする
+            return Math.abs(age - halfS) <= 0.5;
         }
 
         // ========================================
@@ -862,7 +884,7 @@
         const FIIK_CYCLE_DAYS_TOTAL = sum(FIIK_CYCLE_YEAR_DAYS);
 
         const FIIK_WEEK_LEN = 6;
-        const FIIK_DOW = ["一", "二", "三", "四", "五", "六"];
+        const FIIK_DOW = ["一曜日", "二曜日", "三曜日", "四曜日", "五曜日", "六曜日"];
         const FIIK_EPOCH_DOW0 = 0;
         const FIIK_EPOCH_LUNAR_AGE = 0.6860292012;
 
@@ -1093,7 +1115,8 @@
                 const hasFull = fiik_dayHasFullMoon(absDay);
 
                 const age = fiik_lunarAgeAtAbsDay(absDay);
-                const phase = phaseForAge(age);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(age, isExactMoon);
 
                 const cell = document.createElement("div");
                 let cls = "day";
@@ -1113,8 +1136,8 @@
 
                 const w = fiik_weekdayIndex(info.y, idx0, day);
                 const tags = [];
-                if (hasNew) tags.push("新月");
-                if (hasFull) tags.push("満月");
+                if (hasNew) tags.push("朔");
+                if (hasFull) tags.push("望");
 
                 cell.title =
                     `${info.y}年 ${(info.isLeap && (idx0 + 1) === 13) ? "閏13月" : (idx0 + 1 + "月")} ${day}日 / ${FIIK_DOW[w]}\n` +
@@ -1236,7 +1259,8 @@
                 const hasFull = phil_dayHasFullMoon(absDay);
 
                 const age = phil_lunarAgeForAbsoluteDay(absDay);
-                const phase = phaseForAge(age);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(age, isExactMoon);
 
                 const cell = document.createElement("div");
                 let cls = isLeapDayCell ? "day leapday" : "day";
@@ -1254,11 +1278,11 @@
                 cell.appendChild(moon);
                 cell.appendChild(num);
 
-                const ageText = age.toFixed(2);
+                const ageText = age.toFixed(3);
 
                 const tags = [];
-                if (hasNew) tags.push("新月");
-                if (hasFull) tags.push("満月");
+                if (hasNew) tags.push("朔");
+                if (hasFull) tags.push("望");
                 if (isLeapDayCell) tags.push("閏日（ルバー32日）");
 
                 cell.title = `月齢 ${ageText}日（${phase.name}）` + (tags.length ? ` / ${tags.join("・")}` : "");
@@ -1518,7 +1542,8 @@
                 const hasNew = ripa_dayHasNewMoon(year, month, day);
                 const hasFull = ripa_dayHasFullMoon(year, month, day);
                 const age = ripa_lunarAgeForDay(year, month, day);
-                const phase = phaseForAge(age);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(age, isExactMoon);
 
                 const cell = document.createElement("div");
                 let cls = "day";
@@ -1538,11 +1563,11 @@
 
                 const w = ripa_weekdayIndex(year, month, day);
                 const tags = [];
-                if (hasNew) tags.push("新月");
-                if (hasFull) tags.push("満月");
+                if (hasNew) tags.push("朔");
+                if (hasFull) tags.push("望");
 
                 cell.title = `${year}年 ${m.name} ${day}日 / ${RIPA_DOW[w]}\n` +
-                    `月齢 ${age.toFixed(2)}日（${phase.name}）` +
+                    `月齢 ${age.toFixed(3)}日（${phase.name}）` +
                     (tags.length ? ` / ${tags.join("・")}` : "");
 
                 days.appendChild(cell);
@@ -1569,7 +1594,7 @@
 
                 leapCell.appendChild(leapMoon);
                 leapCell.appendChild(leapNum);
-                leapCell.title = `${year}年 閏日（月・曜日に属さない独立日）\n月齢 ${leapAge.toFixed(2)}日（${leapPhase.name}）`;
+                leapCell.title = `${year}年 閏日（月・曜日に属さない独立日）\n月齢 ${leapAge.toFixed(3)}日（${leapPhase.name}）`;
 
                 days.appendChild(leapCell);
             }
@@ -1602,7 +1627,6 @@
               <div>
                 <span class="pill">年 ${y}</span>
                 <span class="pill ${isLeap ? "warn" : ""}">${isLeap ? "閏年" : "平年"}</span>
-                ${isLeap ? `<span class="pill warn">4年に1回の閏日あり</span>` : ""}
                 ${y < 728 ? `<span class="pill">728年以前のため閏年なし</span>` : ""}
               </div>
             `;
@@ -1655,6 +1679,11 @@
         const outF_ripa = document.getElementById("outF_ripa");
         const outR_phil = document.getElementById("outR_phil");
         const outR_fiik = document.getElementById("outR_fiik");
+
+        // 月齢出力要素
+        const outP_lunar = document.getElementById("outP_lunar");
+        const outF_lunar = document.getElementById("outF_lunar");
+        const outR_lunar = document.getElementById("outR_lunar");
 
         document.getElementById("anchorView").innerHTML =
             `ピリフィアー暦 1740/12/2 = 修正リパラオネ暦 728/1/1<br>` +
@@ -1721,6 +1750,15 @@
                 const y = intOrNaN(pY.value), m = intOrNaN(pM.value), d = intOrNaN(pD.value);
                 const philAbs = phil_toAbs(y, m, d);
 
+                // 月齢計算
+                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
+                const hasNew = phil_dayHasNewMoon(philAbs);
+                const hasFull = phil_dayHasFullMoon(philAbs);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(lunarAge, isExactMoon);
+                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
+                setOut(outP_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
+
                 // → フィーク暦
                 const fiikAbs = philAbs - PHIL_AT_FIIK_EPOCH;
                 const fiik = fiik_fromAbsToCivil(fiikAbs);
@@ -1735,6 +1773,7 @@
             } catch (e) {
                 setOut(outP_fiik, e.message || String(e), true);
                 setOut(outP_ripa, "—");
+                setOut(outP_lunar, "—");
             }
         }
 
@@ -1744,6 +1783,15 @@
                 const y = intOrNaN(fY.value), m = intOrNaN(fM.value), d = intOrNaN(fD.value);
                 const fiikAbs = fiik_toAbsCivil(y, m, d);
                 const philAbs = fiikAbs + PHIL_AT_FIIK_EPOCH;
+
+                // 月齢計算
+                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
+                const hasNew = phil_dayHasNewMoon(philAbs);
+                const hasFull = phil_dayHasFullMoon(philAbs);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(lunarAge, isExactMoon);
+                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
+                setOut(outF_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
 
                 // → ピリフィアー暦
                 const phil = phil_fromAbs(philAbs);
@@ -1759,6 +1807,7 @@
             } catch (e) {
                 setOut(outF_phil, e.message || String(e), true);
                 setOut(outF_ripa, "—");
+                setOut(outF_lunar, "—");
             }
         }
 
@@ -1774,6 +1823,15 @@
 
                 const philAbs = ripa_toPhilAbsFull(y, m, d);
 
+                // 月齢計算
+                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
+                const hasNew = phil_dayHasNewMoon(philAbs);
+                const hasFull = phil_dayHasFullMoon(philAbs);
+                const isExactMoon = hasNew || hasFull;
+                const phase = phaseForAge(lunarAge, isExactMoon);
+                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
+                setOut(outR_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
+
                 // → ピリフィアー暦
                 const phil = phil_fromAbs(philAbs);
                 const philName = PHIL_MONTHS[phil.month - 1]?.name ?? String(phil.month);
@@ -1788,6 +1846,7 @@
             } catch (e) {
                 setOut(outR_phil, e.message || String(e), true);
                 setOut(outR_fiik, "—");
+                setOut(outR_lunar, "—");
             }
         }
 
