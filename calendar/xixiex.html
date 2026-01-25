@@ -494,7 +494,7 @@
             <div class="controls">
                 <div>
                     <label for="phil-year">年</label><br />
-                    <input id="phil-year" type="number" step="1" value="1" />
+                    <input id="phil-year" type="number" step="1" value="0" />
                 </div>
                 <div>
                     <label for="phil-view">表示</label><br />
@@ -520,7 +520,7 @@
             <div class="controls">
                 <div>
                     <label for="ripa-year">年</label><br />
-                    <input id="ripa-year" type="number" step="1" value="1" />
+                    <input id="ripa-year" type="number" step="1" value="0" />
                 </div>
                 <div>
                     <label for="ripa-view">表示</label><br />
@@ -543,51 +543,58 @@
 
         <!-- ===== 暦変換 ===== -->
         <div id="converter" class="tab-content">
-            <p class="note" style="margin-top:0; margin-bottom:14px;">いずれかの暦で日付を入力すると、他の2つの暦の日付に変換されます。</p>
+            <p class="note" style="margin-top:0; margin-bottom:14px;">いずれかの暦で日付を入力すると、他の2つの暦の日付が自動的に更新されます。</p>
 
             <div class="converter-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <!-- ピリフィアー暦入力 -->
                 <section class="card">
-                    <h2>ピリフィアー暦から変換</h2>
+                    <h2>ピリフィアー暦</h2>
                     <div class="body">
                         <div class="row">
                             <div>
                                 <label for="pY">年</label><br>
-                                <input id="pY" type="number" step="1" value="1740" style="min-width:100px;">
+                                <input id="pY" type="number" step="1" value="0" style="min-width:100px;">
                             </div>
                             <div>
                                 <label for="pM">月</label><br>
-                                <input id="pM" type="number" step="1" min="1" max="12" value="12"
+                                <input id="pM" type="number" step="1" min="1" max="12" value="1"
                                     style="min-width:60px;">
                             </div>
                             <div>
                                 <label for="pD">日</label><br>
-                                <input id="pD" type="number" step="1" min="1" value="2" style="min-width:60px;">
+                                <input id="pD" type="number" step="1" min="1" value="1" style="min-width:60px;">
                             </div>
                         </div>
-                        <div style="margin-top:8px;">
-                            <button id="btnP">変換</button>
-                        </div>
+                        <div id="philStatus" class="note" style="margin-top:8px;"></div>
+                    </div>
+                </section>
 
-                        <div class="out" id="outP">
-                            <div class="k">フィーク暦</div>
-                            <div class="v mono" id="outP_fiik">—</div>
+                <!-- 修正リパラオネ暦入力 -->
+                <section class="card">
+                    <h2>修正リパラオネ暦</h2>
+                    <div class="body">
+                        <div class="row">
+                            <div>
+                                <label for="rY">年</label><br>
+                                <input id="rY" type="number" step="1" value="0" style="min-width:100px;">
+                            </div>
+                            <div>
+                                <label for="rM">月</label><br>
+                                <input id="rM" type="number" step="1" min="1" max="12" value="1"
+                                    style="min-width:60px;">
+                            </div>
+                            <div>
+                                <label for="rD">日</label><br>
+                                <input id="rD" type="number" step="1" min="1" value="1" style="min-width:60px;">
+                            </div>
                         </div>
-                        <div class="out">
-                            <div class="k">修正リパラオネ暦</div>
-                            <div class="v mono" id="outP_ripa">—</div>
-                        </div>
-                        <div class="out"
-                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
-                            <div class="k">月齢</div>
-                            <div class="v mono" id="outP_lunar">—</div>
-                        </div>
+                        <div id="ripaStatus" class="note" style="margin-top:8px;"></div>
                     </div>
                 </section>
 
                 <!-- フィーク暦入力 -->
                 <section class="card">
-                    <h2>フィーク暦から変換</h2>
+                    <h2>フィーク暦</h2>
                     <div class="body">
                         <div class="row">
                             <div>
@@ -604,64 +611,16 @@
                                 <input id="fD" type="number" step="1" min="1" value="1" style="min-width:60px;">
                             </div>
                         </div>
-                        <div style="margin-top:8px;">
-                            <button id="btnF">変換</button>
-                        </div>
-
-                        <div class="out" id="outF">
-                            <div class="k">ピリフィアー暦</div>
-                            <div class="v mono" id="outF_phil">—</div>
-                        </div>
-                        <div class="out">
-                            <div class="k">修正リパラオネ暦</div>
-                            <div class="v mono" id="outF_ripa">—</div>
-                        </div>
-                        <div class="out"
-                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
-                            <div class="k">月齢</div>
-                            <div class="v mono" id="outF_lunar">—</div>
-                        </div>
+                        <div id="fiikStatus" class="note" style="margin-top:8px;"></div>
                     </div>
                 </section>
+            </div>
 
-                <!-- 修正リパラオネ暦入力 -->
-                <section class="card">
-                    <h2>修正リパラオネ暦から変換</h2>
-                    <div class="body">
-                        <div class="row">
-                            <div>
-                                <label for="rY">年</label><br>
-                                <input id="rY" type="number" step="1" value="728" style="min-width:100px;">
-                            </div>
-                            <div>
-                                <label for="rM">月</label><br>
-                                <input id="rM" type="number" step="1" min="1" max="12" value="1"
-                                    style="min-width:60px;">
-                            </div>
-                            <div>
-                                <label for="rD">日</label><br>
-                                <input id="rD" type="number" step="1" min="1" value="1" style="min-width:60px;">
-                            </div>
-                        </div>
-                        <div style="margin-top:8px;">
-                            <button id="btnR">変換</button>
-                        </div>
-
-                        <div class="out" id="outR">
-                            <div class="k">ピリフィアー暦</div>
-                            <div class="v mono" id="outR_phil">—</div>
-                        </div>
-                        <div class="out">
-                            <div class="k">フィーク暦</div>
-                            <div class="v mono" id="outR_fiik">—</div>
-                        </div>
-                        <div class="out"
-                            style="background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
-                            <div class="k">月齢</div>
-                            <div class="v mono" id="outR_lunar">—</div>
-                        </div>
-                    </div>
-                </section>
+            <!-- 月齢表示（共通） -->
+            <div class="out"
+                style="margin-top:14px; background: rgba(122, 162, 247, 0.08); border-color: rgba(122, 162, 247, 0.2);">
+                <div class="k">月齢</div>
+                <div class="v mono" id="outLunar">—</div>
             </div>
 
             <details style="margin-top:14px">
@@ -1135,14 +1094,8 @@
                 cell.appendChild(num);
 
                 const w = fiik_weekdayIndex(info.y, idx0, day);
-                const tags = [];
-                if (hasNew) tags.push("朔");
-                if (hasFull) tags.push("望");
 
-                cell.title =
-                    `${info.y}年 ${(info.isLeap && (idx0 + 1) === 13) ? "閏13月" : (idx0 + 1 + "月")} ${day}日 / ${FIIK_DOW[w]}\n` +
-                    `月齢 ${age.toFixed(3)}日（${phase.name}）` +
-                    (tags.length ? ` / ${tags.join("・")}` : "");
+                cell.title = `月齢 ${age.toFixed(3)}日（${phase.name}）`;
 
                 days.appendChild(cell);
             }
@@ -1195,6 +1148,21 @@
         fiikViewEl.addEventListener("change", () => { fiik_syncMonthOptions(); fiik_render(); });
         fiikYearEl.addEventListener("keydown", (e) => { if (e.key === "Enter") fiik_render(); });
         fiikMonthEl.addEventListener("change", fiik_render);
+
+        // 0年を飛ばす処理
+        let fiikLastYear = parseInt(fiikYearEl.value) || 1;
+        fiikYearEl.addEventListener("input", () => {
+            const current = parseInt(fiikYearEl.value);
+            if (current === 0) {
+                // 前回の値と比較して増減方向を判定
+                if (fiikLastYear > 0) {
+                    fiikYearEl.value = -1;
+                } else {
+                    fiikYearEl.value = 1;
+                }
+            }
+            fiikLastYear = parseInt(fiikYearEl.value) || 1;
+        });
 
         // ========================================
         // ピリフィアー暦カレンダー UI
@@ -1281,8 +1249,6 @@
                 const ageText = age.toFixed(3);
 
                 const tags = [];
-                if (hasNew) tags.push("朔");
-                if (hasFull) tags.push("望");
                 if (isLeapDayCell) tags.push("閏日（ルバー32日）");
 
                 cell.title = `月齢 ${ageText}日（${phase.name}）` + (tags.length ? ` / ${tags.join("・")}` : "");
@@ -1376,15 +1342,28 @@
         const RIPA_WEEK_LEN = 5;
         const RIPA_YEAR_DAYS = 30 * 11 + 35; // 365
 
-        // アンカー：修正リパラオネ暦728年1月1日 = ピリフィアー暦1740年12月2日
-        const RIPA_ANCHOR = { year: 728, month: 1, day: 1 };
-        const RIPA_ANCHOR_PHIL = { year: 1740, month: 12, day: 2 };
+        // アンカー：修正リパラオネ暦992年1月3日 = ピリフィアー暦2003年2月25日
+        const RIPA_ANCHOR = { year: 992, month: 1, day: 3 };
+        const RIPA_ANCHOR_PHIL = { year: 2003, month: 2, day: 25 };
         const RIPA_ANCHOR_PHIL_ABS = phil_toAbs(RIPA_ANCHOR_PHIL.year, RIPA_ANCHOR_PHIL.month, RIPA_ANCHOR_PHIL.day);
 
-        // 閏年判定: 728年以降の4の倍数の年のみ閏年
+        // 閏年判定: 665年以降、2000年周期で503回の閏年（ピリフィアー暦と同じルール）
+        const RIPA_LEAP_START_YEAR = 668;
+        const RIPA_CYCLE_YEARS = 2000;
+        const RIPA_SPECIAL_LEAP_POS = new Set([250, 750, 1250]);
+
+        function ripa_cycleInfo(y) {
+            if (y < RIPA_LEAP_START_YEAR) return { q: 0, pos: 0, inCycle: false };
+            const offset = y - RIPA_LEAP_START_YEAR;
+            const q = Math.floor(offset / RIPA_CYCLE_YEARS);
+            const pos = (offset % RIPA_CYCLE_YEARS) + 1;
+            return { q, pos, inCycle: true };
+        }
+
         function ripa_isLeapYear(y) {
-            if (y < 728) return false;
-            return y % 4 === 0;
+            if (y < RIPA_LEAP_START_YEAR) return false;
+            const { pos } = ripa_cycleInfo(y);
+            return (pos % 4 === 0) || RIPA_SPECIAL_LEAP_POS.has(pos);
         }
 
         // 年の日数
@@ -1392,25 +1371,43 @@
             return ripa_isLeapYear(y) ? RIPA_YEAR_DAYS + 1 : RIPA_YEAR_DAYS;
         }
 
-        // 年の開始日からRIPAアンカーまでの通算日数（ripaAbs）
-        // ripaAbs 0 = 728年1月1日
-        function ripa_daysBeforeYear(y) {
-            // 728年を基準（day 0）に計算
-            if (y === 728) return 0;
+        // 年の閏年数を計算（2000年周期内）
+        function ripa_prefixLeapsInCycle(n) {
+            if (n <= 0) return 0;
+            let c = Math.floor(n / 4);
+            if (n >= 250) c += 1;
+            if (n >= 750) c += 1;
+            if (n >= 1250) c += 1;
+            return c;
+        }
 
-            if (y > 728) {
+        // アンカー年月日からのオフセットを計算
+        const RIPA_ANCHOR_DAY_IN_YEAR = (function () {
+            let d = 0;
+            for (let i = 1; i < RIPA_ANCHOR.month; i++) d += RIPA_MONTHS[i - 1].days;
+            d += RIPA_ANCHOR.day - 1;
+            return d;
+        })();
+
+        // 年の開始日からRIPAアンカーまでの通算日数（ripaAbs）
+        // ripaAbs 0 = RIPA_ANCHOR年月日
+        function ripa_daysBeforeYear(y) {
+            const anchorY = RIPA_ANCHOR.year;
+            if (y === anchorY) return -RIPA_ANCHOR_DAY_IN_YEAR;
+
+            if (y > anchorY) {
                 let total = 0;
-                for (let yr = 728; yr < y; yr++) {
+                for (let yr = anchorY; yr < y; yr++) {
                     total += ripa_yearDays(yr);
                 }
-                return total;
+                return total - RIPA_ANCHOR_DAY_IN_YEAR;
             } else {
-                // y < 728
+                // y < anchorY
                 let total = 0;
-                for (let yr = y; yr < 728; yr++) {
+                for (let yr = y; yr < anchorY; yr++) {
                     total += ripa_yearDays(yr);
                 }
-                return -total;
+                return -total - RIPA_ANCHOR_DAY_IN_YEAR;
             }
         }
 
@@ -1420,7 +1417,7 @@
             return s;
         }
 
-        // ripaAbs: 728年1月1日 = 0
+        // ripaAbs: RIPA_ANCHOR年月日 = 0
         function ripa_toAbs(y, m, d) {
             return ripa_daysBeforeYear(y) + ripa_daysBeforeMonth(m) + (d - 1);
         }
@@ -1436,8 +1433,8 @@
         }
 
         // 曜日インデックス（閏日を除く通算日数ベース）
-        // 728年1月1日を基準として曜日計算
-        // まず728年1月1日の曜日を決定する必要がある
+        // RIPA_ANCHOR年月日を基準として曜日計算
+        // まずRIPA_ANCHORの曜日を決定する必要がある
         // 仕様では明示されていないので、0（開曜日）とする
         const RIPA_EPOCH_DOW0 = 0;
 
@@ -1447,13 +1444,14 @@
             let dayCount = ripa_daysBeforeMonth(m) + (d - 1);
 
             // 前年までの「通常日数」（閏日を除く）
+            const anchorY = RIPA_ANCHOR.year;
             let yearDaysBeforeEpoch = 0;
-            if (y > 728) {
-                for (let yr = 728; yr < y; yr++) {
+            if (y > anchorY) {
+                for (let yr = anchorY; yr < y; yr++) {
                     yearDaysBeforeEpoch += RIPA_YEAR_DAYS; // 閏日を除く
                 }
-            } else if (y < 728) {
-                for (let yr = y; yr < 728; yr++) {
+            } else if (y < anchorY) {
+                for (let yr = y; yr < anchorY; yr++) {
                     yearDaysBeforeEpoch -= RIPA_YEAR_DAYS;
                 }
             }
@@ -1562,13 +1560,8 @@
                 cell.appendChild(num);
 
                 const w = ripa_weekdayIndex(year, month, day);
-                const tags = [];
-                if (hasNew) tags.push("朔");
-                if (hasFull) tags.push("望");
 
-                cell.title = `${year}年 ${m.name} ${day}日 / ${RIPA_DOW[w]}\n` +
-                    `月齢 ${age.toFixed(3)}日（${phase.name}）` +
-                    (tags.length ? ` / ${tags.join("・")}` : "");
+                cell.title = `月齢 ${age.toFixed(3)}日（${phase.name}）`;
 
                 days.appendChild(cell);
             }
@@ -1627,7 +1620,7 @@
               <div>
                 <span class="pill">年 ${y}</span>
                 <span class="pill ${isLeap ? "warn" : ""}">${isLeap ? "閏年" : "平年"}</span>
-                ${y < 728 ? `<span class="pill">728年以前のため閏年なし</span>` : ""}
+                ${y < RIPA_LEAP_START_YEAR ? `<span class="pill">${RIPA_LEAP_START_YEAR}年以前のため閏年なし</span>` : ""}
               </div>
             `;
 
@@ -1686,7 +1679,7 @@
         const outR_lunar = document.getElementById("outR_lunar");
 
         document.getElementById("anchorView").innerHTML =
-            `ピリフィアー暦 1740/12/2 = 修正リパラオネ暦 728/1/1<br>` +
+            `ピリフィアー暦 2003/2/25 = 修正リパラオネ暦 992/1/3<br>` +
             `ピリフィアー暦 1384/5/10 = フィーク暦 1/1/1`;
 
         function setOut(el, s, isErr = false) {
@@ -1704,9 +1697,9 @@
         function philAbs_toRipa(philAbs) {
             const ripaAbs = philAbs - RIPA_ANCHOR_PHIL_ABS;
             // ripaAbsから年月日を逆算
-            // 728年1月1日 = ripaAbs 0
-            let y = 728;
-            let rem = ripaAbs;
+            // RIPA_ANCHOR年月日 = ripaAbs 0
+            let y = RIPA_ANCHOR.year;
+            let rem = ripaAbs + RIPA_ANCHOR_DAY_IN_YEAR;
 
             if (rem >= 0) {
                 while (rem >= ripa_yearDays(y)) {
@@ -1714,7 +1707,7 @@
                     y++;
                 }
             } else {
-                y = 727;
+                y = RIPA_ANCHOR.year - 1;
                 while (rem < 0) {
                     rem += ripa_yearDays(y);
                     y--;
@@ -1744,75 +1737,107 @@
             return { year: y, month: m, day: d, isLeap: ripa_isLeapYear(y), monthName: RIPA_MONTHS[m - 1].name };
         }
 
-        // ピリフィアー暦から変換
-        function doPhilConvert() {
+        // ========================================
+        // 暦変換：相互同期
+        // ========================================
+        const outLunar = document.getElementById("outLunar");
+        const philStatus = document.getElementById("philStatus");
+        const ripaStatus = document.getElementById("ripaStatus");
+        const fiikStatus = document.getElementById("fiikStatus");
+
+        let syncing = false; // 再帰防止フラグ
+
+        function updateLunarDisplay(philAbs) {
+            const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
+            const hasNew = phil_dayHasNewMoon(philAbs);
+            const hasFull = phil_dayHasFullMoon(philAbs);
+            const isExactMoon = hasNew || hasFull;
+            const phase = phaseForAge(lunarAge, isExactMoon);
+            setOut(outLunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}`);
+        }
+
+        // ピリフィアー暦から他の暦に同期
+        function syncFromPhil() {
+            if (syncing) return;
+            syncing = true;
             try {
                 const y = intOrNaN(pY.value), m = intOrNaN(pM.value), d = intOrNaN(pD.value);
                 const philAbs = phil_toAbs(y, m, d);
 
-                // 月齢計算
-                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
-                const hasNew = phil_dayHasNewMoon(philAbs);
-                const hasFull = phil_dayHasFullMoon(philAbs);
-                const isExactMoon = hasNew || hasFull;
-                const phase = phaseForAge(lunarAge, isExactMoon);
-                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
-                setOut(outP_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
+                // 月齢表示
+                updateLunarDisplay(philAbs);
+
+                // ピリフィアー暦ステータス
+                const philLeap = phil_isLeapYear(y) ? "（閏年）" : "（平年）";
+                philStatus.textContent = philLeap;
 
                 // → フィーク暦
                 const fiikAbs = philAbs - PHIL_AT_FIIK_EPOCH;
                 const fiik = fiik_fromAbsToCivil(fiikAbs);
-                const fiikLeap = fiik.isLeap ? "（閏年）" : "";
-                setOut(outP_fiik, `${fiik.year}年 ${fiik.month}月 ${fiik.day}日 ${fiikLeap}`);
+                fY.value = fiik.year;
+                fM.value = fiik.month;
+                fD.value = fiik.day;
+                fiikStatus.textContent = fiik.isLeap ? "（閏年）" : "（平年）";
 
                 // → 修正リパラオネ暦
                 const ripa = philAbs_toRipa(philAbs);
-                const ripaLeap = ripa.isLeap ? "（閏年）" : "";
-                const ripaDay = ripa.isLeapDay ? "閏日" : `${ripa.day}日`;
-                setOut(outP_ripa, `${ripa.year}年 ${ripa.monthName || ripa.month + '月'} ${ripaDay} ${ripaLeap}`);
+                rY.value = ripa.year;
+                rM.value = ripa.month;
+                rD.value = ripa.isLeapDay ? 36 : ripa.day;
+                ripaStatus.textContent = ripa.isLeap ? "（閏年）" : (ripa.year < 668 ? "668年以前のため閏年なし" : "（平年）");
+
+                updateFiikDayMax();
+                updateRipaDayMax();
             } catch (e) {
-                setOut(outP_fiik, e.message || String(e), true);
-                setOut(outP_ripa, "—");
-                setOut(outP_lunar, "—");
+                setOut(outLunar, "—");
+                philStatus.textContent = e.message || String(e);
             }
+            syncing = false;
         }
 
-        // フィーク暦から変換
-        function doFiikConvert() {
+        // フィーク暦から他の暦に同期
+        function syncFromFiik() {
+            if (syncing) return;
+            syncing = true;
             try {
                 const y = intOrNaN(fY.value), m = intOrNaN(fM.value), d = intOrNaN(fD.value);
                 const fiikAbs = fiik_toAbsCivil(y, m, d);
                 const philAbs = fiikAbs + PHIL_AT_FIIK_EPOCH;
 
-                // 月齢計算
-                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
-                const hasNew = phil_dayHasNewMoon(philAbs);
-                const hasFull = phil_dayHasFullMoon(philAbs);
-                const isExactMoon = hasNew || hasFull;
-                const phase = phaseForAge(lunarAge, isExactMoon);
-                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
-                setOut(outF_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
+                // 月齢表示
+                updateLunarDisplay(philAbs);
+
+                // フィーク暦ステータス
+                const info = fiik_getYearInfo(y);
+                fiikStatus.textContent = info.isLeap ? "（閏年）" : "（平年）";
 
                 // → ピリフィアー暦
                 const phil = phil_fromAbs(philAbs);
-                const philName = PHIL_MONTHS[phil.month - 1]?.name ?? String(phil.month);
-                const philLeap = (phil.month === 12 && phil_monthDaysInYear(phil.year, 12) === 32) ? "（閏年）" : "";
-                setOut(outF_phil, `${phil.year}年 ${philName} ${phil.day}日 ${philLeap}`);
+                pY.value = phil.year;
+                pM.value = phil.month;
+                pD.value = phil.day;
+                philStatus.textContent = phil_isLeapYear(phil.year) ? "（閏年）" : "（平年）";
 
                 // → 修正リパラオネ暦
                 const ripa = philAbs_toRipa(philAbs);
-                const ripaLeap = ripa.isLeap ? "（閏年）" : "";
-                const ripaDay = ripa.isLeapDay ? "閏日" : `${ripa.day}日`;
-                setOut(outF_ripa, `${ripa.year}年 ${ripa.monthName || ripa.month + '月'} ${ripaDay} ${ripaLeap}`);
+                rY.value = ripa.year;
+                rM.value = ripa.month;
+                rD.value = ripa.isLeapDay ? 36 : ripa.day;
+                ripaStatus.textContent = ripa.isLeap ? "（閏年）" : (ripa.year < 668 ? "668年以前のため閏年なし" : "（平年）");
+
+                updatePhilDayMax();
+                updateRipaDayMax();
             } catch (e) {
-                setOut(outF_phil, e.message || String(e), true);
-                setOut(outF_ripa, "—");
-                setOut(outF_lunar, "—");
+                setOut(outLunar, "—");
+                fiikStatus.textContent = e.message || String(e);
             }
+            syncing = false;
         }
 
-        // 修正リパラオネ暦から変換
-        function doRipaConvert() {
+        // 修正リパラオネ暦から他の暦に同期
+        function syncFromRipa() {
+            if (syncing) return;
+            syncing = true;
             try {
                 const y = intOrNaN(rY.value), m = intOrNaN(rM.value), d = intOrNaN(rD.value);
 
@@ -1823,40 +1848,84 @@
 
                 const philAbs = ripa_toPhilAbsFull(y, m, d);
 
-                // 月齢計算
-                const lunarAge = phil_lunarAgeForAbsoluteDay(philAbs);
-                const hasNew = phil_dayHasNewMoon(philAbs);
-                const hasFull = phil_dayHasFullMoon(philAbs);
-                const isExactMoon = hasNew || hasFull;
-                const phase = phaseForAge(lunarAge, isExactMoon);
-                const exactTag = hasNew ? " 【朔】" : (hasFull ? " 【望】" : "");
-                setOut(outR_lunar, `${lunarAge.toFixed(3)}日（${phase.name}） ${phase.mark}${exactTag}`);
+                // 月齢表示
+                updateLunarDisplay(philAbs);
+
+                // 修正リパラオネ暦ステータス
+                ripaStatus.textContent = ripa_isLeapYear(y) ? "（閏年）" : (y < 668 ? "668年以前のため閏年なし" : "（平年）");
 
                 // → ピリフィアー暦
                 const phil = phil_fromAbs(philAbs);
-                const philName = PHIL_MONTHS[phil.month - 1]?.name ?? String(phil.month);
-                const philLeap = (phil.month === 12 && phil_monthDaysInYear(phil.year, 12) === 32) ? "（閏年）" : "";
-                setOut(outR_phil, `${phil.year}年 ${philName} ${phil.day}日 ${philLeap}`);
+                pY.value = phil.year;
+                pM.value = phil.month;
+                pD.value = phil.day;
+                philStatus.textContent = phil_isLeapYear(phil.year) ? "（閏年）" : "（平年）";
 
                 // → フィーク暦
                 const fiikAbs = philAbs - PHIL_AT_FIIK_EPOCH;
                 const fiik = fiik_fromAbsToCivil(fiikAbs);
-                const fiikLeap = fiik.isLeap ? "（閏年）" : "";
-                setOut(outR_fiik, `${fiik.year}年 ${fiik.month}月 ${fiik.day}日 ${fiikLeap}`);
+                fY.value = fiik.year;
+                fM.value = fiik.month;
+                fD.value = fiik.day;
+                fiikStatus.textContent = fiik.isLeap ? "（閏年）" : "（平年）";
+
+                updatePhilDayMax();
+                updateFiikDayMax();
             } catch (e) {
-                setOut(outR_phil, e.message || String(e), true);
-                setOut(outR_fiik, "—");
-                setOut(outR_lunar, "—");
+                setOut(outLunar, "—");
+                ripaStatus.textContent = e.message || String(e);
             }
+            syncing = false;
         }
 
-        document.getElementById("btnP").addEventListener("click", doPhilConvert);
-        document.getElementById("btnF").addEventListener("click", doFiikConvert);
-        document.getElementById("btnR").addEventListener("click", doRipaConvert);
+        // 日付の最大値を動的に更新する関数
+        function updatePhilDayMax() {
+            const m = Math.min(12, Math.max(1, parseInt(pM.value) || 1));
+            const y = parseInt(pY.value) || 0;
+            const maxDay = phil_monthDaysInYear(y, m);
+            pD.max = maxDay;
+            if (parseInt(pD.value) > maxDay) pD.value = maxDay;
+        }
 
-        [pY, pM, pD].forEach(el => el.addEventListener("input", doPhilConvert));
-        [fY, fM, fD].forEach(el => el.addEventListener("input", doFiikConvert));
-        [rY, rM, rD].forEach(el => el.addEventListener("input", doRipaConvert));
+        function updateFiikDayMax() {
+            const y = parseInt(fY.value) || 1;
+            const info = fiik_getYearInfo(y);
+            const m = Math.min(info.monthsCount, Math.max(1, parseInt(fM.value) || 1));
+            const idx0 = m - 1;
+            const maxDay = info.monthDays[idx0];
+            fD.max = maxDay;
+            fM.max = info.monthsCount;
+            if (parseInt(fD.value) > maxDay) fD.value = maxDay;
+            if (parseInt(fM.value) > info.monthsCount) fM.value = info.monthsCount;
+        }
+
+        function updateRipaDayMax() {
+            const m = Math.min(12, Math.max(1, parseInt(rM.value) || 1));
+            const maxDay = RIPA_MONTHS[m - 1].days;
+            rD.max = maxDay;
+            if (parseInt(rD.value) > maxDay) rD.value = maxDay;
+        }
+
+        // イベントリスナー
+        [pY, pM, pD].forEach(el => el.addEventListener("input", () => { updatePhilDayMax(); syncFromPhil(); }));
+        [rY, rM, rD].forEach(el => el.addEventListener("input", () => { updateRipaDayMax(); syncFromRipa(); }));
+        [fM, fD].forEach(el => el.addEventListener("input", () => { updateFiikDayMax(); syncFromFiik(); }));
+
+        // フィーク暦の0年スキップ処理
+        let fiikConvLastYear = parseInt(fY.value) || 1;
+        fY.addEventListener("input", () => {
+            const current = parseInt(fY.value);
+            if (current === 0) {
+                if (fiikConvLastYear > 0) {
+                    fY.value = -1;
+                } else {
+                    fY.value = 1;
+                }
+            }
+            fiikConvLastYear = parseInt(fY.value) || 1;
+            updateFiikDayMax();
+            syncFromFiik();
+        });
 
         // ========================================
         // 初期化
@@ -1867,9 +1936,10 @@
         phil_render();
         ripa_syncUI();
         ripa_render();
-        doPhilConvert();
-        doFiikConvert();
-        doRipaConvert();
+        updatePhilDayMax();
+        updateFiikDayMax();
+        updateRipaDayMax();
+        syncFromPhil();  // 初期同期
     </script>
 </body>
 
