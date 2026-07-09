@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>リパライン語 辞書・形態素解析</title>
+<style>
+:root{
+  --ink:#1c2530; --paper:#f4f6f8; --card:#ffffff; --line:#d8dee5;
+  --accent:#274c8f; --accent-bg:#e7eefb;
+  --stem:#274c8f; --stem-bg:#e7eefb;
+  --prefix:#0f6b5c; --prefix-bg:#e2f3ef;
+  --suffix:#8a4b0f; --suffix-bg:#faeedd;
+  --buffer:#5a5f6a; --buffer-bg:#eceef1;
+  --case:#7a2e63; --case-bg:#f6e7f1;
+  --digit:#4a4f9b; --digit-bg:#e9eafa;
+  --pos:#0f6b5c; --pos-bg:#e2f3ef;
+  --meta:#77808c; --ety:#8a8f98;
+  --usage:#7a2e63; --usage-bg:#f6e7f1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic UI",system-ui,sans-serif;
+  font-size:15px;line-height:1.7}
+.wrap{max-width:880px;margin:0 auto;padding:24px 20px 64px}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:12px}
+header h1{font-size:21px;margin:0;letter-spacing:.02em}
+header .stat{font-size:12px;color:var(--meta)}
+nav.tabs{display:flex;gap:6px;margin-bottom:14px}
+nav.tabs button{padding:8px 22px;font-size:14px;border:1px solid var(--line);
+  border-radius:99px;background:var(--card);cursor:pointer;color:var(--ink)}
+nav.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+nav.tabs button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+section[hidden]{display:none}
+footer{margin-top:26px;font-size:12px;color:var(--meta)}
+
+/* ---- 分解 ---- */
+.inputrow{display:flex;gap:10px;flex-wrap:wrap}
+#word{flex:1;min-width:240px;font-size:16px;padding:10px 12px;border:1px solid var(--line);
+  border-radius:8px;font-family:"SF Mono",Consolas,"Noto Sans Mono",monospace}
+#word:focus,#q:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+#run{padding:10px 22px;font-size:15px;border:none;border-radius:8px;background:var(--accent);
+  color:#fff;cursor:pointer;font-weight:600}
+#run:hover{filter:brightness(1.12)}
+.opts{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:13px;color:#3d4652}
+.opts label{display:flex;align-items:center;gap:5px;cursor:pointer}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0;font-size:12px}
+.legend span{padding:2px 10px;border-radius:99px}
+  padding:10px 16px;margin-bottom:16px;font-size:14px;color:#3d4652}
+  letter-spacing:.18em;margin-left:10px;word-break:break-all}
+.word-block{margin-bottom:20px}
+.word-head{font-family:"SF Mono",Consolas,monospace;font-size:17px;font-weight:700;margin-bottom:6px}
+.word-head .count{font-weight:400;font-size:12px;color:var(--meta);margin-left:8px}
+.seg-head{font-family:"SF Mono",Consolas,monospace;font-size:14px;color:#3d4652;margin:8px 0 2px;
+  padding-left:2px}
+.seg-head::before{content:"▸ ";color:var(--meta)}
+.parse{display:flex;align-items:center;flex-wrap:wrap;gap:4px;padding:7px 10px;border-radius:8px}
+.parse:nth-child(even){background:#f8fafb}
+.morph{display:inline-block;padding:2px 9px;border-radius:6px;font-family:"SF Mono",Consolas,monospace;
+  font-size:14px;border:1px solid transparent;cursor:pointer}
+.morph:hover{border-color:currentColor}
+.joint{color:#9aa3ad;font-size:12px}
+.m-stem{color:var(--stem);background:var(--stem-bg)}
+.m-prefix{color:var(--prefix);background:var(--prefix-bg)}
+.m-suffix{color:var(--suffix);background:var(--suffix-bg)}
+.m-buffer_to_stem,.m-buffer_to_suffix,.m-buffer_consonant{color:var(--buffer);background:var(--buffer-bg)}
+.m-case_eu,.m-case_t{color:var(--case);background:var(--case-bg)}
+.m-digit{color:var(--digit);background:var(--digit-bg)}
+.none{color:#8a5a2e;background:#fdf3e4;border:1px solid #f0dcc0;border-radius:8px;padding:9px 12px;font-size:13px}
+.meterline{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:10px 16px;margin-bottom:16px;font-size:14px;color:#3d4652}
+.meterline b{font-family:"SF Mono",Consolas,monospace;letter-spacing:.18em;color:var(--accent);
+  font-weight:700;margin-left:8px;word-break:break-all}
+#tip{position:absolute;z-index:40;max-width:300px;background:var(--ink);color:#fff;
+  font-size:12.5px;line-height:1.5;padding:6px 10px;border-radius:7px;pointer-events:none;
+  box-shadow:0 3px 10px rgba(20,25,35,.25)}
+#tip b{color:#cfe0ff;font-family:"SF Mono",Consolas,monospace;margin-right:6px}
+#tip[hidden]{display:none}
+textarea#jsonout{width:100%;height:220px;font-family:"SF Mono",Consolas,monospace;font-size:12px;
+  border:1px solid var(--line);border-radius:8px;padding:10px}
+
+/* ---- 辞書 ---- */
+.searchbar{position:sticky;top:0;z-index:5;background:var(--paper);padding:6px 0 12px}
+#q{width:100%;font-size:17px;padding:11px 14px;border:1px solid var(--line);border-radius:8px;
+  font-family:"SF Mono",Consolas,"Noto Sans Mono",monospace}
+.opts fieldset{border:none;margin:0;padding:0;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.opts legend{float:left;padding:0 6px 0 0;color:var(--meta);font-size:12px}
+.opts select{font-size:13px;padding:2px 6px;border:1px solid var(--line);border-radius:6px;background:var(--card)}
+#count{font-size:13px;color:var(--meta);margin:12px 2px 8px}
+.entry{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+.entry h2{margin:0 0 4px;font-size:18px;font-family:"SF Mono",Consolas,monospace;color:var(--accent)}
+.entry h2 .pron{font-size:13px;color:var(--meta);font-family:inherit;margin-left:10px;font-weight:400}
+.entry h2 .dbadge{font-size:11px;color:var(--usage);background:var(--usage-bg);border-radius:99px;
+  padding:1px 9px;margin-left:10px;font-family:inherit;font-weight:600;vertical-align:2px}
+.entry h2 .decomp{font-size:12px;color:var(--accent);font-family:inherit;font-weight:400;
+  margin-left:12px;cursor:pointer;text-decoration:underline}
+.entry h2 .foot{font-size:13px;color:#3d4652;background:var(--buffer-bg);border-radius:6px;
+  padding:1px 8px;margin-left:10px;font-weight:400;letter-spacing:.06em}
+.entry h2 .foot b{color:var(--accent);font-weight:700;letter-spacing:.15em;margin-left:6px}
+.tl{margin:0;white-space:pre-wrap;word-break:break-word}
+.tl .pos{color:var(--pos);background:var(--pos-bg);border-radius:5px;padding:0 5px;font-size:13px;margin-right:2px}
+.tl .usage{color:var(--usage);background:var(--usage-bg);border-radius:5px;padding:0 5px;font-size:13px}
+.tl .ety{color:var(--ety);font-size:13px}
+.tl mark{background:#ffe9a8;padding:0 1px;border-radius:2px}
+.tl a.url,.ex a.url{color:var(--accent);text-decoration:underline;word-break:break-all}
+.tl a.url:hover,.ex a.url:hover{background:var(--accent-bg)}
+.ex{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--line);color:#3d4652;font-size:14px;white-space:pre-wrap}
+.imgs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.imgs img{max-width:280px;max-height:210px;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;object-fit:cover}
+dialog#zoom{border:none;border-radius:10px;padding:0;max-width:92vw;max-height:92vh;background:transparent}
+dialog#zoom::backdrop{background:rgba(20,25,35,.75)}
+dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;cursor:zoom-out}
+.corpusbtn{font-size:12px;color:var(--accent);font-family:inherit;font-weight:400;
+  margin-left:12px;cursor:pointer;text-decoration:underline}
+.plink{font-size:12px;color:var(--accent);font-weight:400;margin-left:12px;text-decoration:underline}
+.corpus{margin-top:10px}
+.corpus .chead{font-size:12px;color:var(--meta);margin-bottom:4px}
+.cline{margin:6px 0 0;padding:7px 12px;border-left:3px solid var(--accent-bg);
+  background:#f8fafb;font-size:14px;border-radius:0 8px 8px 0;word-break:break-word}
+.cline .csrc{display:block;font-size:11.5px;color:var(--meta);margin-top:2px}
+.cline mark{background:#ffe9a8;padding:0 1px;border-radius:2px}
+.cmore{margin-top:8px;padding:4px 16px;font-size:12px;border:1px solid var(--line);
+  border-radius:99px;background:var(--card);cursor:pointer;color:#3d4652}
+.cmore:hover{border-color:var(--accent);color:var(--accent)}
+.src{margin:6px 0 0;font-size:13px;color:var(--meta)}
+.src a,a[data-goto]{color:var(--accent);cursor:pointer;text-decoration:underline;
+  font-family:"SF Mono",Consolas,monospace}
+.err{color:#8a2e2e;background:#fdeaea;border:1px solid #f0c0c0;border-radius:8px;padding:10px 14px;font-size:13px;margin-top:8px}
+.fallback{color:#5a6472;background:var(--accent-bg);border-radius:8px;padding:8px 12px;font-size:13px;margin-bottom:8px}
+.pager{display:flex;justify-content:center;align-items:center;gap:6px;margin:18px 0;flex-wrap:wrap}
+.pager button{min-width:38px;height:38px;padding:0 8px;font-size:14px;border:1px solid var(--line);
+  border-radius:8px;background:var(--card);cursor:pointer;color:var(--ink)}
+.pager button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.pager button[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.pager button:disabled{opacity:.35;cursor:default}
+.pager .gap{color:var(--meta);padding:0 2px;user-select:none}
+.shufflebtn{padding:4px 14px;font-size:12px;border:1px solid var(--line);border-radius:99px;
+  background:var(--card);cursor:pointer;color:#3d4652;margin:12px 0 8px}
+.shufflebtn:hover{border-color:var(--accent);color:var(--accent)}
+/* ---- Wordle ---- */
+#wgrid{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;width:min(340px,86vw);margin:18px auto}
+.wrow{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wcell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-family:"SF Mono",Consolas,monospace;font-size:26px;font-weight:700;text-transform:lowercase;
+  border:2px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.wcell.filled{border-color:#9aa3ad}
+.wcell.hit{background:#0f6b5c;border-color:#0f6b5c;color:#fff}
+.wcell.near{background:#c98a1b;border-color:#c98a1b;color:#fff}
+.wcell.miss{background:#5a5f6a;border-color:#5a5f6a;color:#fff}
+#wkbd{display:flex;flex-direction:column;gap:6px;align-items:center;margin:14px 0}
+#wkbd .krow{display:flex;gap:5px}
+#wkbd button{min-width:30px;height:44px;padding:0 8px;font-size:14px;font-weight:600;
+  border:none;border-radius:6px;background:var(--line);cursor:pointer;color:var(--ink);
+  font-family:"SF Mono",Consolas,monospace}
+#wkbd button.wide{min-width:56px;font-size:12px}
+#wkbd button.hit{background:#0f6b5c;color:#fff}
+#wkbd button.near{background:#c98a1b;color:#fff}
+#wkbd button.miss{background:#5a5f6a;color:#fff}
+#wmsg{text-align:center;min-height:28px;font-size:14px;color:#3d4652}
+#wmsg .wans{font-family:"SF Mono",Consolas,monospace;font-weight:700;color:var(--accent);cursor:pointer;
+  text-decoration:underline}
+.wctrl{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:6px;font-size:13px}
+#wnew{padding:8px 24px;font-size:14px;border:none;border-radius:8px;background:var(--accent);
+  color:#fff;cursor:pointer;font-weight:600}
+@media (max-width:560px){.opts{gap:8px}}
+#loading[hidden]{display:none}
+#loading{position:fixed;inset:0;background:var(--paper);z-index:50;display:flex;
+  align-items:center;justify-content:center;flex-direction:column;gap:14px}
+#loading .box{width:min(420px,86vw);text-align:center}
+#loadmsg{font-size:14px;color:#3d4652;margin-bottom:10px}
+#loadbar{width:100%;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+#loadbar div{height:100%;width:0%;background:var(--accent);transition:width .2s}
+#loaderr{color:#8a2e2e;font-size:13px;margin-top:10px}
+#loaderr button{margin-left:8px;padding:4px 14px;border:1px solid var(--line);border-radius:8px;
+  background:var(--card);cursor:pointer}
+.imgload{padding:7px 16px;font-size:13px;border:1px solid var(--line);border-radius:8px;
+  background:var(--card);cursor:pointer;color:var(--accent);margin-top:10px}
+.imgload:hover{border-color:var(--accent)}
+.imgload:disabled{opacity:.5;cursor:wait}
+</style>
+</head>
+<body>
+<div id="loading"><div class="box">
+  <div id="loadmsg">辞書を読み込んでいます…</div>
+  <div id="loadbar"><div id="loadbarin"></div></div>
+  <div id="loaderr"></div>
+</div></div>
+<div class="wrap">
+<header>
+  <h1>リパライン語 辞書・形態素解析</h1>
+  <span class="stat" id="stat"></span>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button id="tab-dec" role="tab" aria-selected="true">形態素解析</button>
+  <button id="tab-dic" role="tab" aria-selected="false">辞書</button>
+  <button id="tab-wdl" role="tab" aria-selected="false">Wordle</button>
+</nav>
+
+<!-- ============ 分解 ============ -->
+<section id="sec-dec" role="tabpanel">
+  <div class="panel">
+    <div class="inputrow">
+      <input type="text" id="word" placeholder="単語を入力（空白区切りで複数可）" spellcheck="false"
+        aria-label="解析する単語（空白区切りで複数可）">
+      <button id="run">解析する</button>
+    </div>
+    <div class="opts">
+      <label><input type="checkbox" id="obsolete">廃止された緩衝子音などを含める</label>
+      <label><input type="checkbox" id="jsonmode">JSON形式で出力する</label>
+    </div>
+  </div>
+  <div class="legend" aria-hidden="true">
+    <span class="m-stem">語幹</span><span class="m-prefix">接頭辞</span>
+    <span class="m-suffix">接尾辞</span><span class="m-buffer_to_stem">緩衝音</span>
+    <span class="m-case_eu">格語尾</span><span class="m-digit">数字</span>
+  </div>
+  <div id="ans" aria-live="polite"></div>
+  <p style="font-size:12px;color:var(--meta)">形態素をクリックすると辞書タブで参照します。分解結果は少ない形態素数の解析から順に表示されます。</p>
+</section>
+
+<!-- ============ 辞書 ============ -->
+<section id="sec-dic" role="tabpanel" hidden>
+  <div class="searchbar"><div class="panel">
+    <input type="search" id="q" placeholder="単語を入力（インクリメンタル検索）" spellcheck="false"
+      aria-label="検索語">
+    <div class="opts">
+      <fieldset id="scope"><legend>対象</legend>
+        <label><input type="radio" name="scope" value="both" checked>見出し語＋訳語</label>
+        <label><input type="radio" name="scope" value="head">見出し語</label>
+        <label><input type="radio" name="scope" value="trans">訳語</label>
+        <label><input type="radio" name="scope" value="full">全文</label>
+        <label><input type="radio" name="scope" value="foot">韻脚</label>
+      </fieldset>
+      <fieldset id="mode"><legend>方式</legend>
+        <label><input type="radio" name="mode" value="prefix" checked>前方一致</label>
+        <label><input type="radio" name="mode" value="partial">部分一致</label>
+        <label><input type="radio" name="mode" value="exact">完全一致</label>
+        <label><input type="radio" name="mode" value="regex">正規表現</label>
+      </fieldset>
+      <fieldset id="footopts" hidden><legend>母音</legend>
+        <label>頭母音 <select id="hv"><option value="">指定なし</option>
+          <option>a</option><option>e</option><option>i</option>
+          <option>o</option><option>u</option><option>y</option></select></label>
+        <label>末母音 <select id="tv"><option value="">指定なし</option>
+          <option>a</option><option>e</option><option>i</option>
+          <option>o</option><option>u</option><option>y</option></select></label>
+      </fieldset>
+    </div>
+    <div id="regexerr"></div>
+  </div></div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div id="count"></div>
+    <button id="shuffle" class="shufflebtn" title="表示順をシャッフル">シャッフル</button>
+  </div>
+  <div id="notice"></div>
+  <div id="results" aria-live="polite"></div>
+  <nav id="pager" class="pager" aria-label="ページ切り替え"></nav>
+</section>
+
+<!-- ============ Wordle ============ -->
+<section id="sec-wdl" role="tabpanel" hidden>
+  <div class="panel" style="text-align:center">
+    リパライン語の5文字の単語を6回以内に当ててください。
+    <span style="color:var(--meta);font-size:12px">緑=位置も文字も一致 / 橙=文字はあるが位置違い / 灰=含まれない</span>
+  </div>
+  <div id="wgrid"></div>
+  <div id="wmsg"></div>
+  <div id="wkbd"></div>
+  <div class="wctrl">
+    <button id="wnew">新しいゲーム</button>
+    <button id="wreveal" class="cmore" style="margin:0">回答を表示</button>
+    <label><input type="checkbox" id="wfree">辞書にない語も許可</label>
+  </div>
+</section>
+
+<footer>データ: <span id="datastatus"></span></footer>
+<dialog id="zoom"><img id="zoomimg" alt=""></dialog>
+<div id="tip" hidden></div>
+</div>
+
+<script>
+"use strict";
+/* ==================== 設定 ====================
+ * 辞書の取得元。CORS対応が必要（GitHub raw は対応済み）。
+ * Web公開時に同一オリジンに置くなら相対パスでも可。 */
+const DIC_URL = "https://raw.githubusercontent.com/jurliyuuri/lineparine/master/dictionary/lineparine.dic";
+
+let MORPHOLOGY, MORPHOLOGY_OBSOLETE, DICT, META, N = [], READER = null;
+
+/* ============================================================
+ * lineparine live core: PDIC/Unicode 6.10 リーダ(ブラウザ内・Range対応)
+ * 典拠: PDIC辞書形式仕様(6.10) / BOCU-1: UTN#6, ICUリファレンス定数
+ * ============================================================ */
+
+/* ---------------- BOCU-1 ---------------- */
+const B1 = (() => {
+  const MIDDLE = 0x90, TRAIL_COUNT = 243, TRAIL_BYTE_OFFSET = 0x21 - 20;
+  const REACH_POS_1 = 63, REACH_NEG_1 = -64;
+  const REACH_POS_2 = REACH_POS_1 + 43 * TRAIL_COUNT;
+  const REACH_NEG_2 = REACH_NEG_1 - 43 * TRAIL_COUNT;
+  const REACH_POS_3 = REACH_POS_2 + 3 * TRAIL_COUNT * TRAIL_COUNT;
+  const REACH_NEG_3 = REACH_NEG_2 - 3 * TRAIL_COUNT * TRAIL_COUNT;
+  const START_POS_2 = MIDDLE + REACH_POS_1 + 1;   // 0xD0
+  const START_POS_3 = START_POS_2 + 43;           // 0xFB
+  const START_POS_4 = START_POS_3 + 3;            // 0xFE
+  const START_NEG_2 = MIDDLE + REACH_NEG_1;       // 0x50
+  const START_NEG_3 = START_NEG_2 - 43;           // 0x25
+  const BYTE_TO_TRAIL = [-1,0,1,2,3,4,5,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+                          6,7,8,9,10,11,12,13,14,15,-1,-1,16,17,18,19,-1];
+  function prevState(c) {
+    if (c >= 0x3040 && c <= 0x309F) return 0x3070;
+    if (c >= 0x4E00 && c <= 0x9FA5) return 0x4E00 - REACH_NEG_2;
+    if (c >= 0xAC00 && c <= 0xD7A3) return (0xD7A3 + 0xAC00) >> 1;
+    return (c & ~0x7F) + 0x40;
+  }
+  function decode(bytes) {
+    let out = "", prev = 0x40, i = 0;
+    const n = bytes.length;
+    while (i < n) {
+      const b = bytes[i++];
+      if (b <= 0x20) { out += String.fromCharCode(b); if (b !== 0x20) prev = 0x40; continue; }
+      if (b === 0xFF) { prev = 0x40; continue; }
+      let diff, count;
+      if (b >= START_NEG_2 && b < START_POS_2) { diff = b - MIDDLE; count = 0; }
+      else if (b >= START_POS_2) {
+        if (b < START_POS_3)      { diff = (b - START_POS_2) * TRAIL_COUNT + REACH_POS_1 + 1; count = 1; }
+        else if (b < START_POS_4) { diff = (b - START_POS_3) * TRAIL_COUNT * TRAIL_COUNT + REACH_POS_2 + 1; count = 2; }
+        else                      { diff = REACH_POS_3 + 1; count = 3; }
+      } else {
+        if (b >= START_NEG_3)     { diff = (b - START_NEG_2) * TRAIL_COUNT + REACH_NEG_1; count = 1; }
+        else if (b > 0x21)        { diff = (b - START_NEG_3) * TRAIL_COUNT * TRAIL_COUNT + REACH_NEG_2; count = 2; }
+        else                      { diff = -TRAIL_COUNT * TRAIL_COUNT * TRAIL_COUNT + REACH_NEG_3; count = 3; }
+      }
+      while (count) {
+        let t = bytes[i++];
+        t = (t <= 0x20) ? BYTE_TO_TRAIL[t] : t - TRAIL_BYTE_OFFSET;
+        if (t < 0) throw new Error("BOCU-1: illegal trail byte");
+        diff += t * Math.pow(TRAIL_COUNT, count - 1);
+        count--;
+      }
+      const c = prev + diff;
+      if (c < 0 || c > 0x10FFFF) throw new Error("BOCU-1: out of range");
+      out += String.fromCodePoint(c);
+      prev = prevState(c);
+    }
+    return out;
+  }
+  return { decode };
+})();
+
+/* ---------------- Rangeリーダ ---------------- */
+class RangeReader {
+  constructor(url) { this.url = url; this.size = null; this.lastModified = null; }
+  async fetchRange(start, end) {           // end含む。一時的な通信失敗は自動リトライ
+    let res, lastErr;
+    for (let attempt = 0; attempt < 4; attempt++) {
+      if (attempt) await new Promise(r => setTimeout(r, 400 * attempt));
+      try {
+        res = await fetch(this.url, { headers: { Range: `bytes=${start}-${end}` } });
+        if (res.status === 206 || res.status === 200) { lastErr = null; break; }
+        lastErr = new Error("HTTP " + res.status);
+        if (res.status >= 400 && res.status < 500 && res.status !== 429) break; // 恒久的エラーは即時中断
+      } catch (e) { lastErr = e; }          // "Failed to fetch" 等のネットワークエラー
+    }
+    if (lastErr) throw lastErr;
+    if (!this.lastModified) this.lastModified = res.headers.get("Last-Modified");
+    const buf = new Uint8Array(await res.arrayBuffer());
+    if (res.status === 200) {               // Range非対応サーバへのフォールバック
+      this.whole = buf; this.size = buf.length;
+      return buf.subarray(start, end + 1);
+    }
+    const cr = res.headers.get("Content-Range");
+    if (cr && this.size === null) this.size = parseInt(cr.split("/")[1], 10);
+    return buf;
+  }
+  async read(start, len) {
+    if (this.whole) return this.whole.subarray(start, start + len);
+    return this.fetchRange(start, start + len - 1);
+  }
+}
+
+/* ---------------- PDIC 6.10 パーサ ---------------- */
+const PDIC = (() => {
+  const u16 = (b, o) => b[o] | (b[o + 1] << 8);
+  const u32 = (b, o) => (b[o] | (b[o+1] << 8) | (b[o+2] << 16) | (b[o+3] << 24)) >>> 0;
+
+  function parseHeader(head) {
+    const txt = new TextDecoder("latin1").decode(head.subarray(0, 100));
+    if (!txt.includes("Dictionary for PDIC")) throw new Error("PDIC辞書ではありません");
+    const version = u16(head, 0x8C);
+    if ((version >> 8) !== 6) throw new Error("未対応バージョン: 0x" + version.toString(16));
+    const h = {
+      index_block: u16(head, 0x94),
+      nword: u32(head, 0xA0),
+      dictype: head[0xA5],
+      index_blkbit: head[0xB6],
+      extheader: u32(head, 0xB8),
+      nindex2: u32(head, 0xC0),
+    };
+    if (h.dictype & 0x40) throw new Error("暗号化辞書は未対応です");
+    h.index_start = 1024 + h.extheader;
+    h.data_start = h.index_start + 1024 * h.index_block;
+    return h;
+  }
+
+  function parseIndex(h, idx) {
+    const bids = [];
+    let pos = 0;
+    for (let k = 0; k < h.nindex2; k++) {
+      const bid = h.index_blkbit ? u32(idx, pos) : u16(idx, pos);
+      pos += h.index_blkbit ? 4 : 2;
+      while (idx[pos] !== 0) pos++;         // ブロック先頭見出し語は読み飛ばす
+      pos++;
+      bids.push(bid);
+    }
+    return bids;
+  }
+
+  /* 1ブロックを解析。firstChunkはブロック先頭からの部分バイト列。
+     more(absOffset)で続きを取得(非同期)。バイナリ拡張(画像等)は本体を
+     取得せず {off,len} のみ記録して読み飛ばす。 */
+  async function parseBlock(baseAbs, firstChunk, more, sink) {
+    let buf = firstChunk, bufAbs = baseAbs, p = 0;
+    const abs = () => bufAbs + p;
+    async function ensure(nBytes) {
+      while (p + nBytes > buf.length) {
+        const nxt = await more(bufAbs + buf.length);
+        if (!nxt || nxt.length === 0) throw new Error("unexpected EOF in block");
+        const merged = new Uint8Array(buf.length + nxt.length);
+        merged.set(buf); merged.set(nxt, buf.length);
+        buf = merged;
+      }
+    }
+    function drop() {                        // 消費済み前方を捨ててメモリを抑える
+      if (p > 65536) { buf = buf.subarray(p); bufAbs += p; p = 0; }
+    }
+    async function skipTo(absTarget) {       // フェッチせずに読み飛ばす
+      if (absTarget <= bufAbs + buf.length) { p = absTarget - bufAbs; }
+      else { buf = new Uint8Array(0); bufAbs = absTarget; p = 0; }
+    }
+    async function readU16() { await ensure(2); const v = u16(buf, p); p += 2; return v; }
+    async function readU32() { await ensure(4); const v = u32(buf, p); p += 4; return v; }
+    async function readCStr(limitAbs) {      // NUL終端(またはlimit)までを返しNULを消費
+      let e = p;
+      for (;;) {
+        if (bufAbs + e >= limitAbs) break;
+        if (e >= buf.length) { await ensure(e - p + 1); }
+        if (buf[e] === 0) break;
+        e++;
+      }
+      const bytes = buf.subarray(p, e);
+      p = e + (bufAbs + e < limitAbs ? 1 : 0);
+      return bytes;
+    }
+
+    let blen = await readU16();
+    const wide = !!(blen & 0x8000);
+    blen &= 0x7FFF;
+    if (blen === 0) return;
+    const blockEnd = baseAbs + 1024 * blen;
+    let prevHead = new Uint8Array(0);
+    while (abs() < blockEnd) {
+      drop();
+      const flen = wide ? await readU32() : await readU16();
+      if (flen === 0) break;
+      await ensure(2);
+      const omit = buf[p], attr = buf[p + 1]; p += 2;
+      const entryEndAbs = abs() + flen;
+      if (attr === 0xFF) { await skipTo(entryEndAbs); continue; }   // リファレンス登録語
+      const headBytes = await readCStr(entryEndAbs);
+      const headRaw = new Uint8Array(omit + headBytes.length);
+      headRaw.set(prevHead.subarray(0, omit));
+      headRaw.set(headBytes, omit);
+      prevHead = headRaw;
+      const head = B1.decode(headRaw);
+      const tab = head.indexOf("\t");
+      const entry = { keyword: tab >= 0 ? head.slice(0, tab) : head,
+                      headword: tab >= 0 ? head.slice(tab + 1) : head,
+                      translation: "", pron: [], examples: [], lazyImages: [] };
+      if (attr & 0x10) {                    // 拡張構成
+        entry.translation = B1.decode(await readCStr(entryEndAbs));
+        while (abs() < entryEndAbs) {
+          await ensure(1);
+          const ea = buf[p]; p += 1;
+          if (ea === 0x80) break;
+          const kind = ea & 0x0F, binary = !!(ea & 0x10);
+          if (binary) {
+            const clen = wide ? await readU32() : await readU16();
+            entry.lazyImages.push({ off: abs(), len: clen });
+            await skipTo(abs() + clen);     // ★本体は取得しない
+          } else {
+            const txt = B1.decode(await readCStr(entryEndAbs));
+            if (kind === 1) entry.examples.push(txt);
+            else if (kind === 2) entry.pron.push(txt);
+          }
+        }
+      } else {
+        let raw = await readCStr(entryEndAbs);
+        while (raw.length && raw[raw.length - 1] === 0) raw = raw.subarray(0, raw.length - 1);
+        entry.translation = B1.decode(raw);
+      }
+      sink(entry);
+      await skipTo(entryEndAbs);
+    }
+  }
+
+  return { parseHeader, parseIndex, parseBlock, u16, u32 };
+})();
+
+/* ---------------- 語彙抽出（Python版と同一規則） ---------------- */
+const EXTRACT = (() => {
+  const KEEP = new Set(["af","anpan","clek","fam","firk","flanad","kerper","lelxfa","neffirain",
+    "nefkon","pirper","sarxyr","schesta","trefmi","udumito","xerfeuy",
+    "jurvel","cercercerker","emfafing","defar","egca"]);
+  const ALLCAPS = /^[A-Z0-9'.]{2,}$/;
+  const NOUN_ABBR = /^【名詞】\s*[（(\[]\s*略語/;
+  const STEM_RE = /^[a-z0-9']+$/;
+  const DERIV_LINE = /^【([^】\n]+)】\s*([a-z][a-z0-9'’]*)\s*(.*?)\s*$/;
+  function isAbbrev(headword, translation) {
+    if (KEEP.has(headword)) return false;
+    if (ALLCAPS.test(headword)) return true;
+    const first = translation.split("\r")[0].split("\n")[0];
+    return NOUN_ABBR.test(first);
+  }
+  return { isAbbrev, STEM_RE, DERIV_LINE };
+})();
+
+/* ---------------- 文法データ（緩衝音・遷移規則） ---------------- */
+const GRAMMAR = {
+  buffers: { buffer_to_stem: ["-a-","-e-","-i-","-l-","-m-","-rg-","-u-","-v-"],
+             buffer_to_suffix: ["-a-","-e-","-i-","-l-","-m-","-rg-","-u-","-v-"],
+             buffer_consonant: ["-inie-","-r-","-rapt-"] },
+  obsoleteExtra: ["-b-","-f-","-g-","-j-","-kh-","-rj-","-rv-","-rw-","-rz-","-s-","-w-"],
+  cases: { case_eu: ["-eu"], case_t: ["-t"] },
+  digits: ["0","1","2","3","4","5","6","7","8","9"],
+  transitions: [["START", "digit"], ["START", "prefix"], ["START", "stem"], ["buffer_consonant", "buffer_consonant"], ["buffer_consonant", "buffer_to_stem"], ["buffer_consonant", "prefix"], ["buffer_consonant", "stem"], ["buffer_consonant", "suffix"], ["buffer_to_stem", "buffer_consonant"], ["buffer_to_stem", "case_eu"], ["buffer_to_stem", "prefix"], ["buffer_to_stem", "stem"], ["buffer_to_stem", "suffix"], ["buffer_to_suffix", "buffer_consonant"], ["buffer_to_suffix", "case_eu"], ["buffer_to_suffix", "suffix"], ["case_eu", "END"], ["case_eu", "buffer_consonant"], ["case_eu", "buffer_to_suffix"], ["case_eu", "case_eu"], ["case_eu", "suffix"], ["case_t", "END"], ["case_t", "case_eu"], ["digit", "END"], ["digit", "buffer_consonant"], ["digit", "buffer_to_suffix"], ["digit", "case_eu"], ["digit", "digit"], ["digit", "suffix"], ["prefix", "buffer_to_stem"], ["prefix", "digit"], ["prefix", "prefix"], ["prefix", "stem"], ["prefix", "suffix"], ["stem", "END"], ["stem", "buffer_consonant"], ["stem", "buffer_to_suffix"], ["stem", "case_eu"], ["stem", "case_t"], ["stem", "suffix"], ["suffix", "END"], ["suffix", "buffer_consonant"], ["suffix", "buffer_to_suffix"], ["suffix", "case_eu"], ["suffix", "case_t"], ["suffix", "suffix"]],
+};
+
+/* ---------------- ロード全体の統括 ---------------- */
+async function loadDictionary(url, onProgress) {
+  const reader = new RangeReader(url);
+  onProgress("辞書ヘッダを取得中…", 0);
+  const head = await reader.read(0, 1024);
+  const h = PDIC.parseHeader(head);
+  onProgress("インデックスを取得中…", 0.02);
+  const idx = await reader.read(h.index_start, 1024 * h.index_block);
+  const bids = PDIC.parseIndex(h, idx);
+  // ブロックは連続配置: サイズ = 次ブロックとの差(最後はファイル末尾まで)
+  const sorted = bids.slice().sort((a, b) => a - b);
+  const sizeOf = new Map();
+  for (let i = 0; i < sorted.length; i++) {
+    const next = i + 1 < sorted.length ? sorted[i + 1]
+               : Math.ceil(((reader.size ?? (h.data_start + 1 << 20)) - h.data_start) / 1024);
+    sizeOf.set(sorted[i], next - sorted[i]);
+  }
+  const SMALL_KB = 32, HEAD_KB = 8, CONT_KB = 8;
+  // 連続する小ブロックをまとめて取得する計画を立てる
+  const tasks = [];
+  let run = null;
+  for (const bid of sorted) {
+    const kb = sizeOf.get(bid);
+    if (kb <= SMALL_KB) {
+      if (run && run.endBid === bid) { run.kb += kb; run.endBid = bid + kb; run.bids.push(bid); }
+      else { run = { startBid: bid, endBid: bid + kb, kb, bids: [bid] }; tasks.push(run); }
+    } else {
+      tasks.push({ big: true, bid, kb }); run = null;
+    }
+  }
+  const entries = [];
+  let done = 0;
+  const totalTasks = tasks.length;
+  async function runTask(t) {
+    if (!t.big) {
+      const base = h.data_start + 1024 * t.startBid;
+      const chunk = await reader.read(base, 1024 * t.kb);
+      for (const bid of t.bids) {
+        const rel = 1024 * (bid - t.startBid);
+        await PDIC.parseBlock(h.data_start + 1024 * bid, chunk.subarray(rel), 
+          async () => { throw new Error("small block overrun"); }, e => entries.push(e));
+      }
+    } else {
+      const base = h.data_start + 1024 * t.bid;
+      const first = await reader.read(base, 1024 * HEAD_KB);
+      await PDIC.parseBlock(base, first,
+        absOff => reader.read(absOff, 1024 * CONT_KB), e => entries.push(e));
+    }
+    done++;
+    onProgress(`辞書を取得中… ${entries.length} 項目`, 0.05 + 0.9 * done / totalTasks);
+  }
+  // 8並列で実行
+  const queue = tasks.slice();
+  await Promise.all(Array.from({ length: 10 }, async () => {
+    while (queue.length) await runTask(queue.shift());
+  }));
+  if (entries.length !== h.nword)
+    console.warn(`項目数不一致: parsed=${entries.length} header=${h.nword}`);
+  return { entries, reader, nword: h.nword };
+}
+
+/* エントリ列 → 辞書データ+分解語彙(Python版buildと同一ロジック) */
+function buildData(entries, sourceNote) {
+  const headset = new Set(entries.map(e => e.headword.toLowerCase()));
+  const stems = new Set(), prefixes = new Set(), suffixes = new Set();
+  const derived = new Map();
+  let nExcluded = 0;
+  const dict = [];
+  for (const w of entries) {
+    const e = { h: w.headword, t: w.translation };
+    if (w.pron.length) e.p = w.pron;
+    if (w.examples.length) e.e = w.examples;
+    if (w.lazyImages.length) e.iL = w.lazyImages;
+    const sc = SCAN.scan(w.headword);
+    if (sc) e.f = sc;
+    dict.push(e);
+    if (EXTRACT.isAbbrev(w.headword, w.translation)) { nExcluded++; continue; }
+    const hl = w.headword.toLowerCase();
+    if (/^-\S+-$/.test(hl)) { /* 緩衝音は文法データで管理 */ }
+    else if (/^\S+-$/.test(hl)) prefixes.add(hl);
+    else if (/^-\S+$/.test(hl)) {
+      if (hl !== "-t" && hl !== "-eu") suffixes.add(hl);  // 文法カテゴリ側と二重検知しない
+    }
+    else if (EXTRACT.STEM_RE.test(hl)) stems.add(hl);
+    for (const line of w.translation.split(/\r\n?|\n/)) {
+      const m = EXTRACT.DERIV_LINE.exec(line);
+      if (!m) continue;
+      const tok = m[2].replace(/’/g, "'");
+      if (tok.length < 3 || headset.has(tok.toLowerCase())) continue;
+      let d = derived.get(tok);
+      if (!d) { d = { glosses: [], parents: [] }; derived.set(tok, d); }
+      const g = "【" + m[1] + "】" + m[3];
+      if (!d.glosses.includes(g)) d.glosses.push(g);
+      if (!d.parents.includes(w.headword)) d.parents.push(w.headword);
+    }
+  }
+  const nHead = stems.size;
+  for (const [tok, d] of derived) {
+    stems.add(tok);
+    const e = { h: tok, t: d.glosses.join("\n"), d: d.parents };
+    const sc = SCAN.scan(tok);
+    if (sc) e.f = sc;
+    dict.push(e);
+  }
+  dict.sort((a, b) => a.h.toLowerCase() < b.h.toLowerCase() ? -1 : 1);
+  const morph = extra => ({
+    version: 1,
+    categories: {
+      stem: [...stems], prefix: [...prefixes], suffix: [...suffixes],
+      buffer_to_stem: [...new Set([...GRAMMAR.buffers.buffer_to_stem, ...extra])],
+      buffer_to_suffix: [...new Set([...GRAMMAR.buffers.buffer_to_suffix, ...extra])],
+      buffer_consonant: GRAMMAR.buffers.buffer_consonant,
+      ...GRAMMAR.cases, digit: GRAMMAR.digits,
+    },
+    transitions: GRAMMAR.transitions,
+  });
+  const meta = { source: sourceNote +
+    `（見出し語${entries.length}+派生語${derived.size}、略語${nExcluded}件除外）` };
+  return { dict, morphology: morph([]), morphologyObsolete: morph(GRAMMAR.obsoleteExtra), meta };
+}
+
+
+/* ==================== タブ ==================== */
+function showTab(which) {
+  for (const k of ["dec", "dic", "wdl"]) {
+    document.getElementById("sec-" + k).hidden = k !== which;
+    document.getElementById("tab-" + k).setAttribute("aria-selected", k === which);
+  }
+  if (which === "wdl") wordleInit();
+}
+document.getElementById("tab-dec").addEventListener("click", () => showTab("dec"));
+document.getElementById("tab-dic").addEventListener("click", () => showTab("dic"));
+document.getElementById("tab-wdl").addEventListener("click", () => showTab("wdl"));
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
+                  .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+
+/* ==================== 分解エンジン ==================== */
+function buildIndex(data) {
+  const next = new Map();
+  for (const [a, b] of data.transitions) {
+    if (!next.has(a)) next.set(a, []);
+    next.get(a).push(b);
+  }
+  const surface = new Map();
+  for (const [cat, forms] of Object.entries(data.categories)) {
+    surface.set(cat, forms.map(f => ({ display: f, s: f.replace(/-/g, "") }))
+                          .filter(x => x.s.length > 0));
+  }
+  return { next, surface };
+}
+function parseAll(text, idx, state, ix, memo) {
+  const key = idx + "|" + state;
+  if (memo.has(key)) return memo.get(key);
+  const nexts = ix.next.get(state) || [];
+  let results = [];
+  if (idx === text.length && nexts.includes("END")) results.push([]);
+  for (const cat of nexts) {
+    if (cat === "END") continue;
+    for (const { display, s } of ix.surface.get(cat) || []) {
+      if (text.startsWith(s, idx)) {
+        for (const rest of parseAll(text, idx + s.length, cat, ix, memo)) {
+          results.push([{ display, category: cat }, ...rest]);
+        }
+      }
+    }
+  }
+  memo.set(key, results);
+  return results;
+}
+/* ---- 緩衝音のクラス整合性検証（文法書1.2.5.1準拠） ----
+ * 単語クラスは直前までの語の最終母音で決まる: a/o(r)=紅, e/i(r)=蒼, u(r)=烏, y(r)=葵。
+ * 緩衝子音(-v-/-rg-/-m-/-l-)は母音連続を防ぐ位置に、
+ * 緩衝母音(-a-/-e-/-u-/-i-)は子音連続を防ぐ位置にのみ、クラス一致で現れる。 */
+const BUF_RULE = {
+  "-v-":  { cls: 1, vowel: false }, "-a-": { cls: 1, vowel: true },
+  "-rg-": { cls: 2, vowel: false }, "-e-": { cls: 2, vowel: true },
+  "-m-":  { cls: 3, vowel: false }, "-u-": { cls: 3, vowel: true },
+  "-l-":  { cls: 4, vowel: false }, "-i-": { cls: 4, vowel: true },
+};
+const V_ = "aiueoy";
+function wordClassOf(s) {
+  for (let i = s.length - 1; i >= 0; i--) {
+    const c = s[i];
+    if (c === "a" || c === "o") return 1;
+    if (c === "e" || c === "i") return 2;
+    if (c === "u") return 3;
+    if (c === "y") return 4;
+    if (c === "j" && !(i > 0 && V_.includes(s[i - 1]))) return 2;  // 母音的j=[i]
+  }
+  return null;
+}
+function endsInVowelSound(s) {
+  if (!s) return false;
+  const c = s[s.length - 1];
+  if (V_.includes(c)) return true;
+  if (c === "r" && s.length >= 2 && V_.includes(s[s.length - 2])) return true;  // 母音+r=長母音
+  if (c === "j" && !(s.length >= 2 && V_.includes(s[s.length - 2]))) return true; // 母音的j
+  return false;
+}
+function startsWithVowelSound(s) {
+  return s.length > 0 && V_.includes(s[0]);   // 語頭のj/wはグライド、'は子音扱い
+}
+/* 分離標識(【接続詞】[SO/OS分離標識])の語幹集合。辞書から自動抽出する。 */
+let SEPMARK = null;
+function sepmarkSet() {
+  if (!SEPMARK) {
+    SEPMARK = new Set();
+    for (const w of DICT) {
+      const first = w.t.replace(/\r\n?/g, "\n").split("\n").find(l => l.trim() !== "") || "";
+      if (/【接続詞】\s*\[(?:SO|OS)分離標識\]/.test(first)) SEPMARK.add(w.h.toLowerCase());
+    }
+  }
+  return SEPMARK;
+}
+function validParse(parse) {
+  // -t(格語尾接続辞)はアポストロフィ格語尾(-'c, -'s, -'d等)または
+  // 分離標識(fau, feas等)の直後にのみ現れる。緩衝母音を挟むことはない
+  // (属格では 'd + -t + -eu('dteu) となる)。
+  for (let i = 0; i < parse.length; i++) {
+    if (parse[i].category === "case_t") {
+      const prev = parse[i - 1];
+      if (!prev) return false;
+      if (!/^-?'/.test(prev.display) && !sepmarkSet().has(prev.display.toLowerCase())) return false;
+    }
+  }
+  return validBuffers(parse);
+}
+function validBuffers(parse) {
+  let left = "";
+  for (let i = 0; i < parse.length; i++) {
+    const m = parse[i];
+    const rule = (m.category === "buffer_to_stem" || m.category === "buffer_to_suffix")
+                 ? BUF_RULE[m.display] : null;
+    if (rule) {
+      const next = parse[i + 1];
+      if (!next) return false;
+      const R = next.display.replace(/-/g, "");
+      if (wordClassOf(left) !== rule.cls) return false;              // クラス不一致
+      if (!rule.vowel && !(endsInVowelSound(left) && startsWithVowelSound(R)))
+        return false;                                                 // 緩衝子音は母音連続の位置のみ
+      if (rule.vowel && (endsInVowelSound(left) || startsWithVowelSound(R)))
+        return false;                                                 // 緩衝母音は子音連続の位置のみ
+    }
+    left += m.display.replace(/-/g, "");
+  }
+  return true;
+}
+function decompose(word, data) {
+  const res = parseAll(word, 0, "START", buildIndex(data), new Map())
+    .filter(validParse);
+  const sorted = res.slice().sort((a, b) =>
+    a.length - b.length ||
+    a.map(m => m.display).join(" ").localeCompare(b.map(m => m.display).join(" ")));
+  // 同一の表示列になる解析は1つに(カテゴリ二重登録等への安全網)
+  const seen = new Set();
+  return sorted.filter(p => {
+    const k = p.map(m => m.display).join(" ");
+    if (seen.has(k)) return false;
+    seen.add(k); return true;
+  });
+}
+function tokenize(input) {
+  return input.toLowerCase().replace(/[,\.\?!<>":【】=…()\/―]/g, " ")
+    .split(/\s+/).filter(w => w.length > 0);
+}
+function renderDec() {
+  const data = document.getElementById("obsolete").checked ? MORPHOLOGY_OBSOLETE : MORPHOLOGY;
+  const words = tokenize(document.getElementById("word").value);
+  const analysis = words.map(w => {
+    const segs = w.split("-").filter(s => s.length > 0);
+    if (w.includes("-") && segs.length > 1) {
+      return { word: w, segments: segs.map(s => ({ text: s, parses: decompose(s, data) })) };
+    }
+    return { word: w, parses: decompose(w, data) };
+  });
+  if (document.getElementById("jsonmode").checked) {
+    const mapParses = ps => ps.map(p => p.map(m => ({ form: m.display, category: m.category })));
+    const out = analysis.map(a => {
+      if (a.segments) {
+        return { word: a.word, meter: scanWordPattern(a.word),
+          segments: a.segments.map(s => {
+            const sc = SCAN.scan(s.text);
+            return { segment: s.text, meter: sc ? sc[1] : null,
+                     syllables: sc ? sc[0] : null, parses: mapParses(s.parses) };
+          }) };
+      }
+      const sc = SCAN.scan(a.word);
+      return { word: a.word, meter: sc ? sc[1] : null, syllables: sc ? sc[0] : null,
+               parses: mapParses(a.parses) };
+    });
+    document.getElementById("ans").innerHTML =
+      '<textarea id="jsonout" readonly>' + esc(JSON.stringify(out, null, 1)) + "</textarea>";
+    return;
+  }
+  let html = "";
+  if (words.length) {
+    // 文全体の韻律: 各単語の古典韻律パターンを空白区切りで並べる。
+    // ハイフン複合語はセグメントごとにスキャンし「·」で結合する。
+    const meter = words.map(w => scanWordPattern(w)).join(" ");
+    html += '<div class="meterline">韻律:<b>' + esc(meter) + "</b></div>";
+  }
+  const parseRows = parses => parses.map(p =>
+    '<div class="parse">' + p.map(m =>
+      '<button class="morph m-' + m.category + '" data-lookup="' + esc(m.display) + '">' +
+      esc(m.display) + "</button>"
+    ).join('<span class="joint">+</span>') + "</div>").join("");
+  for (const a of analysis) {
+    if (a.segments) {
+      // ハイフン複合語: 全体は分解せず、各セグメントを個別に分解して表示
+      html += '<div class="word-block"><div class="word-head">' + esc(a.word) +
+              '<span class="count">ハイフン区切り・' + a.segments.length + '部分</span></div>';
+      for (const s of a.segments) {
+        html += '<div class="seg-head">' + esc(s.text) +
+                ' <span class="count">' + s.parses.length + ' 通り</span></div>';
+        html += s.parses.length ? parseRows(s.parses)
+          : '<div class="none">この部分は分解できませんでした。</div>';
+      }
+      html += "</div>";
+      continue;
+    }
+    html += '<div class="word-block"><div class="word-head">' + esc(a.word) +
+            '<span class="count">' + a.parses.length + ' 通り</span></div>';
+    if (a.parses.length === 0) {
+      html += '<div class="none">分解できませんでした。綴りを確認するか、「廃止された緩衝子音」を試してください。</div>';
+    }
+    html += parseRows(a.parses);
+    html += "</div>";
+  }
+  document.getElementById("ans").innerHTML = html;
+}
+document.getElementById("run").addEventListener("click", renderDec);
+document.getElementById("word").addEventListener("keydown", e => { if (e.key === "Enter") renderDec(); });
+document.getElementById("obsolete").addEventListener("change", renderDec);
+document.getElementById("jsonmode").addEventListener("change", renderDec);
+
+/* ---------------- 古典韻律スキャナ（Python版の移植） ---------------- */
+const SCAN = (() => {
+  const VOWELS = new Set("aiueoy");
+  const DIGRAPHS = ["rkh","ts","ch","dz","ng","fh","vh","sh","th","dh","kh","ph"];
+  const SON = {};
+  for (const c of "aiueoy") SON[c] = 6;
+  for (const c of ["j","w"]) SON[c] = 5;
+  for (const c of ["l","r","rl"]) SON[c] = 4;
+  for (const c of ["m","n","ng"]) SON[c] = 3;
+  for (const c of ["f","v","c","s","x","h","th","dh","kh","fh","vh","sh","rkh"]) SON[c] = 2;
+  const son = p => (p == null ? 0 : (SON[p] || 1));
+
+  function phonemize(word) {
+    const out = [];
+    let i = 0;
+    while (i < word.length) {
+      let matched = false;
+      for (const d of DIGRAPHS) {
+        if (word.startsWith(d, i)) {
+          if (d === "rkh" && out.length && VOWELS.has(out[out.length - 1])) { out.push("r", "kh"); }
+          else out.push(d);
+          i += d.length; matched = true; break;
+        }
+      }
+      if (!matched) { out.push(word[i]); i++; }
+    }
+    return out;
+  }
+
+  function syllabify(word) {
+    const ph = phonemize(word);
+    const n = ph.length;
+    // 母音性: 通常母音に加え、前後どちらにも母音が来ない j は [i] として母音扱い
+    const isv = k => {
+      if (VOWELS.has(ph[k])) return true;
+      if (ph[k] === "j") {
+        const pv = k - 1 >= 0 && VOWELS.has(ph[k - 1]);
+        const nv = k + 1 < n && VOWELS.has(ph[k + 1]);
+        return !pv && !nv;
+      }
+      return false;
+    };
+    const sound = k => (ph[k] === "j" && isv(k)) ? "i" : ph[k];
+    const isNuc = new Array(n).fill(false);
+    let i = 0;
+    while (i < n) {
+      if (isv(i)) {
+        if (ph[i] === "i" && i + 1 < n && VOWELS.has(ph[i + 1])) { isNuc[i + 1] = true; i += 2; continue; }
+        isNuc[i] = true;
+        // y は常に単独で母音[y]を成すため二重母音の第一要素にならない
+        if (ph[i] !== "y" && i + 1 < n && (ph[i+1] === "i" || ph[i+1] === "u") && !(i + 2 < n && VOWELS.has(ph[i+2]))) { i += 2; continue; }
+      }
+      i++;
+    }
+    const nuclei = [];
+    for (let k = 0; k < n; k++) if (isNuc[k]) nuclei.push(k);
+    if (!nuclei.length) return null;
+    const sylls = nuclei.map((nu, idx) => ({ nucleus: nu,
+      lo: idx > 0 ? nuclei[idx - 1] + 1 : 0,
+      hi: idx + 1 < nuclei.length ? nuclei[idx + 1] : n }));
+    for (const s of sylls) {
+      let ne = s.nucleus + 1;
+      if (ph[s.nucleus] !== "y" && ne < n && (ph[ne] === "i" || ph[ne] === "u") && !isNuc[ne] && !(ne + 1 < n && VOWELS.has(ph[ne + 1]) && ph[ne] === "i")) {
+        if (!(ne + 1 < n && VOWELS.has(ph[ne + 1]))) ne += 1;
+      }
+      let longV = false;
+      if (ne < n && ph[ne] === "r") { longV = true; ne += 1; }
+      if (ne < n && ph[ne] === "rl") { longV = true; ph[ne] = "l"; }
+      s.nuc_end = ne; s.long = longV;
+    }
+    for (let idx = 0; idx < sylls.length - 1; idx++) {
+      const a = sylls[idx], b = sylls[idx + 1];
+      const seg = [];
+      for (let k = a.nuc_end; k < b.nucleus; k++) seg.push(k);
+      let cut = a.nuc_end;
+      if (seg.length) {
+        const middle = seg.slice(0, -1);
+        for (const k of middle) {
+          const left = k - 1 >= 0 ? sound(k - 1) : null;
+          const right = k + 1 < n ? sound(k + 1) : null;
+          if (son(left) >= son(right)) cut = k + 1;
+          else break;
+        }
+      }
+      a.hi = cut; b.lo = cut;
+    }
+    sylls[sylls.length - 1].hi = n;
+    sylls[0].lo = 0;
+    return sylls.map(s => {
+      const text = ph.slice(s.lo, s.hi).filter(x => x !== "'").join("");
+      const closed = s.hi > s.nuc_end;
+      const diph = (s.nuc_end - s.nucleus > 1) && (ph[s.nucleus + 1] === "i" || ph[s.nucleus + 1] === "u");
+      let nuc = "";
+      for (let k = s.nucleus; k < s.nuc_end; k++) if (ph[k] !== "r") nuc += sound(k);
+      return { text, long: s.long || diph, closed, nuc };
+    });
+  }
+
+  function scan(word) {
+    const w = word.toLowerCase().replace(/’/g, "'");
+    if (!/^[a-z']+$/.test(w)) return null;
+    const sylls = syllabify(w);
+    if (!sylls) return null;
+    return [sylls.map(s => s.text).join("/"),
+            sylls.map(s => (s.long || s.closed) ? "-" : "^").join(""),
+            sylls[0].nuc[0],                     // 頭母音
+            sylls[sylls.length - 1].nuc.slice(-1)]; // 末母音
+  }
+  return { scan };
+})();
+
+
+/* ==================== コーパス用例 ==================== */
+/* CORPUS: 埋め込み版はビルド時に {ファイル名: 本文} が入る。nullならライブ取得。 */
+let CORPUS = null;
+const CORPUS_API = "https://api.github.com/repos/jurliyuuri/lineparine/contents/corpus";
+const CORPUS_RAW = "https://raw.githubusercontent.com/jurliyuuri/lineparine/master/corpus/";
+/* API(毎時60回/IP)が使えないときのフォールバック一覧(生成時点のスナップショット)。
+   新規追加ファイルはAPI経由でのみ自動検出される。 */
+const CORPUS_FALLBACK_FILES = ["Aiar_sopit_extract.txt", "Alhjite'd_starsdirxes.txt", "Cecorelm_es_da.txt", "Chirfar_fon_medarne'd_parcaxeral.txt", "Dijyk'i_Vynutalanerfeon_lex_knloan_57_extract.txt", "En'iar'd_foiiunu'd_sopit_extract.txt", "Enterkhnacional.txt", "Erste'd_la_asvieu.txt", "Ferju'd_la_Riejiel'd_acirlo.txt", "Gasluifesen_Tydiesto.txt", "Harkar'd_la_xetten.txt", "Hordzorki(fasslarfa).txt", "Indonexija_niejod.txt", "Jyvied_nermetixaler.txt", "Kanteluescosti_fon_Akrantiain.txt", "Kejix_ladircco.txt", "Kranteerl_fua_lersseer_pemecepelukupp.txt", "Kranteerl_y_io_xal_extract.txt", "L'arfes_melferter.txt", "Lesbacka'd_laesnifo.txt", "Li'usnirta'it_esel.txt", "Lietuva.txt", "Liqkaxy_io_ircakart_lot_sulaun.txt", "Mi'd_kasakhstan.txt", "Niejod_jeskasti.txt", "Praha'd_chirfarsti_mels_ispivirelen_esperrantust.txt", "Selene_knloan_dijyk_58_extract.txt", "Skyl.X-X\uff081\uff09.txt", "Skyl.X-X\uff082\uff09.txt", "Skyl.X-X\uff0846\uff09.txt", "Skyl.X-X\uff08d10\uff09.txt", "Skyl.X-X\uff08d5\uff09.txt", "Skyl.X-X\uff08d6\uff09.txt", "Skyl.X-X\uff08d7\uff09.txt", "Skyl.X-X\uff08d8\uff09.txt", "Skyl.X-X\uff08d9\uff09.txt", "Skyl.X-X\uff08f_1\uff09.txt", "Skyl.X-X\uff08fasen_1\uff09.txt", "Skyl.X-X\uff08fasen\uff09.txt", "Skyl.X-X\uff08f\uff09.txt", "Skyl.X-X\uff08irfl_1\uff09.txt", "Skyl.X-X\uff08irfl\uff09.txt", "Skyl.X-X\uff08k_1\uff09.txt", "Skyl.X-X\uff08k\uff09.txt", "Skyl.X-X\uff08la-elremarler_1\uff09.txt", "Skyl.X-X\uff08la-elremarler\uff09.txt", "Skyl.X-X\uff08la-farlliurdia-2_1\uff09.txt", "Skyl.X-X\uff08la-farlliurdia-2\uff09.txt", "Skyl.X-X\uff08la-farlliurdia-3_1\uff09.txt", "Skyl.X-X\uff08la-farlliurdia-3\uff09.txt", "Skyl.X-X\uff08la-farlliurdia_1\uff09.txt", "Skyl.X-X\uff08la-farlliurdia\uff09.txt", "Skyl.X-X\uff08la-kantileche_1\uff09.txt", "Skyl.X-X\uff08la-kantileche\uff09.txt", "Skyl.X-X\uff08la-lidyst_1\uff09.txt", "Skyl.X-X\uff08la-lidyst\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit-2_1\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit-2\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit-3_1\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit-3\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit_1\uff09.txt", "Skyl.X-X\uff08la-morliulurvixit\uff09.txt", "Skyl.X-X\uff08la-stujulil_1\uff09.txt", "Skyl.X-X\uff08la-stujulil\uff09.txt", "Skyl.X-X\uff08la-voseperl-2_1\uff09.txt", "Skyl.X-X\uff08la-voseperl-2\uff09.txt", "Skyl.X-X\uff08la-voseperl-3_1\uff09.txt", "Skyl.X-X\uff08la-voseperl-3\uff09.txt", "Skyl.X-X\uff08la-voseperl_1\uff09.txt", "Skyl.X-X\uff08la-voseperl\uff09.txt", "Skyl.X-X\uff08laraie_1\uff09.txt", "Skyl.X-X\uff08laraie\uff09.txt", "Skyl.X-X\uff08lnp_1\uff09.txt", "Skyl.X-X\uff08lnp\uff09.txt", "Skyl.X-X\uff08ltl_1\uff09.txt", "Skyl.X-X\uff08ltl\uff09.txt", "Skyl.X-X\uff08qj_1\uff09.txt", "Skyl.X-X\uff08qj\uff09.txt", "Skyl.X-X\uff08rv_1\uff09.txt", "Skyl.X-X\uff08rv\uff09.txt", "Skyl.X-X\uff08t\uff09.txt", "Skyl.X-X\uff08x2\uff09.txt", "Skyl.X-X\uff08x\uff09.txt", "Skyl.X-X\uff08y10\uff09.txt", "Skyl.X-X\uff08y11\uff09.txt", "Skyl.X-X\uff08y12\uff09.txt", "Skyl.X-X\uff08y13\uff09.txt", "Skyl.X-X\uff08y14\uff09.txt", "Skyl.X-X\uff08y15\uff09.txt", "Skyl.X-X\uff08y16\uff09.txt", "Skyl.X-X\uff08y17\uff09.txt", "Skyl.X-X\uff08y18\uff09.txt", "Skyl.X-X\uff08y19\uff09.txt", "Skyl.X-X\uff08y1\uff09.txt", "Skyl.X-X\uff08y20\uff09.txt", "Skyl.X-X\uff08y21\uff09.txt", "Skyl.X-X\uff08y22\uff09.txt", "Skyl.X-X\uff08y23\uff09.txt", "Skyl.X-X\uff08y24\uff09.txt", "Skyl.X-X\uff08y25\uff09.txt", "Skyl.X-X\uff08y26\uff09.txt", "Skyl.X-X\uff08y27\uff09.txt", "Skyl.X-X\uff08y28\uff09.txt", "Skyl.X-X\uff08y29\uff09.txt", "Skyl.X-X\uff08y2\uff09.txt", "Skyl.X-X\uff08y30\uff09.txt", "Skyl.X-X\uff08y31\uff09.txt", "Skyl.X-X\uff08y32\uff09.txt", "Skyl.X-X\uff08y33\uff09.txt", "Skyl.X-X\uff08y34\uff09.txt", "Skyl.X-X\uff08y35\uff09.txt", "Skyl.X-X\uff08y36\uff09.txt", "Skyl.X-X\uff08y37\uff09.txt", "Skyl.X-X\uff08y38\uff09.txt", "Skyl.X-X\uff08y39\uff09.txt", "Skyl.X-X\uff08y3\uff09.txt", "Skyl.X-X\uff08y40\uff09.txt", "Skyl.X-X\uff08y41\uff09.txt", "Skyl.X-X\uff08y42\uff09.txt", "Skyl.X-X\uff08y43\uff09.txt", "Skyl.X-X\uff08y44\uff09.txt", "Skyl.X-X\uff08y45\uff09.txt", "Skyl.X-X\uff08y4\uff09.txt", "Skyl.X-X\uff08y5\uff09.txt", "Skyl.X-X\uff08y6\uff09.txt", "Skyl.X-X\uff08y7\uff09.txt", "Skyl.X-X\uff08y8\uff09.txt", "Skyl.X-X\uff08y9\uff09.txt", "Ta_jufixarlerssesti_ja.txt", "Unde_memylo_chirfar.txt", "Va'rxaw'd_niesnyszirla.txt", "Was_milodmam.txt", "Xolerssen_sniror.txt", "Xturga'd_la_nukucol.txt", "acirlon_fua_plergal(1_ler_64te_leiju).txt", "adle.txt", "aldasryrle.txt", "alice.txt", "chirfar_fon_cl-kiita.txt", "conohinoki.txt", "cysilarta'l_tvarsnaerl.txt", "eldjx_episode_0001.txt", "eldjx_episode_0003.txt", "eldjx_episode_0005.txt", "eldjx_episode_0007.txt", "eldjx_episode_0009.txt", "eldjx_episode_0011.txt", "eldjx_episode_0013.txt", "eldjx_episode_0015.txt", "eldjx_episode_0017.txt", "eldjx_episode_0019.txt", "eldjx_episode_0021.txt", "eldjx_episode_0023.txt", "eldjx_episode_0025.txt", "eldjx_episode_0027.txt", "eldjx_episode_0029.txt", "eldjx_episode_0031.txt", "eldjx_episode_0033.txt", "eldjx_episode_0035.txt", "eldjx_episode_0037.txt", "eldjx_episode_0039.txt", "eldjx_episode_0041.txt", "fqa_es_toxu.txt", "fqa_xale.txt", "fqiu_athime'd_germu_market's_faso'l.txt", "fyrfsyki'd_julesn_jeskavera.txt", "icekai_es_xorln_unde(part001).txt", "icekai_es_xorln_unde(part002).txt", "icekai_es_xorln_unde(part003).txt", "icekai_es_xorln_unde(part004).txt", "icekai_es_xorln_unde(part005).txt", "icekai_es_xorln_unde(part006).txt", "icekai_es_xorln_unde(part007).txt", "icekai_es_xorln_unde(part008).txt", "icekai_es_xorln_unde(part009).txt", "icekai_es_xorln_unde(part010).txt", "icekai_es_xorln_unde(part011).txt", "icekai_es_xorln_unde(part012).txt", "icekai_es_xorln_unde(part013).txt", "icekai_es_xorln_unde(part014).txt", "icekai_es_xorln_unde(part015).txt", "imomoci_list.txt", "isde.txt", "iseniho(Chap_1).txt", "iseniho(Chap_2).txt", "iseniho(Chap_3).txt", "iseniho(Chap_4).txt", "iseniho(Chap_5).txt", "iseniho(Chap_6).txt", "iseniho(Chap_7).txt", "iseniho(Chap_8).txt", "iseniho_comment_replies.txt", "iseniho_comment_reply_001.txt", "iseniho_comment_reply_003.txt", "iseniho_comment_reply_004.txt", "iseniho_comment_reply_005.txt", "iseniho_comment_reply_010.txt", "iseniho_comment_reply_012.txt", "iseniho_comment_reply_014.txt", "iseniho_comment_reply_017.txt", "iseniho_comment_reply_018.txt", "iseniho_comment_reply_019.txt", "iseniho_comment_reply_021.txt", "iseniho_comment_reply_023.txt", "iseniho_comment_reply_027.txt", "iseniho_comment_reply_028.txt", "iseniho_comment_reply_029.txt", "iseniho_comment_reply_030.txt", "iseniho_comment_reply_031.txt", "iseniho_comment_reply_032.txt", "iseniho_comment_reply_033.txt", "iseniho_comment_reply_037.txt", "iseniho_comment_reply_038.txt", "iseniho_comment_reply_044.txt", "iseniho_comment_reply_045.txt", "iseniho_comment_reply_046.txt", "iseniho_comment_reply_057.txt", "iseniho_comment_reply_058.txt", "iseniho_comment_reply_062.txt", "jerletixfi'd_lena_ad_tvasnarla'd_lena'd larfa.txt", "klirmass_50_extract.txt", "klirmass_fua_penul_hartlirfa_extract.txt", "kyowoikinuku_extract.txt", "larter_lkurftlesse'd_zuo.txt", "lecu_akranti_AIL_PANIT_LETI_CETKAIK_LETI_KULANTE.txt", "len_alen_episode_0001.txt", "len_alen_episode_0002.txt", "len_alen_episode_0003.txt", "len_alen_episode_0004.txt", "len_alen_episode_0005.txt", "len_alen_episode_0006.txt", "len_alen_episode_0007.txt", "len_alen_episode_0008.txt", "len_alen_episode_0009.txt", "len_alen_episode_0010.txt", "len_alen_episode_0011.txt", "len_alen_episode_0012.txt", "len_alen_episode_0013.txt", "len_alen_episode_0014.txt", "len_alen_episode_0015.txt", "len_alen_episode_0016.txt", "len_alen_episode_0017.txt", "len_alen_episode_0018.txt", "len_alen_episode_0019.txt", "len_alen_episode_0020.txt", "len_alen_episode_0021.txt", "lerne.1-1-1.txt", "lerne.1-1-2.txt", "lerne.1-1-3.txt", "lerne.1-1-4.txt", "lerne.1-2-1.txt", "melnilarta.txt", "nistaxerf_mors_mol_nistastieniesal.txt", "ringobun_respect_extract.txt", "sans_ad_ergano'd_klirmass.txt", "snienoxil_maqen.txt", "valgante_ad_cilis\uff08la_kosnyl\uff09.txt", "valgante_ad_cilis\uff08la_nubefi'e\uff09.txt", "valgante_ad_cilis\uff08mylonnasch_vegarden_vuloija\uff09.txt", "valgante_ad_cilis\uff08vinkajt\uff09.txt", "xendurxe_fon_alta.txt", "xion_lineparine.txt", "yuesleone'd_xola'd_FKL_extract.txt", "zel_snelodo.txt"];
+let corpusLines = null;   // [{file, text, low}]
+
+async function ensureCorpus(progress) {
+  if (corpusLines) return;
+  if (!CORPUS) {
+    progress("コーパス一覧を取得中…");
+    let items;
+    try {
+      const res = await fetch(CORPUS_API);
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      items = (await res.json()).filter(i =>
+        i.name.endsWith(".txt") && i.name !== "00_all_corpus_summary.txt");
+    } catch (e) {
+      if (!CORPUS_FALLBACK_FILES) throw new Error("コーパス一覧の取得に失敗 (" + e.message + ")");
+      // APIレート制限等 → 焼き込み済み一覧でフォールバック
+      items = CORPUS_FALLBACK_FILES.map(n =>
+        ({ name: n, download_url: CORPUS_RAW + encodeURIComponent(n) }));
+      progress("一覧APIが混雑中のため既知の一覧で取得します…");
+    }
+    CORPUS = {};
+    let done = 0;
+    const queue = items.slice();
+    await Promise.all(Array.from({ length: 8 }, async () => {
+      while (queue.length) {
+        const it = queue.shift();
+        const r = await fetch(it.download_url);
+        if (r.ok) CORPUS[it.name] = await r.text();
+        done++;
+        progress(`コーパス取得中… ${done}/${items.length}`);
+      }
+    }));
+  }
+  corpusLines = [];
+  /* リパライン語フォント表記: 大文字 F=fh, V=vh, X=dz。
+     語中のF/V/Xがあるファイルはフォント表記と判定する。ただし同じファイルでも
+     文頭大文字を併用するため、語頭のF/V/Xは「二重字」「単なる大文字」の両解釈が
+     あり得る。そこで検索用に2通りの正規化を持ち、どちらかに一致すればヒットさせる。 */
+  const FONT_DEC = { F: "fh", V: "vh", X: "dz" };
+  const decAll = s => s.replace(/[FVX]/g, c => FONT_DEC[c]);           // 全てのFVXを二重字に
+  const decInternal = s => s.replace(/(?<=[a-z'])[FVX]/g, c => FONT_DEC[c]); // 語中のみ二重字に
+  for (const [file, text] of Object.entries(CORPUS)) {
+    const fontFile = /(?<=[a-z'])[FVX]/.test(text);
+    for (const raw of text.split(/\r\n?|\n/)) {
+      const s = raw.trim();
+      if (s.length < 2 || /^[0-9０-９]+[.．]?$/.test(s)) continue;   // 番号だけの行は除外
+      const la = (fontFile ? decAll(s) : s).toLowerCase();
+      const lb = fontFile ? decInternal(s).toLowerCase() : la;
+      corpusLines.push({ file, text: s, la, lb, f: fontFile ? 1 : 0 });
+    }
+  }
+}
+
+/* 見出し語の種類(通常語/接頭辞/語尾辞/接中辞)に応じたコーパス照合パターン。
+   接辞のハイフンは表記規約なので、コーパス上では付加された形を探す。 */
+function corpusMatchers(word) {
+  const w = word.toLowerCase().replace(/’/g, "'");
+  const isSuf = w.startsWith("-") && !w.endsWith("-");
+  const isPre = w.endsWith("-") && !w.startsWith("-");
+  const isInf = w.startsWith("-") && w.endsWith("-");
+  const core = w.replace(/^-+|-+$/g, "");
+  const qe = core.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const W = "[a-z0-9]";
+  const D = "[a-zA-Z0-9]";                 // 表示側の語境界(原文には大文字が残る)
+  /* 名前化語尾辞(-af,-afa,-afis,-ija,-iju,-rdia)が直接続く形は別語彙(名前化)であり
+     派生形として扱わない。名前化形のさらなる派生(-afasta等)も除外する。
+     単独の af のみトークン末に限定し、-afi'a のような別語尾辞を誤除外しない。 */
+  const NOM = "(?:afis|afa|ija|iju|rdia|af(?![a-z0-9]))";
+  if (isSuf)        // 語尾辞: 語末に付いた形が完全一致(後続の格接語'dなどは許容)
+    return { core,
+      exactRe: new RegExp("(?<=" + W + ")" + qe + "(?!" + W + ")"),
+      derivRe: new RegExp("(?<=" + W + ")" + qe + "(?!" + NOM + ")"),
+      hl: f => new RegExp("(?<=" + D + ")(" + hlCore(qe, f) + ")", "g") };
+  if (isPre)        // 接頭辞: 語頭に付いた形が完全一致
+    return { core,
+      exactRe: new RegExp("(?<!" + W + ")" + qe + "(?=" + W + ")"),
+      derivRe: new RegExp(qe + "(?!" + NOM + ")(?=" + W + ")"),
+      hl: f => new RegExp("(" + hlCore(qe, f) + ")(?=" + D + ")", "g") };
+  if (isInf)        // 接中辞・緩衝音: 語中の出現
+    return { core,
+      exactRe: new RegExp("(?<=" + W + ")" + qe + "(?=" + W + ")"),
+      derivRe: new RegExp(qe),
+      hl: f => new RegExp("(?<=" + D + ")(" + hlCore(qe, f) + ")(?=" + D + ")", "g") };
+  return { core,    // 通常語(従来通り)
+    exactRe: new RegExp("(?<!" + W + ")" + qe + "(?!" + W + ")"),
+    derivRe: new RegExp("(?<!" + W + ")" + qe + "(?!" + NOM + ")"),
+    hl: f => new RegExp("((?<!" + D + ")" + hlCore(qe, f) + "(?!" + NOM + ")[a-zA-Z0-9']*)", "g") };
+}
+function corpusSearch(word) {
+  const { exactRe, derivRe } = corpusMatchers(word);
+  const exact = [], deriv = [];
+  for (const l of corpusLines) {
+    if (exactRe.test(l.la) || exactRe.test(l.lb)) exact.push(l);
+    else if (derivRe.test(l.la) || derivRe.test(l.lb)) deriv.push(l);
+    if (exact.length >= 200) break;
+  }
+  return { exact, deriv };
+}
+
+/* 表示は原文のまま行うため、ハイライト用正規表現は
+   ・通常文字: [aA]のような明示的な大文字小文字対(文頭大文字に対応)
+   ・二重字: フォント表記ファイルでは F/V/X 単字にも一致
+   とする。iフラグは使わない(XがxにマッチしてしまうとX=dzの区別が壊れるため)。 */
+function hlCore(qe, isFont) {
+  let s = qe.replace(/fh/g, "\x01").replace(/vh/g, "\x02").replace(/dz/g, "\x03");
+  s = s.replace(/[a-z]/g, c => "[" + c + c.toUpperCase() + "]");
+  s = s.replace(/\x01/g, isFont ? "(?:[fF]h|F)" : "[fF]h")
+       .replace(/\x02/g, isFont ? "(?:[vV]h|V)" : "[vV]h")
+       .replace(/\x03/g, isFont ? "(?:[dD]z|X)" : "[dD]z");
+  return s;
+}
+function clipAround(text, hlRe, coreLen, span) {
+  let i = -1;
+  try { const m = hlRe.exec(text); hlRe.lastIndex = 0; if (m) i = m.index; } catch (e) {}
+  if (i < 0) i = 0;
+  if (text.length <= span * 2 + coreLen) return text;
+  const s = Math.max(0, i - span), e = Math.min(text.length, i + coreLen + span);
+  return (s > 0 ? "…" : "") + text.slice(s, e) + (e < text.length ? "…" : "");
+}
+
+function corpusLineHTML(l, word) {
+  const { core, hl } = corpusMatchers(word);
+  const hlRe = hl(!!l.f);                    // フォント表記ファイルならF/V/X単字にも一致
+  const clipped = clipAround(l.text, hlRe, core.length, 90);
+  let h = esc(clipped);
+  try { h = h.replace(hlRe, "<mark>$1</mark>"); } catch (e) {}
+  return '<div class="cline">' + h +
+    '<span class="csrc">— ' + esc(l.file.replace(/\.txt$/, "").replace(/_/g, " ")) + "</span></div>";
+}
+
+const CPAGE = 10;
+async function showCorpus(word, container, btn) {
+  btn.style.pointerEvents = "none";
+  try {
+    await ensureCorpus(m => { btn.textContent = m; });
+  } catch (e) {
+    btn.textContent = "用例（取得失敗・再試行）";
+    btn.style.pointerEvents = "";
+    return;
+  }
+  btn.textContent = "用例";
+  btn.style.pointerEvents = "";
+  const { exact, deriv } = corpusSearch(word);
+  const all = [...exact.map(l => ({ l, d: false })), ...deriv.map(l => ({ l, d: true }))];
+  let shownC = 0;
+  const div = document.createElement("div");
+  div.className = "corpus";
+  container.appendChild(div);
+  function renderChunk() {
+    const chunk = all.slice(shownC, shownC + CPAGE);
+    shownC += chunk.length;
+    let h = "";
+    if (shownC === chunk.length) {
+      h += '<div class="chead">コーパス用例: 完全一致 ' + exact.length + " 件 / 派生形 " +
+           deriv.length + " 件</div>";
+      if (all.length === 0) h += '<div class="none">コーパスに用例が見つかりませんでした。</div>';
+    }
+    h += chunk.map(x => corpusLineHTML(x.l, word)).join("");
+    div.insertAdjacentHTML("beforeend", h);
+    const old = div.querySelector(".cmore");
+    if (old) old.remove();
+    if (shownC < all.length) {
+      div.insertAdjacentHTML("beforeend",
+        '<button class="cmore">さらに表示（残り' + (all.length - shownC) + '件）</button>');
+      div.querySelector(".cmore").onclick = renderChunk;
+    }
+  }
+  renderChunk();
+}
+
+function scanWordPattern(w) {
+  const segs = w.split("-").filter(s => s.length > 0);
+  if (segs.length > 1) {
+    const pats = segs.map(s => { const r = SCAN.scan(s); return r ? r[1] : null; });
+    return pats.every(p => p) ? pats.join("·") : "？";
+  }
+  const r = SCAN.scan(w);
+  return r ? r[1] : "？";
+}
+
+/* 形態素クリック → 辞書参照 */
+document.getElementById("ans").addEventListener("click", e => {
+  const b = e.target.closest("button[data-lookup]");
+  if (b) lookup(b.dataset.lookup);
+});
+
+/* 形態素ホバー → 簡単な意味のツールチップ */
+let GLOSS = null;
+function shortGloss(t) {
+  const line = t.replace(/\r\n?/g, "\n").split("\n").find(l => l.trim() !== "") || "";
+  const s = line.replace(/【[^】]*】/g, " ").replace(/\s+/g, " ").trim();
+  return s.length > 42 ? s.slice(0, 42) + "…" : s;
+}
+function glossPriority(w) {
+  // 略語は優先度を下げる: 0=通常語, 1=略語マーク付き, 2=大文字頭字語
+  if (/^[A-Z0-9'.]{2,}$/.test(w.h)) return 2;
+  const first = w.t.replace(/\r\n?/g, "\n").split("\n").find(l => l.trim() !== "") || "";
+  if (/[（(\[]\s*略語/.test(first)) return 1;
+  return 0;
+}
+function glossOf(term) {
+  if (!GLOSS) {
+    GLOSS = new Map();          // key -> {gloss, pri}
+    for (const w of DICT) {
+      const k = w.h.toLowerCase();
+      const pri = glossPriority(w);
+      const cur = GLOSS.get(k);
+      if (!cur || pri < cur.pri) GLOSS.set(k, { gloss: shortGloss(w.t), pri });
+    }
+  }
+  const g = GLOSS.get(term.toLowerCase());
+  return g && g.gloss;
+}
+const tipEl = document.getElementById("tip");
+document.getElementById("ans").addEventListener("mouseover", e => {
+  const b = e.target.closest("button[data-lookup]");
+  if (!b) return;
+  const g = glossOf(b.dataset.lookup);
+  if (!g) return;
+  tipEl.innerHTML = "<b>" + esc(b.dataset.lookup) + "</b>" + esc(g);
+  tipEl.hidden = false;
+  const r = b.getBoundingClientRect();
+  tipEl.style.left = Math.max(8, r.left + window.scrollX) + "px";
+  tipEl.style.top = (r.bottom + window.scrollY + 6) + "px";
+});
+document.getElementById("ans").addEventListener("mouseout", e => {
+  if (e.target.closest("button[data-lookup]")) tipEl.hidden = true;
+});
+
+/* ==================== 辞書 ==================== */
+const PAGE = 50;
+let page = 1, current = [];
+function buildN() {
+  N = DICT.map(w => ({ ...w,
+    hl: w.h.toLowerCase(),
+    // 訳語 = 品詞タグ【…】で始まる行のみ(語源行・[文化]・[語法]等の散文は全文でのみ対象)
+    gl: w.t.replace(/\r\n?/g, "\n").split("\n")
+          .filter(l => l.trimStart().startsWith("【")).join("\n").toLowerCase(),
+    full: (w.h + "\n" + w.t + "\n" + (w.e || []).join("\n") + "\n" + (w.p || []).join("\n"))
+          .toLowerCase().replace(/\r\n?/g, "\n"),
+  }));
+}
+
+function matcher(query, mode) {
+  if (mode === "regex") { const re = new RegExp(query, "i"); return s => re.test(s); }
+  const q = query.toLowerCase();
+  if (mode === "prefix") return s => s.startsWith(q);
+  if (mode === "exact")  return s => s === q;
+  return s => s.includes(q);
+}
+function normFoot(q) {
+  // 長音記号のゆらぎを正規化(ー,－,–,—,‐,_ → -)、＾→^
+  return q.replace(/[ー－–—‐‑_]/g, "-").replace(/＾/g, "^");
+}
+/* 訳語・全文用: テキスト中の「語」として一致させる。
+   ラテン文字・数字で始まる/終わる検索語は単語境界(非[a-z0-9'])を要求し、
+   日本語などはそのままの出現で一致する。 */
+function textMatcher(query, mode) {
+  if (mode === "regex") { const re = new RegExp(query, "i"); return s => re.test(s); }
+  const ql = query.toLowerCase();
+  if (mode === "partial") return s => s.includes(ql);
+  const qe = ql.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const W = "[a-z0-9']";
+  const lb = /^[a-z0-9']/.test(ql) ? "(?<!" + W + ")" : "";
+  const rb = /[a-z0-9']$/.test(ql) ? "(?!" + W + ")" : "";
+  const re = new RegExp(mode === "exact" ? lb + qe + rb : lb + qe);   // prefix: 語頭のみ要求
+  return s => re.test(s);
+}
+function search(query, scope, mode) {
+  if (scope === "foot") {
+    const hv = document.getElementById("hv").value;
+    const tv = document.getElementById("tv").value;
+    const m = query === "" ? (() => true) : matcher(normFoot(query), mode);
+    return N.filter(w => w.f && m(w.f[1]) &&
+      (hv === "" || w.f[2] === hv) && (tv === "" || w.f[3] === tv));
+  }
+  if (scope === "head") {
+    const m = matcher(query, mode);              // 見出し語は語全体で判定(従来通り)
+    return N.filter(w => m(w.hl));
+  }
+  const tm = textMatcher(query, mode);
+  if (scope === "trans") return N.filter(w => tm(w.gl));
+  if (scope === "full")  return N.filter(w => tm(w.full));
+  const hm = matcher(query, mode);               // 見出し語＋訳語
+  return N.filter(w => hm(w.hl) || tm(w.gl));
+}
+function renderTranslation(t, query) {
+  let html = esc(t.replace(/\r\n?/g, "\n"));
+  // URLをリンク化(別タブで開く)。末尾の和文句読点・閉じ括弧は除外する
+  html = html.replace(/https?:\/\/[^\s<>]+/g, m => {
+    const trimmed = m.replace(/[、。」』）＞]+$/, "");
+    const rest = m.slice(trimmed.length);
+    return '<a class="url" href="' + trimmed + '" target="_blank" rel="noopener noreferrer">' +
+           trimmed + "</a>" + rest;
+  });
+  html = html.replace(/【[^】\n]{1,12}】/g, m => '<span class="pos">' + m + "</span>");
+  html = html.replace(/\[語法\]/g, '<span class="usage">[語法]</span>');
+  html = html.replace(/^(\[\d{4}[^\]\n]*\])$/gm, '<span class="ety">$1</span>');
+  if (query) {
+    try {
+      const re = new RegExp("(" + query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
+      html = html.split(/(<[^>]+>)/).map(seg =>
+        seg.startsWith("<") ? seg : seg.replace(re, "<mark>$1</mark>")).join("");
+    } catch (e) {}
+  }
+  return html;
+}
+function entryHTML(w, query) {
+  let h = '<article class="entry"><h2>' + esc(w.h);
+  if (w.p && w.p.length) h += '<span class="pron">/' + esc(w.p.join(", ")) + "/</span>";
+  if (w.d) h += '<span class="dbadge">派生語</span>';
+  if (w.f) h += '<span class="foot" title="音節と古典韻律（- 長音節 / ^ 短音節）">' +
+                esc(w.f[0]) + "<b>" + esc(w.f[1]) + "</b></span>";
+  h += '<span class="decomp" data-decomp="' + esc(w.h) + '">解析</span>';
+  h += '<span class="corpusbtn" data-corpus="' + esc(w.h) + '">用例</span>';
+  h += '<a class="plink" href="#w/' + encodeURIComponent(w.h) +
+       '" data-plink="' + esc(w.h) + '" title="この単語へのリンク（クリックでURL反映・コピー）">リンク</a>';
+  h += "</h2>";
+  h += '<p class="tl">' + renderTranslation(w.t, query) + "</p>";
+  for (const ex of w.e || []) h += '<div class="ex">' + renderTranslation(ex, query) + "</div>";
+  if (w.iL && w.iL.length) {
+    const mb = (w.iL.reduce((s, x) => s + x.len, 0) / 1e6).toFixed(1);
+    h += '<div class="imgs" data-h="' + esc(w.h) + '">' +
+         '<button class="imgload" data-h="' + esc(w.h) + '">画像を読み込む（' +
+         w.iL.length + '枚・約' + mb + 'MB）</button></div>' + "";
+  }
+  if (w.d) {
+    h += '<p class="src">出典: ' + w.d.map(p =>
+      '<a data-goto="' + esc(p) + '">' + esc(p) + "</a>").join("、") +
+      " の項（語法欄から自動立項）</p>";
+  }
+  return h + "</article>";
+}
+function pageCount() { return Math.max(1, Math.ceil(current.length / PAGE)); }
+
+function pageNumbers(cur, last) {
+  // 1, …, cur-1, cur, cur+1, …, last の形に間引く
+  const s = new Set([1, last, cur - 1, cur, cur + 1]);
+  const nums = [...s].filter(n => n >= 1 && n <= last).sort((a, b) => a - b);
+  const out = [];
+  let prev = 0;
+  for (const n of nums) {
+    if (prev && n - prev > 1) out.push(null);   // null = "…"
+    out.push(n); prev = n;
+  }
+  return out;
+}
+
+function renderPage(p, scroll) {
+  page = Math.min(Math.max(1, p), pageCount());
+  const scopeEl = document.querySelector('input[name="scope"]:checked');
+  const q = (scopeEl && scopeEl.value === "foot") ? "" : document.getElementById("q").value.trim();
+  const slice = current.slice((page - 1) * PAGE, page * PAGE);
+  document.getElementById("results").innerHTML = slice.map(w => entryHTML(w, q)).join("");
+  const pager = document.getElementById("pager");
+  if (current.length <= PAGE) { pager.innerHTML = ""; }
+  else {
+    const last = pageCount();
+    let h = '<button data-page="' + (page - 1) + '" aria-label="前のページ"' +
+            (page === 1 ? " disabled" : "") + '>&larr;</button>';
+    for (const n of pageNumbers(page, last)) {
+      h += n === null ? '<span class="gap">&hellip;</span>'
+        : '<button data-page="' + n + '"' + (n === page ? ' aria-current="page"' : "") + ">" + n + "</button>";
+    }
+    h += '<button data-page="' + (page + 1) + '" aria-label="次のページ"' +
+         (page === last ? " disabled" : "") + '>&rarr;</button>';
+    pager.innerHTML = h;
+  }
+  if (scroll) window.scrollTo({ top: 0 });
+}
+function fisherYates(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+const RANDOM_COUNT = 50;
+function runDict() {
+  const q = document.getElementById("q").value.trim();
+  const scope = document.querySelector('input[name="scope"]:checked').value;
+  const mode = document.querySelector('input[name="mode"]:checked').value;
+  const results = document.getElementById("results");
+  const count = document.getElementById("count");
+  document.getElementById("regexerr").innerHTML = "";
+  document.getElementById("notice").innerHTML = "";
+  results.innerHTML = ""; current = [];
+  const footVowel = scope === "foot" &&
+    (document.getElementById("hv").value !== "" || document.getElementById("tv").value !== "");
+  if (q === "" && !footVowel) {
+    // 未入力時は何も表示しない（ランダム表示はシャッフルボタンで明示的に）
+    count.textContent = "";
+    document.getElementById("pager").innerHTML = "";
+    return;
+  }
+  try { current = search(q, scope, mode); }
+  catch (e) {
+    document.getElementById("regexerr").innerHTML =
+      '<div class="err">正規表現エラー: ' + esc(String(e.message)) + "</div>";
+    count.textContent = ""; document.getElementById("pager").innerHTML = ""; return;
+  }
+  count.textContent = current.length + " 件";
+  if (current.length === 0) {
+    results.innerHTML = '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、対象を「全文」に広げてみてください。</div>';
+    document.getElementById("pager").innerHTML = "";
+    return;
+  }
+  renderPage(1, false);
+}
+let timer = null;
+document.getElementById("q").addEventListener("input", () => {
+  clearTimeout(timer); timer = setTimeout(runDict, 120);
+});
+for (const el of document.querySelectorAll('#sec-dic input[type="radio"]')) {
+  el.addEventListener("change", () => {
+    document.getElementById("footopts").hidden =
+      document.querySelector('input[name="scope"]:checked').value !== "foot";
+    runDict();
+  });
+}
+document.getElementById("hv").addEventListener("change", runDict);
+document.getElementById("tv").addEventListener("change", runDict);
+document.getElementById("pager").addEventListener("click", e => {
+  const b = e.target.closest("button[data-page]");
+  if (b && !b.disabled) renderPage(parseInt(b.dataset.page, 10), true);
+});
+document.getElementById("shuffle").addEventListener("click", () => {
+  const q = document.getElementById("q").value.trim();
+  if (q === "") {                               // 未入力: ランダム50件を表示/引き直し
+    current = fisherYates(N).slice(0, RANDOM_COUNT);
+    document.getElementById("count").textContent = "ランダム表示 " + current.length + " 件";
+    document.getElementById("notice").innerHTML = "";
+    renderPage(1, false);
+    return;
+  }
+  if (current.length < 2) return;
+  current = fisherYates(current);               // 検索結果の表示順をシャッフル
+  renderPage(1, false);
+});
+
+/* 辞書内リンク（画像ズーム・出典・分解） */
+document.getElementById("sec-dic").addEventListener("click", e => {
+  const pl = e.target.closest("a.plink");
+  if (pl && navigator.clipboard) {
+    const url = location.href.split("#")[0] + "#w/" + encodeURIComponent(pl.dataset.plink);
+    navigator.clipboard.writeText(url).then(() => {
+      const t0 = pl.textContent; pl.textContent = "コピーしました";
+      setTimeout(() => { pl.textContent = t0; }, 1200);
+    }).catch(() => {});
+    // hrefのデフォルト動作でハッシュも更新される
+  }
+  const cb = e.target.closest(".corpusbtn");
+  if (cb) {
+    const entry = cb.closest(".entry");
+    if (!entry.querySelector(".corpus")) showCorpus(cb.dataset.corpus, entry, cb);
+    return;
+  }
+  const im = e.target.closest(".imgs img");
+  if (im) {
+    document.getElementById("zoomimg").src = im.src;
+    document.getElementById("zoom").showModal();
+    return;
+  }
+  const a = e.target.closest("a[data-goto]");
+  if (a) { lookup(a.dataset.goto); return; }
+  const d = e.target.closest("[data-decomp]");
+  if (d) {
+    showTab("dec");
+    document.getElementById("word").value = d.dataset.decomp.replace(/-/g, "");
+    renderDec(); window.scrollTo({ top: 0 });
+  }
+});
+
+/* 形態素→辞書参照。完全一致で引き、無ければ部分一致にフォールバック */
+function wordHash(h) { return "#w/" + encodeURIComponent(h); }
+function handleHash() {
+  const m = /^#w\/(.+)$/.exec(location.hash);
+  if (!m) return;
+  let term;
+  try { term = decodeURIComponent(m[1]); } catch (e) { return; }
+  lookupCore(term);
+}
+window.addEventListener("hashchange", handleHash);
+function lookup(term) {
+  try { if (location.hash !== wordHash(term)) location.hash = wordHash(term); } catch (e) {}
+  lookupCore(term);
+}
+function lookupCore(term) {
+  showTab("dic");
+  const qEl = document.getElementById("q");
+  qEl.value = term;
+  document.querySelector('input[name="scope"][value="head"]').checked = true;
+  document.querySelector('input[name="mode"][value="exact"]').checked = true;
+  runDict();
+  if (current.length === 0) {
+    document.querySelector('input[name="mode"][value="partial"]').checked = true;
+    runDict();
+    document.getElementById("notice").innerHTML =
+      '<div class="fallback">「' + esc(term) + '」の完全一致がなかったため、部分一致で表示しています。</div>';
+  }
+  window.scrollTo({ top: 0 });
+}
+
+/* ==================== Wordle ==================== */
+const W = { answer: null, rows: [], cur: "", done: false, pool: null, valid: null };
+function wordlePools() {
+  if (W.pool) return;
+  W.pool = MORPHOLOGY.categories.stem.filter(w => /^[a-z']{5}$/.test(w));
+  W.valid = new Set(W.pool);
+}
+function wordleInit() {
+  if (!MORPHOLOGY) return;                 // ライブ版でロード前にタブを開いた場合
+  wordlePools();
+  if (!W.answer) wordleNew();
+}
+function wordleNew() {
+  wordlePools();
+  W.answer = W.pool[Math.floor(Math.random() * W.pool.length)];
+  W.rows = []; W.cur = ""; W.done = false;
+  document.getElementById("wmsg").textContent = "";
+  wordleRender(); wordleKbd();
+}
+function wordleScore(guess, answer) {
+  // 標準Wordle判定(重複文字対応): まず完全一致を確定し、残りから位置違いを数える
+  const res = new Array(5).fill("miss");
+  const remain = {};
+  for (let i = 0; i < 5; i++) {
+    if (guess[i] === answer[i]) res[i] = "hit";
+    else remain[answer[i]] = (remain[answer[i]] || 0) + 1;
+  }
+  for (let i = 0; i < 5; i++) {
+    if (res[i] === "hit") continue;
+    if (remain[guess[i]] > 0) { res[i] = "near"; remain[guess[i]]--; }
+  }
+  return res;
+}
+function wordleRender() {
+  const grid = document.getElementById("wgrid");
+  let h = "";
+  for (let r = 0; r < 6; r++) {
+    h += '<div class="wrow">';
+    const row = W.rows[r];
+    for (let c = 0; c < 5; c++) {
+      if (row) h += '<div class="wcell ' + row.score[c] + '">' + esc(row.guess[c]) + "</div>";
+      else if (r === W.rows.length) {
+        const ch = W.cur[c] || "";
+        h += '<div class="wcell' + (ch ? " filled" : "") + '">' + esc(ch) + "</div>";
+      } else h += '<div class="wcell"></div>';
+    }
+    h += "</div>";
+  }
+  grid.innerHTML = h;
+}
+function wordleKbd() {
+  const best = {};                          // 文字ごとの最良状態
+  const rank = { miss: 1, near: 2, hit: 3 };
+  for (const row of W.rows)
+    for (let i = 0; i < 5; i++) {
+      const ch = row.guess[i], s = row.score[i];
+      if (!best[ch] || rank[s] > rank[best[ch]]) best[ch] = s;
+    }
+  const rows = ["qwertyuiop", "asdfghjkl", "'zxcvbnm"];
+  let h = "";
+  rows.forEach((r, ri) => {
+    h += '<div class="krow">';
+    if (ri === 2) h += '<button class="wide" data-k="Enter">決定</button>';
+    for (const ch of r)
+      h += '<button data-k="' + ch + '"' + (best[ch] ? ' class="' + best[ch] + '"' : "") + ">" + ch + "</button>";
+    if (ri === 2) h += '<button class="wide" data-k="Backspace">&#9003;</button>';
+    h += "</div>";
+  });
+  document.getElementById("wkbd").innerHTML = h;
+}
+function wordleMsg(html) { document.getElementById("wmsg").innerHTML = html; }
+function wordleAnswerHTML() {
+  const g = glossOf(W.answer) || "";
+  return '<span class="wans" data-lookup-w="' + esc(W.answer) + '">' + esc(W.answer) + "</span>" +
+         (g ? "（" + esc(g) + "）" : "");
+}
+function wordleKey(k) {
+  if (W.done || !W.answer) return;
+  if (k === "Enter") {
+    if (W.cur.length < 5) { wordleMsg("5文字入力してください"); return; }
+    if (!document.getElementById("wfree").checked && !W.valid.has(W.cur)) {
+      wordleMsg("辞書にない単語です（「辞書にない語も許可」で緩和できます）"); return;
+    }
+    const score = wordleScore(W.cur, W.answer);
+    W.rows.push({ guess: W.cur, score });
+    const won = W.cur === W.answer;
+    W.cur = "";
+    wordleRender(); wordleKbd();
+    if (won) {
+      W.done = true;
+      wordleMsg(["天才！","素晴らしい！","見事！","お見事","正解！","ぎりぎり！"][W.rows.length - 1] +
+                " 正解は " + wordleAnswerHTML());
+    } else if (W.rows.length >= 6) {
+      W.done = true;
+      wordleMsg("残念！ 正解は " + wordleAnswerHTML());
+    } else wordleMsg("");
+    return;
+  }
+  if (k === "Backspace") { W.cur = W.cur.slice(0, -1); wordleRender(); return; }
+  if (/^[a-z']$/.test(k) && W.cur.length < 5) { W.cur += k; wordleRender(); }
+}
+document.getElementById("wkbd").addEventListener("click", e => {
+  const b = e.target.closest("button[data-k]");
+  if (b) wordleKey(b.dataset.k);
+});
+document.getElementById("wnew").addEventListener("click", wordleNew);
+document.getElementById("wreveal").addEventListener("click", () => {
+  if (!W.answer || W.done) return;
+  W.done = true;
+  wordleMsg("正解は " + wordleAnswerHTML() + " でした（「新しいゲーム」で再挑戦）");
+});
+document.getElementById("wmsg").addEventListener("click", e => {
+  const a = e.target.closest("[data-lookup-w]");
+  if (a) lookup(a.dataset.lookupW);
+});
+document.addEventListener("keydown", e => {
+  if (document.getElementById("sec-wdl").hidden) return;
+  if (e.key === "Enter" || e.key === "Backspace" || /^[a-zA-Z']$/.test(e.key)) {
+    e.preventDefault();
+    wordleKey(e.key.length === 1 ? e.key.toLowerCase() : e.key);
+  }
+});
+
+/* ==================== 画像の遅延読み込み ==================== */
+const IMG_SIGS = [[[0xff,0xd8,0xff],"image/jpeg"], [[0x89,0x50,0x4e,0x47],"image/png"],
+                  [[0x47,0x49,0x46,0x38],"image/gif"], [[0x42,0x4d],"image/bmp"]];
+function sliceImage(bytes) {
+  for (let i = 0; i < Math.min(bytes.length, 4096); i++) {
+    for (const [sig, mime] of IMG_SIGS) {
+      if (sig.every((v, k) => bytes[i + k] === v)) return [bytes.subarray(i), mime];
+    }
+  }
+  return null;
+}
+async function loadImagesFor(headword, container, btn) {
+  const w = DICT.find(x => x.h === headword && x.iL);
+  if (!w || !READER) return;
+  btn.disabled = true; btn.textContent = "読み込み中…";
+  try {
+    const html = [];
+    for (const { off, len } of w.iL) {
+      const bytes = await READER.read(off, len);
+      const r = sliceImage(bytes);
+      if (!r) continue;
+      const url = URL.createObjectURL(new Blob([r[0]], { type: r[1] }));
+      html.push('<img src="' + url + '" alt="' + esc(w.h) + ' の画像">');
+    }
+    container.innerHTML = html.length ? html.join("") : "（画像を認識できませんでした）";
+  } catch (e) {
+    btn.disabled = false; btn.textContent = "読み込み失敗・再試行（" + e.message + "）";
+  }
+}
+document.getElementById("results").addEventListener("click", e => {
+  const b = e.target.closest("button.imgload");
+  if (b) loadImagesFor(b.dataset.h, b.closest(".imgs"), b);
+});
+
+/* ==================== 初期化(ライブロード+キャッシュ) ==================== */
+document.getElementById("zoom").addEventListener("click", () => document.getElementById("zoom").close());
+
+/* --- IndexedDBキャッシュ。使えない環境(古いブラウザ・一部のプライベートモード)では
+       自動的に毎回ネットワーク読み込みにフォールバックする --- */
+const CACHE_VERSION = 1;   // 語彙抽出ルールを変えたらここを上げる(旧キャッシュを無効化)
+function idb() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open("lineparine-dic", 1);
+    req.onupgradeneeded = () => req.result.createObjectStore("kv");
+    req.onsuccess = () => res(req.result);
+    req.onerror = () => rej(req.error);
+  });
+}
+async function cacheGet(key) {
+  try {
+    const db = await idb();
+    return await new Promise((res, rej) => {
+      const tx = db.transaction("kv").objectStore("kv").get(key);
+      tx.onsuccess = () => res(tx.result); tx.onerror = () => rej(tx.error);
+    });
+  } catch (e) { return null; }
+}
+async function cacheSet(key, val) {
+  try {
+    const db = await idb();
+    await new Promise((res, rej) => {
+      const tx = db.transaction("kv", "readwrite").objectStore("kv").put(val, key);
+      tx.onsuccess = res; tx.onerror = () => rej(tx.error);
+    });
+  } catch (e) { /* 保存できなくても動作には影響しない */ }
+}
+
+function applyEntries(entries, sourceNote, extra) {
+  const built = buildData(entries, sourceNote);
+  DICT = built.dict; MORPHOLOGY = built.morphology;
+  MORPHOLOGY_OBSOLETE = built.morphologyObsolete; META = built.meta;
+  buildN();
+  document.getElementById("stat").textContent =
+    DICT.length.toLocaleString() + " 項目 / 語幹 " +
+    MORPHOLOGY.categories.stem.length.toLocaleString() + " 語";
+  document.getElementById("datastatus").innerHTML =
+    esc(META.source + (extra || "")) +
+    ' <button id="refresh" class="cmore" style="margin:0 0 0 8px">最新に更新</button>';
+  document.getElementById("refresh").addEventListener("click", () => bootLive(true));
+  renderDec();
+  if (typeof runDict === "function" && document.getElementById("q").value.trim() !== "") runDict();
+}
+
+async function bootLive(forceNetwork) {
+  const loading = document.getElementById("loading");
+  const msg = document.getElementById("loadmsg");
+  const bar = document.getElementById("loadbarin");
+  const err = document.getElementById("loaderr");
+  loading.hidden = false; err.innerHTML = "";
+
+  if (!forceNetwork) {
+    const cached = await cacheGet("dic");
+    if (cached && cached.version === CACHE_VERSION && Array.isArray(cached.entries)) {
+      READER = new RangeReader(DIC_URL);            // 画像の遅延取得用
+      READER.lastModified = cached.lastModified;
+      READER.size = cached.size;
+      DIC_CACHED_AT = cached.savedAt;
+      applyEntries(cached.entries, "lineparine.dic (キャッシュから起動)",
+        (cached.lastModified ? " / 辞書更新: " + cached.lastModified : "") +
+        " / 保存: " + new Date(cached.savedAt).toLocaleString());
+      loading.hidden = true;
+      handleHash();
+      return;
+    }
+  }
+  try {
+    const { entries, reader } = await loadDictionary(DIC_URL, (m, frac) => {
+      msg.textContent = m; bar.style.width = Math.round(frac * 100) + "%";
+    });
+    READER = reader;
+    DIC_CACHED_AT = null;
+    msg.textContent = "語彙を構築中…"; bar.style.width = "97%";
+    await new Promise(r => setTimeout(r, 0));
+    applyEntries(entries, "lineparine.dic (GitHub) から取得",
+      reader.lastModified ? " / 辞書更新: " + reader.lastModified : "");
+    loading.hidden = true;
+    handleHash();
+    cacheSet("dic", { version: CACHE_VERSION, savedAt: Date.now(),
+      lastModified: reader.lastModified, size: reader.size, entries });
+  } catch (e) {
+    msg.textContent = "辞書の読み込みに失敗しました";
+    err.innerHTML = esc(String(e.message)) +
+      ' <button onclick="bootLive(true)">再試行</button>';
+  }
+}
+
+/* キャッシュ起動時、画像取得前に辞書ファイルが変わっていないか軽量チェック(1バイト) */
+let DIC_CACHED_AT = null, DIC_FRESH = null;
+async function dicIsFresh() {
+  if (DIC_CACHED_AT === null) return true;        // ネットワーク起動なら常に新鮮
+  if (DIC_FRESH !== null) return DIC_FRESH;
+  try {
+    const res = await fetch(DIC_URL, { headers: { Range: "bytes=0-0" } });
+    const cr = res.headers.get("Content-Range");
+    const size = cr ? parseInt(cr.split("/")[1], 10) : null;
+    const lm = res.headers.get("Last-Modified");
+    DIC_FRESH = (size === READER.size) && (!lm || !READER.lastModified || lm === READER.lastModified);
+  } catch (e) { DIC_FRESH = true; }               // 確認不能時はそのまま試す
+  return DIC_FRESH;
+}
+const _origLoadImages = loadImagesFor;
+loadImagesFor = async function(headword, container, btn) {
+  if (!(await dicIsFresh())) {
+    btn.textContent = "辞書が更新されています。「最新に更新」後にお試しください";
+    return;
+  }
+  return _origLoadImages(headword, container, btn);
+};
+
+bootLive(false);
+</script>
+</body>
+</html>
