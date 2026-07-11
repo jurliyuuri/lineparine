@@ -114,6 +114,8 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
 .corpusbtn{font-size:12px;color:var(--accent);font-family:inherit;font-weight:400;
   margin-left:12px;cursor:pointer;text-decoration:underline}
 .plink{font-size:12px;color:var(--accent);font-weight:400;margin-left:12px;text-decoration:underline}
+.noneact{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.noneact .cmore{margin:0}
 .corpus{margin-top:10px}
 .corpus .chead{font-size:12px;color:var(--meta);margin-bottom:4px}
 .cline{margin:6px 0 0;padding:7px 12px;border-left:3px solid var(--accent-bg);
@@ -950,7 +952,11 @@ const SCAN = (() => {
       for (let k = a.nuc_end; k < b.nucleus; k++) seg.push(k);
       let cut = a.nuc_end;
       if (seg.length) {
-        const middle = seg.slice(0, -1);
+        // オンセット確保数: 通常1音素、核直前がグライド(母音前のi/j)なら
+        // その前の子音1つも含めて2音素(例: lies, miet)
+        const last = ph[seg[seg.length - 1]];
+        const reserve = (last === "i" || last === "j") && seg.length >= 2 ? 2 : 1;
+        const middle = seg.slice(0, -reserve);
         for (const k of middle) {
           const left = k - 1 >= 0 ? sound(k - 1) : null;
           const right = k + 1 < n ? sound(k + 1) : null;
@@ -1397,7 +1403,15 @@ function runDict() {
   }
   count.textContent = current.length + " 件";
   if (current.length === 0) {
-    results.innerHTML = '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、対象を「全文」に広げてみてください。</div>';
+    let h = '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、対象を「全文」に広げてみてください。</div>';
+    // 単語らしい入力なら、形態素解析とコーパス用例への誘導を出す
+    if (scope !== "foot" && /^[a-zA-Z'’-]+$/.test(q)) {
+      h += '<div class="noneact">' +
+        '<button class="cmore gotodec" data-q="' + esc(q) + '">「' + esc(q) + '」を形態素解析にかける</button>' +
+        '<button class="cmore trycorpus" data-q="' + esc(q) + '">コーパスから用例を検索</button></div>' +
+        '<div id="nonecorpus"></div>';
+    }
+    results.innerHTML = h;
     document.getElementById("pager").innerHTML = "";
     return;
   }
@@ -1436,6 +1450,19 @@ document.getElementById("shuffle").addEventListener("click", () => {
 
 /* 辞書内リンク（画像ズーム・出典・分解） */
 document.getElementById("sec-dic").addEventListener("click", e => {
+  const gd = e.target.closest("button.gotodec");
+  if (gd) {                                    // 形態素解析へ誘導
+    document.getElementById("word").value = gd.dataset.q;
+    showTab("dec");
+    renderDec();
+    return;
+  }
+  const tc = e.target.closest("button.trycorpus");
+  if (tc) {                                    // 辞書ヒットなしでもコーパス用例を検索
+    const box = document.getElementById("nonecorpus");
+    if (box && !box.querySelector(".corpus")) showCorpus(tc.dataset.q, box, tc);
+    return;
+  }
   const pl = e.target.closest("a.plink");
   if (pl && navigator.clipboard) {
     const url = location.href.split("#")[0] + "#w/" + encodeURIComponent(pl.dataset.plink);
