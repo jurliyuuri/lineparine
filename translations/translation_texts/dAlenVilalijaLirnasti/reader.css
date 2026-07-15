@@ -1,0 +1,132 @@
+@font-face {
+  font-family: "Fynelipa";
+  src: url("https://sozysozbot.github.io/fonts/cirlxarli_liparxe_1.woff") format('woff');
+  font-display: swap;
+}
+
+:root{
+  --paper: #eae2d2;
+  --paper-deep: #ddd2ba;
+  --ink: #2b241c;
+  --ink-soft: #5c5245;
+  --ink-faint: #8a7f6d;
+  --accent: #6e3550;
+  --accent-soft: rgba(110,53,80,0.14);
+  --teal: #3b5c57;
+  --rule: #bfae8c;
+  --rule-faint: #cdbfa2;
+}
+
+*{ box-sizing: border-box; }
+html{ background: var(--paper-deep); }
+
+body{
+  margin:0;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at top, rgba(255,255,255,0.35), transparent 60%),
+    linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  min-height: 100vh;
+  font-family: "Zen Old Mincho", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- chrome ---------- */
+.chrome{
+  position: sticky; top: 0; z-index: 20;
+  display:flex; align-items:center; justify-content: space-between; gap: 1rem;
+  padding: 0.85rem 1.5rem;
+  background: rgba(234,226,210,0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--rule-faint);
+  font-family: "Zen Kaku Gothic New", sans-serif;
+}
+.chrome a.back{ color: var(--teal); text-decoration: none; font-size: 0.82rem; letter-spacing: 0.06em; font-weight: 700; white-space: nowrap; }
+.chrome a.back:hover{ text-decoration: underline; }
+
+.font-switch{ display:flex; align-items:center; gap: 0.55rem; font-size: 0.75rem; letter-spacing: 0.04em; color: var(--ink-soft); cursor: pointer; user-select: none; }
+.switch-track{ position: relative; width: 40px; height: 22px; border-radius: 999px; background: var(--rule); transition: background .25s ease; flex: none; }
+.switch-track::after{ content:""; position:absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); box-shadow: 0 1px 2px rgba(0,0,0,0.35); transition: transform .25s ease; }
+input.hidden-checkbox{ display:none; }
+input.hidden-checkbox:checked + .switch-track{ background: var(--accent); }
+input.hidden-checkbox:checked + .switch-track::after{ transform: translateX(18px); }
+
+/* ---------- page frame ---------- */
+.page{ max-width: 640px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+.leaf{
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.15));
+  border: 1px solid var(--rule-faint); border-radius: 2px;
+  padding: 2.2rem 2rem 3rem;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 18px 40px -28px rgba(43,36,28,0.55);
+}
+@media (max-width: 480px){ .leaf{ padding: 1.6rem 1.1rem 2.4rem; } .page{ padding: 1.6rem 0.9rem 5rem; } }
+
+.eyebrow{ font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.68rem; letter-spacing: 0.22em; color: var(--ink-faint); text-transform: uppercase; margin: 0 0 0.6rem; }
+h2.chapter{ font-family: "Shippori Mincho", serif; font-weight: 700; font-size: 1.5rem; color: var(--ink); margin: 0 0 1.6rem; line-height: 1.5; }
+.rule{ border: none; border-top: 3px dotted var(--rule); margin: 0 0 2.2rem; }
+.rule.bottom{ margin: 2.4rem 0 0; }
+
+/* ---------- story text ---------- */
+.story{ font-size: 1.05rem; line-height: 2.05; color: var(--ink); }
+.leaf.latin-off .fy{ font-family: "EB Garamond", serif; font-style: italic; }
+.leaf:not(.latin-off) .fy{ font-family: "Fynelipa", serif; }
+p{ margin: 0 0 1.25rem; }
+p.thought{ font-style: italic; color: var(--ink-soft); text-align: center; }
+
+.w{
+  cursor: pointer; color: inherit; text-decoration: none;
+  border-bottom: 1px dotted var(--ink-faint);
+  transition: color .15s ease, border-color .15s ease, background .15s ease;
+  padding: 0 1px; border-radius: 2px;
+}
+.w:visited{ color: inherit; }
+.w:hover, .w:focus-visible{ color: var(--accent); border-bottom: 1px dotted var(--accent); background: var(--accent-soft); outline: none; }
+
+.hint{
+  font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.78rem; color: var(--teal);
+  background: rgba(59,92,87,0.08); border: 1px solid rgba(59,92,87,0.25); border-radius: 6px;
+  padding: 0.6rem 0.9rem; margin: 0 0 1.8rem; line-height: 1.6;
+}
+.hint b{ color: var(--accent); font-weight: 700; }
+
+.loading, .error{
+  font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.85rem; color: var(--ink-faint);
+  padding: 2rem 0; text-align: center;
+}
+.error{ color: var(--accent); }
+
+/* ---------- prev/next nav ---------- */
+.episode-nav{ display:flex; justify-content: space-between; gap: 1rem; margin: 2.2rem 0 0; font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.82rem; }
+.episode-nav a{ color: var(--teal); text-decoration: none; }
+.episode-nav a:hover{ text-decoration: underline; }
+.episode-nav .spacer{ flex: 1; }
+
+/* ---------- toast ---------- */
+#glossToast{
+  position: fixed; right: 1.1rem; bottom: 1.1rem; max-width: 300px;
+  background: var(--ink); color: var(--paper);
+  font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.82rem; line-height: 1.55;
+  padding: 0.8rem 1rem; border-radius: 8px 8px 8px 2px;
+  box-shadow: 0 10px 28px -12px rgba(0,0,0,0.55);
+  transform: translateY(140%); opacity: 0;
+  transition: transform .3s cubic-bezier(.2,.9,.3,1.2), opacity .25s ease;
+  z-index: 40; border-left: 3px solid var(--accent);
+}
+#glossToast.show{ transform: translateY(0); opacity: 1; }
+#glossToast b{ color: #e9c9d6; }
+#glossToast .sub{ color: rgba(234,226,210,0.7); font-size: 0.74rem; margin-top: 0.2rem; }
+
+/* ---------- index / episode list ---------- */
+#episode-list{ list-style: none; margin: 0; padding: 0; font-family: "Zen Old Mincho", serif; }
+#episode-list li{ border-bottom: 1px dotted var(--rule-faint); }
+#episode-list a{
+  display:flex; align-items:baseline; gap: 0.8rem; padding: 0.75rem 0.2rem;
+  color: var(--ink); text-decoration: none;
+}
+#episode-list a:hover .ep-title{ color: var(--accent); }
+#episode-list .ep-num{ font-family: "Zen Kaku Gothic New", sans-serif; color: var(--ink-faint); font-size: 0.78rem; flex: none; width: 3.2em; }
+#episode-list .ep-title{ transition: color .15s ease; }
+
+@media (prefers-reduced-motion: reduce){
+  .w, .switch-track, .switch-track::after, #glossToast{ transition: none; }
+}
