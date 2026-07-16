@@ -135,7 +135,7 @@
       a.href = "episode_" + r.item.pad + ".html";
       var numSpan = document.createElement("span");
       numSpan.className = "ep-num";
-      numSpan.textContent = ordinalLabel(r.item.num);
+      numSpan.textContent = ordinalLabel(idx);
       var titleSpan = document.createElement("span");
       titleSpan.className = "ep-title";
       titleSpan.textContent = r.title || ("episode_" + r.item.pad);
