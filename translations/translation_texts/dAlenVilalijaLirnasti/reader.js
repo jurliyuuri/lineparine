@@ -34,7 +34,7 @@
       if(!res.ok) throw new Error("txt not found: " + res.status);
       return res.text();
     })
-    .then(function(raw){ renderEpisode(raw); })
+    .then(function(raw){ renderEpisode(stripBom(raw)); })
     .catch(function(err){
       renderFatal("本文ファイル（" + txtFile + "）の読み込みに失敗しました。同じディレクトリにファイルが存在するか確認してください。");
       console.error(err);
@@ -45,14 +45,26 @@
     leaf.innerHTML = '<p class="error">' + escapeHtml(msg) + "</p>";
   }
 
+  function stripBom(s){
+    return s.charCodeAt(0) === 0xFEFF ? s.slice(1) : s;
+  }
+
   // ---------- 3. parse the .txt into title + paragraph blocks ----------
   function parseEpisode(raw){
     var lines = raw.replace(/\r\n?/g, "\n").split("\n");
 
     var title = "";
+    var TITLE_MARKER = /^【xakantast/; // tolerates "【xakantasti】", "【xakantast】", "【xakantasti】】" etc.
     for(var i = 0; i < lines.length; i++){
-      if(lines[i].trim() === "【xakantasti】"){
-        title = (lines[i+1] || "").trim();
+      var line = lines[i].trim();
+      if(TITLE_MARKER.test(line)){
+        // usually the title is on the next non-empty line
+        var inline = line.replace(TITLE_MARKER, "").replace(/^[iI】]*/, "").trim();
+        if(inline){ title = inline; break; }
+        for(var k = i + 1; k < lines.length; k++){
+          var next = lines[k].trim();
+          if(next){ title = next; break; }
+        }
         break;
       }
     }
