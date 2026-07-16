@@ -12,14 +12,29 @@
   var CACHE_KEY = "episodeListCache:v2:" + DIR_PATH; // v2: bumped after fixing the double-path bug
   var CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes — eases pressure on the unauthenticated GitHub API rate limit
 
-  var JP_NUMERALS = ["", "一", "ニ", "三", "四", "五", "六", "七", "八", "九", "十",
-    "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
-    "二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十"];
+
+  // Converts any non-negative integer to traditional kanji numeral notation
+  // (一, 十, 二十三, 三十一, 百, ...) with no upper limit, so the episode
+  // count never needs to be hand-maintained here.
+  function kanjiNumeral(n){
+    if(n === 0) return "〇";
+    var DIGITS = ["", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+    var UNITS  = ["", "十", "百", "千"];
+    var str = String(n);
+    var len = str.length;
+    var out = "";
+    for(var i = 0; i < len; i++){
+      var d = parseInt(str[i], 10);
+      var unit = UNITS[len - 1 - i] || ""; // beyond 千 (4+ digits), just concatenate plainly
+      if(d === 0) continue;
+      out += (d === 1 && unit !== "") ? unit : (DIGITS[d] + unit);
+    }
+    return out;
+  }
 
   function ordinalLabel(n){
     if(n === 0) return "プロローグ";
-    if(n < JP_NUMERALS.length) return "第" + JP_NUMERALS[n] + "話";
-    return "第" + n + "話";
+    return "第" + kanjiNumeral(n) + "話";
   }
 
   function stripBom(s){
