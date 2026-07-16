@@ -9,7 +9,7 @@
   var DIR_PATH = "translations/translation_texts/dAlenVilalijaLirnasti"; // no leading/trailing slash
 
   var LIST_API = "https://api.github.com/repos/" + GH_USER + "/" + GH_REPO + "/contents/" + DIR_PATH + "?ref=" + GH_REF;
-  var CACHE_KEY = "episodeListCache:" + DIR_PATH;
+  var CACHE_KEY = "episodeListCache:v2:" + DIR_PATH; // v2: bumped after fixing the double-path bug
   var CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes — eases pressure on the unauthenticated GitHub API rate limit
 
   var JP_NUMERALS = ["", "一", "ニ", "三", "四", "五", "六", "七", "八", "九", "十",
@@ -18,8 +18,8 @@
 
   function ordinalLabel(n){
     if(n === 0) return "プロローグ";
-    if(n - 1 < JP_NUMERALS.length) return "第" + JP_NUMERALS[n-1] + "話";
-    return "第" + (n-1) + "話";
+    if(n < JP_NUMERALS.length) return "第" + JP_NUMERALS[n] + "話";
+    return "第" + n + "話";
   }
 
   function stripBom(s){
@@ -120,7 +120,7 @@
       a.href = "episode_" + r.item.pad + ".html";
       var numSpan = document.createElement("span");
       numSpan.className = "ep-num";
-      numSpan.textContent = ordinalLabel(idx);
+      numSpan.textContent = ordinalLabel(r.item.num);
       var titleSpan = document.createElement("span");
       titleSpan.className = "ep-title";
       titleSpan.textContent = r.title || ("episode_" + r.item.pad);
