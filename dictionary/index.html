@@ -114,6 +114,10 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
 .corpusbtn{font-size:12px;color:var(--accent);font-family:inherit;font-weight:400;
   margin-left:12px;cursor:pointer;text-decoration:underline}
 .plink{font-size:12px;color:var(--accent);font-weight:400;margin-left:12px;text-decoration:underline}
+#notice{margin:2px 0 10px;font-size:14px;color:#3d4652}
+#notice:empty{display:none}
+.suggest{border:none;background:none;color:var(--accent);font-size:14px;font-weight:600;
+  cursor:pointer;text-decoration:underline;padding:0;font-family:"SF Mono",Consolas,monospace}
 .noneact{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
 .noneact .cmore{margin:0}
 .corpus{margin-top:10px}
@@ -1402,6 +1406,16 @@ function runDict() {
     count.textContent = ""; document.getElementById("pager").innerHTML = ""; return;
   }
   count.textContent = current.length + " 件";
+  // フォント表記(F=fh, V=vh, X=dz)が検索語に含まれる場合の「もしかして」
+  if (mode !== "regex" && /[FVX]/.test(q)) {
+    const dec = q.replace(/F/g, "fh").replace(/V/g, "vh").replace(/X/g, "dz").toLowerCase();
+    const n = search(dec, scope, mode).length;
+    if (n > 0) {
+      document.getElementById("notice").innerHTML =
+        'もしかして: <button class="suggest" data-q="' + esc(dec) + '">' + esc(dec) +
+        "</button>（" + n + " 件）";
+    }
+  }
   if (current.length === 0) {
     let h = '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、対象を「全文」に広げてみてください。</div>';
     // 単語らしい入力なら、形態素解析とコーパス用例への誘導を出す
@@ -1450,6 +1464,12 @@ document.getElementById("shuffle").addEventListener("click", () => {
 
 /* 辞書内リンク（画像ズーム・出典・分解） */
 document.getElementById("sec-dic").addEventListener("click", e => {
+  const sg = e.target.closest("button.suggest");
+  if (sg) {                                    // もしかして → 置き換えて再検索
+    document.getElementById("q").value = sg.dataset.q;
+    runDict();
+    return;
+  }
   const gd = e.target.closest("button.gotodec");
   if (gd) {                                    // 形態素解析へ誘導
     document.getElementById("word").value = gd.dataset.q;
