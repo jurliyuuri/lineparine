@@ -38,6 +38,11 @@ footer{margin-top:26px;font-size:12px;color:var(--meta)}
 #count{font-size:13px;color:var(--meta);margin:12px 2px 8px}
 .entry{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
 .entry h2{margin:0 0 4px;font-size:18px;font-family:"SF Mono",Consolas,monospace;color:var(--accent)}
+.fhit{font-size:12px;color:var(--meta);margin:0 0 6px}
+.fhit b{font-family:"SF Mono",Consolas,monospace;color:var(--accent);font-weight:600}
+.cpron{font-size:11px;color:var(--meta);font-family:"SF Mono",Consolas,monospace;font-weight:400}
+.pron-gen{opacity:.75;text-decoration:underline dotted;text-underline-offset:3px;cursor:help}
+.pron-gen sup{font-size:9px}
 .entry h2 .pron{font-size:13px;color:var(--meta);font-family:inherit;margin-left:10px;font-weight:400}
 .entry h2 .plink{font-size:12px;color:var(--accent);font-family:inherit;font-weight:400;
   margin-left:12px;text-decoration:underline;cursor:pointer}
@@ -65,11 +70,6 @@ table.ctab th{text-align:left;font-weight:400;color:var(--meta);padding:2px 14px
   white-space:nowrap;vertical-align:top;font-size:13px}
 table.ctab td{padding:2px 0;font-family:"SF Mono",Consolas,monospace;color:var(--ink);word-break:break-word}
 .ex{margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--line);color:#3d4652;font-size:14px;white-space:pre-wrap}
-.imgs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-.imgs img{max-width:280px;max-height:210px;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;object-fit:cover}
-dialog#zoom{border:none;border-radius:10px;padding:0;max-width:92vw;max-height:92vh;background:transparent}
-dialog#zoom::backdrop{background:rgba(20,25,35,.75)}
-dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;cursor:zoom-out}
 #notice{margin:2px 0 10px;font-size:14px;color:#3d4652}
 #notice:empty{display:none}
 .none{color:#8a5a2e;background:#fdf3e4;border:1px solid #f0dcc0;border-radius:8px;padding:9px 12px;font-size:13px}
@@ -99,10 +99,6 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
 #loaderr{color:#8a2e2e;font-size:13px;margin-top:10px}
 #loaderr button{margin-left:8px;padding:4px 14px;border:1px solid var(--line);border-radius:8px;
   background:var(--card);cursor:pointer}
-.imgload{padding:7px 16px;font-size:13px;border:1px solid var(--line);border-radius:8px;
-  background:var(--card);cursor:pointer;color:var(--accent);margin-top:10px}
-.imgload:hover{border-color:var(--accent)}
-.imgload:disabled{opacity:.5;cursor:wait}
 </style>
 </head>
 <body>
@@ -120,7 +116,7 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
 <!-- ============ 辞書 ============ -->
 <section id="sec-dic">
   <div class="searchbar"><div class="panel">
-    <input type="search" id="q" placeholder="単語を入力（インクリメンタル検索・アクセント記号は省略可）" spellcheck="false"
+    <input type="search" id="q" placeholder="単語を入力（アクセント記号は省略可・明示すると厳密に照合）" spellcheck="false"
       aria-label="検索語">
     <div class="opts">
       <fieldset id="scope"><legend>対象</legend>
@@ -135,8 +131,12 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
         <label><input type="radio" name="mode" value="exact">完全一致</label>
         <label><input type="radio" name="mode" value="regex">正規表現</label>
       </fieldset>
+      <fieldset id="extra"><legend>ほか</legend>
+        <label title="活用・変化した形を入力しても、その辞書形が出るようにします"><input
+          type="checkbox" id="useinfl" checked>変化形も探す</label>
+      </fieldset>
     </div>
-    <div id="regexerr"></div>
+    <div id="searcherr"></div>
   </div></div>
   <div style="display:flex;align-items:center;gap:12px">
     <div id="count"></div>
@@ -148,21 +148,39 @@ dialog#zoom img{max-width:92vw;max-height:92vh;display:block;border-radius:10px;
 </section>
 
 <footer>データ: <span id="datastatus"></span><br>
-活用・変化は文法規則から自動で生成しています。</footer>
-<dialog id="zoom"><img id="zoomimg" alt=""></dialog>
+活用・変化は文法規則から自動で生成しており、誤っている可能性があります。<br>
+変化形の発音と、発音欄の無い見出し語の /…/<sup>?</sup> は、発音を自動で生成しており、誤っている可能性があります。</footer>
 </div>
 
 <script>
 "use strict";
-/* ==================== 設定 ====================
- * 辞書の取得元。CORS対応が必要（GitHub raw は対応済み）。
- * Web公開時に同一オリジンに置くなら相対パスでも可。 */
-const DIC_URL = "https://raw.githubusercontent.com/jurliyuuri/lineparine/master/dictionary/Vaifise.dic";
+/* ============================================================
+ * ヴェフィス語辞書 — 単一ファイル構成
+ *
+ * データの流れ:
+ *   Vaifise.dic (PDIC/Unicode, GitHub raw)
+ *     → loadDictionary()  … Rangeリクエストで取得・解析した生エントリ列
+ *     → buildWords()      … 正規表記へ統一し、検索索引・変化形索引を付けた WORDS
+ *     → search()/render系 … WORDS だけを見る
+ *   生エントリ列は IndexedDB にキャッシュされ、次回は buildWords() からやり直す
+ *   （構築ルールを変えてもキャッシュはそのまま使える）。
+ *
+ * セクション:
+ *   1. 設定           4. 辞書モデル(WORDS)   7. 活用・変化(CONJ)   10. キャッシュと起動
+ *   2. PDICリーダ     5. 検索                8. 表示
+ *   3. 文字処理       6. 発音(PRON)          9. 検索UI
+ * ============================================================ */
 
-let DICT = [], N = [], META = null, READER = null;
+/* ==================== 1. 設定 ==================== */
+/* 辞書の取得元。CORS対応が必要（GitHub raw は対応済み）。
+   Web公開時に同一オリジンに置くなら相対パスでも可。 */
+const DIC_URL = "https://raw.githubusercontent.com/jurliyuuri/lineparine/master/dictionary/Vaifise.dic";
+const PAGE = 50;             // 1ページの件数
+const RANDOM_COUNT = 50;     // 「シャッフル」での未入力時に出す件数
+const CACHE_VERSION = 1;     // 生エントリの形を変えたらここを上げる(旧キャッシュを無効化)
 
 /* ============================================================
- * PDIC/Unicode 6.10 リーダ（ブラウザ内・Range対応）
+ * 2. PDIC/Unicode 6.10 リーダ（ブラウザ内・Range対応）
  * 典拠: PDIC辞書形式仕様(6.10) / BOCU-1: UTN#6, ICUリファレンス定数
  * ============================================================ */
 
@@ -350,7 +368,7 @@ const PDIC = (() => {
       const tab = head.indexOf("\t");
       const entry = { keyword: tab >= 0 ? head.slice(0, tab) : head,
                       headword: tab >= 0 ? head.slice(tab + 1) : head,
-                      translation: "", pron: [], examples: [], lazyImages: [] };
+                      translation: "", pron: [], examples: [] };
       if (attr & 0x10) {                    // 拡張構成
         entry.translation = B1.decode(await readCStr(entryEndAbs));
         while (abs() < entryEndAbs) {
@@ -358,10 +376,9 @@ const PDIC = (() => {
           const ea = buf[p]; p += 1;
           if (ea === 0x80) break;
           const kind = ea & 0x0F, binary = !!(ea & 0x10);
-          if (binary) {
+          if (binary) {                     // 画像等のバイナリ拡張は読み飛ばす
             const clen = wide ? await readU32() : await readU16();
-            entry.lazyImages.push({ off: abs(), len: clen });
-            await skipTo(abs() + clen);     // ★本体は取得しない
+            await skipTo(abs() + clen);
           } else {
             const txt = B1.decode(await readCStr(entryEndAbs));
             if (kind === 1) entry.examples.push(txt);
@@ -378,7 +395,7 @@ const PDIC = (() => {
     }
   }
 
-  return { parseHeader, parseIndex, parseBlock, u16, u32 };
+  return { parseHeader, parseIndex, parseBlock };
 })();
 
 /* ---------------- ロード全体の統括 ---------------- */
@@ -390,15 +407,16 @@ async function loadDictionary(url, onProgress) {
   onProgress("インデックスを取得中…", 0.02);
   const idx = await reader.read(h.index_start, 1024 * h.index_block);
   const bids = PDIC.parseIndex(h, idx);
-  // ブロックは連続配置: サイズ = 次ブロックとの差(最後はファイル末尾まで)
+  // ブロックは連続配置: サイズ = 次ブロックとの差。最後のブロックはファイル末尾まで
+  // (最初のRangeレスポンスでsizeが埋まる。万一不明なら1GBを上限として扱う)
   const sorted = bids.slice().sort((a, b) => a - b);
+  const fileKB = Math.ceil(((reader.size ?? 2 ** 30) - h.data_start) / 1024);
   const sizeOf = new Map();
   for (let i = 0; i < sorted.length; i++) {
-    const next = i + 1 < sorted.length ? sorted[i + 1]
-               : Math.ceil(((reader.size ?? (h.data_start + 1 << 20)) - h.data_start) / 1024);
+    const next = i + 1 < sorted.length ? sorted[i + 1] : fileKB;
     sizeOf.set(sorted[i], next - sorted[i]);
   }
-  const SMALL_KB = 32, HEAD_KB = 8, CONT_KB = 8;
+  const SMALL_KB = 32, HEAD_KB = 8, CONT_KB = 8, PARALLEL = 10;
   // 連続する小ブロックをまとめて取得する計画を立てる
   const tasks = [];
   let run = null;
@@ -413,14 +431,13 @@ async function loadDictionary(url, onProgress) {
   }
   const entries = [];
   let done = 0;
-  const totalTasks = tasks.length;
   async function runTask(t) {
     if (!t.big) {
       const base = h.data_start + 1024 * t.startBid;
       const chunk = await reader.read(base, 1024 * t.kb);
       for (const bid of t.bids) {
         const rel = 1024 * (bid - t.startBid);
-        await PDIC.parseBlock(h.data_start + 1024 * bid, chunk.subarray(rel), 
+        await PDIC.parseBlock(h.data_start + 1024 * bid, chunk.subarray(rel),
           async () => { throw new Error("small block overrun"); }, e => entries.push(e));
       }
     } else {
@@ -430,114 +447,246 @@ async function loadDictionary(url, onProgress) {
         absOff => reader.read(absOff, 1024 * CONT_KB), e => entries.push(e));
     }
     done++;
-    onProgress(`辞書を取得中… ${entries.length} 項目`, 0.05 + 0.9 * done / totalTasks);
+    onProgress(`辞書を取得中… ${entries.length} 項目`, 0.05 + 0.9 * done / tasks.length);
   }
-  // 8並列で実行
   const queue = tasks.slice();
-  await Promise.all(Array.from({ length: 10 }, async () => {
+  await Promise.all(Array.from({ length: PARALLEL }, async () => {
     while (queue.length) await runTask(queue.shift());
   }));
   if (entries.length !== h.nword)
     console.warn(`項目数不一致: parsed=${entries.length} header=${h.nword}`);
-  return { entries, reader, nword: h.nword };
+  return { entries, reader };
 }
 
-
-/* ==================== 辞書データ ==================== */
+/* ==================== 3. 文字処理 ==================== */
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")
                   .replace(/"/g,"&quot;").replace(/'/g,"&#039;");
 
-/* ヴェフィス語の綴りはアクセント記号(é è ç ö ĥ ĵ 等)を用いる。検索では
-   記号なしでも引けるよう、ラテン文字の付加記号だけを落とした形も持つ。
-   NFDでの一括処理は日本語の濁点まで分解してしまうため、明示的な対応表を使う。 */
-const DEACC = {"à":"a","á":"a","â":"a","ä":"a","ã":"a","å":"a","ā":"a",
-  "ç":"c","ĉ":"c","č":"c","ć":"c","ď":"d","đ":"d",
-  "è":"e","é":"e","ê":"e","ë":"e","ē":"e","ě":"e",
-  "ĝ":"g","ğ":"g","ĥ":"h","ħ":"h",
-  "ì":"i","í":"i","î":"i","ï":"i","ī":"i","ĵ":"j","ł":"l",
-  "ñ":"n","ń":"n","ň":"n",
-  "ò":"o","ó":"o","ô":"o","ö":"o","õ":"o","ø":"o","ō":"o",
-  "ř":"r","ś":"s","ŝ":"s","š":"s","ş":"s","ť":"t",
-  "ù":"u","ú":"u","û":"u","ü":"u","ū":"u","ŭ":"u","ů":"u",
-  "ý":"y","ÿ":"y","ź":"z","ž":"z","ż":"z","ß":"ss","æ":"ae","œ":"oe"};
+/* ヴェフィス語の綴りはアクセント記号(é ç ö ĥ ĵ 等)を用いる。検索では
+   記号なしでも引けるよう、ラテン文字の付加記号だけを落とした形も使う。
+   NFDでの一括処理は日本語の濁点まで分解してしまうため、明示的な対応表を使う。
+   対象は辞書データに実際に現れる文字(語源行の他言語転写 ĕ ī ū ḍ ṣ を含む)。
+   辞書の更新で新しい文字が入ったらここに足す。 */
+const DEACC = {"à":"a","á":"a","ä":"a","ç":"c","è":"e","é":"e","ĕ":"e","ĥ":"h",
+  "í":"i","ī":"i","ĵ":"j","ó":"o","ö":"o","ü":"u","ū":"u","ḍ":"d","ṣ":"s"};
 const deacc = s => s.replace(/[^\x00-\x7f]/g, c => DEACC[c] !== undefined ? DEACC[c] : c);
 
-/* エントリ列 → 辞書データ。見出し語(headword)は綴り字、keywordはPDICの検索キー */
-function buildData(entries, sourceNote) {
-  const dict = entries.map(w => {
-    const e = { h: w.headword, k: w.keyword, t: w.translation };
-    if (w.pron.length) e.p = w.pron;
-    if (w.examples.length) e.e = w.examples;
-    if (w.lazyImages.length) e.iL = w.lazyImages;
-    return e;
+/* ヴェフィス語の è は é に統合された(正書法改定)。辞書データが古い綴りでも
+   取り込み時に é へ揃える。ただし語源行には他言語(.li 等)の語が混ざるので、
+   言語タグ .ve が付く語源(ヴェフィス語)だけを置換し、他言語の è は残す */
+const unifyE = s => s.replace(/è/g, "é").replace(/È/g, "É");
+/* 語源行の判定。renderInline の装飾と同じ形を使う */
+const ETY_LINE = /^\d{6,8}[*＊]/;
+/* 語源行の言語タグ無しの語源のうち、ヴェフィス語と確認できたもの。
+   meièhulangè(éinyeの項)は言語が分からないため手を付けない */
+const ETY_VE = ["andaisèvair", "andusèvair", "falè", "raddiefèhon"];
+function unifyText(t) {
+  return String(t).split(/\r\n?|\n/).map(line => {
+    if (ETY_LINE.test(line.trim())) {
+      line = line.replace(/(\([^()]*\)|[^\s<>():,、]+)(?=\.ve\b)/g, unifyE);
+      for (const w of ETY_VE) line = line.split(w).join(unifyE(w));
+      return line;
+    }
+    return unifyE(line);                            // 本文・用例はすべてヴェフィス語扱い
+  }).join("\n");
+}
+
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+/* 検索語 → 正規表現の断片。素の文字はアクセント記号付きの変種にも当たる文字クラスに
+   広げ、記号付きで明示された文字(é ĵ ö 等)はその文字のままにする。
+   これで「e」は e/é の両方に当たり、「é」は é にだけ当たる。 */
+const FLEX = (() => {
+  const rev = {};                               // 素の文字 → 自分+変種の並び
+  for (const [acc, base] of Object.entries(DEACC)) rev[base] = (rev[base] || base) + acc;
+  return q => Array.from(q).map(ch => rev[ch] ? "[" + rev[ch] + "]" : escRe(ch)).join("");
+})();
+
+/* ==================== 4. 辞書モデル ==================== */
+/* WORDS: 検索も表示もこの1本を見る。1語のフィールド:
+ *   データ    h=見出し語 k=PDIC検索キー t=訳文 p=発音欄 e=用例 iL=画像{off,len}
+ *   検索索引  hl=hの小文字 hk=kの小文字 hs=記号もアポストロフィも落とした形
+ *             gl=訳語行(小文字) full=全文(小文字)
+ *   変化形    fk=綴り fl=小文字 fLab=変化形の名前 fSrc=その形を出した品詞行の目印
+ * 改行は取り込み時に \n へ統一し、以降の層では正規化しない。 */
+let WORDS = [];
+
+function buildWords(entries) {
+  const words = entries.map(src => {
+    const w = { h: unifyE(src.headword), k: unifyE(src.keyword), t: unifyText(src.translation) };
+    if (src.pron.length) w.p = src.pron;
+    if (src.examples.length) w.e = src.examples.map(unifyText);
+    w.hl = w.h.toLowerCase();
+    w.hk = w.k.toLowerCase();
+    w.hs = deacc(w.hl).replace(/['’\-]/g, "");
+    // 訳語 = 品詞タグ【…】で始まる行のみ(語源行・[文化]・[語法]等の散文は全文でのみ対象)
+    w.gl = w.t.split("\n").filter(l => l.trimStart().startsWith("【")).join("\n").toLowerCase();
+    w.full = (w.h + "\n" + w.k + "\n" + w.t + "\n" +
+              (w.e || []).join("\n") + "\n" + (w.p || []).join("\n")).toLowerCase();
+    // 変化形の索引(コードが読めない語があっても構築全体は止めない)
+    w.fk = []; w.fl = []; w.fLab = []; w.fSrc = [];
+    let forms = null;
+    try { forms = CONJ.formsOf(w.h, w.t); } catch (e) {}
+    if (forms) for (const [f, v] of forms) {
+      w.fk.push(f); w.fl.push(f.toLowerCase());
+      w.fLab.push(v.labels.join("・")); w.fSrc.push(v.srcs);
+    }
+    return w;
   });
-  dict.sort((a, b) => {
-    const x = (a.k || a.h).toLowerCase(), y = (b.k || b.h).toLowerCase();
+  words.sort((a, b) => {
+    const x = a.hk || a.hl, y = b.hk || b.hl;
     return x < y ? -1 : x > y ? 1 : (a.h < b.h ? -1 : 1);
   });
-  return { dict, meta: { source: sourceNote + `（見出し語${dict.length}件）` } };
+  return words;
 }
 
-/* ==================== 検索 ==================== */
-const PAGE = 50;
-let page = 1, current = [];
-
-function buildN() {
-  N = DICT.map(w => {
-    const hl = w.h.toLowerCase();
-    const hn = deacc(hl);
-    const t = w.t.replace(/\r\n?/g, "\n");
-    // 訳語 = 品詞タグ【…】で始まる行のみ(語源行・[文化]・[語法]等の散文は全文でのみ対象)
-    const gl = t.split("\n").filter(l => l.trimStart().startsWith("【")).join("\n").toLowerCase();
-    const full = (w.h + "\n" + (w.k || "") + "\n" + t + "\n" +
-                  (w.e || []).join("\n") + "\n" + (w.p || []).join("\n")).toLowerCase();
-    return { ...w, hl, hn, hk: (w.k || "").toLowerCase(), hs: hn.replace(/['’\-]/g, ""),
-             gl, gld: deacc(gl), full, fulld: deacc(full) };
-  });
-}
-
+/* ==================== 5. 検索 ==================== */
 /* 見出し語用: 語全体で判定 */
 function matcher(query, mode) {
-  const q = query;
-  if (mode === "prefix") return s => s.startsWith(q);
-  if (mode === "exact")  return s => s === q;
-  return s => s.includes(q);
+  const p = FLEX(query);
+  const re = new RegExp(mode === "exact" ? "^" + p + "$" : mode === "prefix" ? "^" + p : p);
+  return s => re.test(s);
 }
 /* 訳語・全文用: テキスト中の「語」として一致させる。
    ラテン文字・数字で始まる/終わる検索語は単語境界(非[a-z0-9'])を要求し、
    日本語などはそのままの出現で一致する。 */
 function textMatcher(query, mode) {
-  if (mode === "partial") return s => s.includes(query);
-  const qe = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const p = FLEX(query);
+  if (mode === "partial") { const re = new RegExp(p); return s => re.test(s); }
   const W = "[a-z0-9']";
   const lb = /^[a-z0-9']/.test(query) ? "(?<!" + W + ")" : "";
   const rb = /[a-z0-9']$/.test(query) ? "(?!" + W + ")" : "";
-  const re = new RegExp(mode === "exact" ? lb + qe + rb : lb + qe);   // prefix: 語頭のみ要求
+  const re = new RegExp(mode === "exact" ? lb + p + rb : lb + p);   // prefix: 語頭のみ要求
   return s => re.test(s);
 }
 
-function search(query, scope, mode) {
+/* 検索の結果: { words, infl }
+ *   words … 一致した語。見出し語・訳語で当たったものが先、変化形でしか
+ *           当たらないものが後ろに並ぶ。
+ *   infl  … 変化形でだけ当たった語 → 当たった変化形の添字(w.fk等への)。 */
+function search(query, scope, mode, useInfl) {
+  query = unifyE(query);                        // è は廃止: 古い綴りの入力も é として引く
+  const infl = new Map();
+  // 訳語だけを探すときは語形の話ではないので変化形は見ない
+  const wantInfl = !!useInfl && scope !== "trans";
+
+  /* headTest(w)で当てて、外れたらinflTest(綴り小文字→bool)で変化形を当てる */
+  function collect(directHit, formTest) {
+    const direct = [], byForm = [];
+    for (const w of WORDS) {
+      if (directHit(w)) { direct.push(w); continue; }
+      if (!wantInfl) continue;
+      const i = w.fl.findIndex(formTest);
+      if (i >= 0) { infl.set(w, i); byForm.push(w); }
+    }
+    return { words: direct.concat(byForm), infl };
+  }
+
   if (mode === "regex") {                       // 正規表現は綴りのまま(記号を含む形)に適用
     const re = new RegExp(query, "i");
-    const hh = w => re.test(w.hl) || re.test(w.hk);
-    if (scope === "head")  return N.filter(hh);
-    if (scope === "trans") return N.filter(w => re.test(w.gl));
-    if (scope === "full")  return N.filter(w => re.test(w.full));
-    return N.filter(w => hh(w) || re.test(w.gl));
+    const formTest = l => re.test(l);
+    if (scope === "head")  return collect(w => re.test(w.hl) || re.test(w.hk), formTest);
+    if (scope === "trans") return collect(w => re.test(w.gl));
+    if (scope === "full")  return collect(w => re.test(w.full), formTest);
+    return collect(w => re.test(w.hl) || re.test(w.hk) || re.test(w.gl), formTest);
   }
+
   const q = query.toLowerCase(), qd = deacc(q), qs = qd.replace(/['’\-]/g, "");
+  // FLEXにより「素の文字は変種にも当たり、明示した記号付き文字はその文字だけに当たる」。
+  // 別軸の寛容さ(記号除去形のPDICキー・アポストロフィを落とした形)は、
+  // 記号付き文字を含まない入力のときにだけ使う
+  const strict = q !== qd;
   const m = matcher(q, mode), md = matcher(qd, mode), ms = matcher(qs, mode);
-  // 綴りそのまま / 記号を落とした形 / PDIC検索キー / 記号もアポストロフィも落とした形
-  const headHit = w => m(w.hl) || md(w.hn) || md(w.hk) || ms(w.hs);
-  const tm = textMatcher(q, mode), tmd = textMatcher(qd, mode);
-  const transHit = w => tm(w.gl) || tmd(w.gld);
-  if (scope === "head")  return N.filter(headHit);
-  if (scope === "trans") return N.filter(transHit);
-  if (scope === "full")  return N.filter(w => tm(w.full) || tmd(w.fulld));
-  return N.filter(w => headHit(w) || transHit(w));
+  const headHit = strict ? w => m(w.hl)
+                         : w => m(w.hl) || md(w.hk) || ms(w.hs);
+  const tm = textMatcher(q, mode);
+  const formTest = l => m(l);
+  if (scope === "head")  return collect(headHit, formTest);
+  if (scope === "trans") return collect(w => tm(w.gl));
+  if (scope === "full")  return collect(w => tm(w.full), formTest);
+  return collect(w => headHit(w) || tm(w.gl), formTest);
 }
 
-/* ==================== 活用・変化 ====================
+/* ==================== 6. 発音 ====================
+ * 典拠: 四代目リパライン語 文法「発音」（sites.google.com/site/4tvalipan/wen-fa、
+ *       Web Archive 2020-10-09 版）。綴りから発音(IPA)を機械的に組み立てる。
+ *   要点: é/ĵ/ĥ は無音（é は前後の s,t,k を読ませる）。音節尾の s,t,k は読まない。
+ *         ai=/ɛ/ ei=/aj/ oi=/wa/ au,eu=/oː/ ou=子音の前で/u/・母音の前で/w/。
+ *         同じ子音字が続いても促音にならない。母音の長短の対立は無い。
+ *   辞書の発音欄は人手の転記で揺れがある（air, 語末の l, 長音など）ので、
+ *   ここで作るものはあくまで規則通りの目安。 */
+const PRON = (() => {
+  /* 多文字のつづり字。長いものから試す。型: C=子音 V=母音 E=e OU=ou M=無音 */
+  const GRAPHS = [
+    ["néh","ɲ","C"], ["éh","j","C"], ["çh","ʂ","C"], ["ch","ʃ","C"],
+    ["fh","ɸ","C"], ["th","t","C"], ["dh","d","C"],
+    ["aiy","ɛj","V"], ["ai","ɛ","V"], ["ei","aj","V"],
+    ["au","oː","V"], ["eu","oː","V"], ["ou","","OU"], ["oi","wa","V"],
+    ["ie","ie","V"], ["oa","ɔ","V"], ["ö","ø","V"],
+  ];
+  const SINGLE = {
+    p:["p","C"], b:["b","C"], t:["t","C"], d:["d","C"], k:["k","C"], g:["g","C"],
+    q:["k","C"], m:["m","C"], n:["n","C"], f:["f","C"], v:["v","C"],
+    s:["s","C"], c:["s","C"], z:["t͡s","C"], x:["x","C"], h:["h","C"],
+    w:["w","C"], j:["d͡ʒ","C"], l:["l","C"], r:["ʁ","C"],
+    a:["a","V"], i:["i","V"], u:["u","V"], o:["o","V"], y:["y","V"],
+    e:["ə","E"], "é":["","M"], "ĵ":["","M"], "ĥ":["","M"],
+  };
+  /* 黙字になりうる子音(音節尾で読まない)。th/dh も音価はt/dなので同じ扱い */
+  const DROP = { s:1, t:1, k:1, th:1, dh:1 };
+
+  function tokenize(word) {
+    let w = word.toLowerCase().replace(/[!?.,、。 ]/g, "").replace(/’/g, "'");
+    // アクセント記号付き母音は「読みを分けて読む」= 二重母音を作らない。素の母音に落とす
+    w = w.replace(/è/g, "é").replace(/[àáä]/g, "a").replace(/í/g, "i")
+         .replace(/ó/g, "o").replace(/ü/g, "y");
+    w = w.replace(/([bcdfghjklmnpqrstvwxz])\1+/g, "$1");   // 促音にならないので畳む
+    const toks = [];
+    let i = 0;
+    outer: while (i < w.length) {
+      if (w[i] === "'") { i++; continue; }                 // アポストロフィは区切りのみ
+      for (const [sp, ipa, type] of GRAPHS) {
+        if (w.startsWith(sp, i)) {
+          toks.push({ sp, ipa, type }); i += sp.length; continue outer;
+        }
+      }
+      const s1 = SINGLE[w[i]];
+      toks.push(s1 ? { sp: w[i], ipa: s1[0], type: s1[1] } : { sp: w[i], ipa: w[i], type: "C" });
+      i++;
+    }
+    return toks;
+  }
+
+  function pron(word) {
+    const toks = tokenize(word);
+    let out = "";
+    for (let i = 0; i < toks.length; i++) {
+      const t = toks[i], next = toks[i + 1] || null;
+      const nextType = next ? next.type : "";
+      const nextVowel = nextType === "V" || nextType === "E" || nextType === "OU";
+      if (t.type === "M") continue;                        // 無音
+      if (t.type === "OU") {                               // ou: 母音の前ではw
+        out += nextVowel ? "w" : "u"; continue;
+      }
+      if (t.type === "E") {                                // e: aiの音節の次ではエ
+        const p1 = toks[i - 1], p2 = toks[i - 2];
+        out += (p1 && p1.type === "C" && p2 && p2.sp === "ai") ? "e"
+             : (p1 && p1.sp === "y" && p2 && p2.type === "C") ? "i"   // 子音+ye
+             : "ə";
+        continue;
+      }
+      if (t.type === "C" && DROP[t.sp] && i > 0) {         // 音節尾のs,t,kは読まない(語頭は音節尾になり得ない)
+        // 次が発音される母音なら読む。é(とそれを含むéh等)は無音でも直前の子音を読ませる
+        if (!next || !(nextVowel || next.sp.includes("é"))) continue;
+      }
+      out += t.ipa;
+    }
+    return out;
+  }
+
+  return { pron };
+})();
+
+/* ==================== 7. 活用・変化 ====================
  * 典拠: 「シャリヤと翠のヴェフィス語教室」名詞編(1)(2)・動詞編(1)(2)（Migdal, Fafs F. Sashimi）
  *       および 四代目リパライン語 文法（形容詞変化）
  *   辞書の品詞タグに続く「単語コード」から変化形を機械的に生成する。コードの読み方:
@@ -549,6 +698,7 @@ function search(query, scope, mode) {
  *     1〜3      … 動詞E(行動存在)の三つの変化のどれを使うか
  *     (B-es)   … Bがその語尾になることもある(併記する)
  *     =até,    … 取り除いたものが語幹になる
+ * 公開API: formsOf(検索索引用) / panel(表示用)
  * ==================================================== */
 const CONJ = (() => {
   /* 語幹(√) = 最後の母音と最後の子音を取ったもの。
@@ -599,8 +749,7 @@ const CONJ = (() => {
   for (const k of Object.keys(ADJ))  KIND_OF_CLASS[k] = "adj";
   KIND_OF_CLASS["enoulé"] = "enoule";
 
-  const ORDER = { noun: ["A","B","C","D","E","F","G"], verb: ["A","B","C","D","E","F","G","N"],
-                  adj: ["a","b","c","d"] };
+  /* 各変化形の名前。キーの並びが表の行の並びでもある */
   const LABEL = {
     noun: { A:"A 指格", B:"B 属格", C:"C 奪格", D:"D 向格", E:"E 対格", F:"F 主格", G:"G 前置格" },
     verb: { A:"A 現在一人称", B:"B 現在二人称", C:"C 現在三人称", D:"D 完了",
@@ -620,11 +769,12 @@ const CONJ = (() => {
 
   /* ---- 単語コードの解析 ---- */
   const CLASSES = ["feiaus","fais","ailie","enoulé","nai","jer","fa","pa","se","fi","fei"];
+  const emptyCode = () => ({ cls: null, roman: 1, all: false, cases: {}, eVar: null,
+                             tail: null, alt: new Set() });
   function parseCode(raw) {
     let s = raw.replace(/[Ａ-Ｚａ-ｚ０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0));
     s = s.replace(/[Ⅰⅰ]/g, "I").replace(/[Ⅱⅱ]/g, "II").replace(/è/g, "é");
-    const out = { cls: null, roman: 1, all: false, cases: {}, eVar: null, tail: null,
-                  alt: new Set(), rest: [] };
+    const out = emptyCode();
     // (B-es) のような括弧は「そうなることもある」という併記の指定
     s = s.replace(/[（(]\s*([A-GN][^)）]*)[）)]/g, (m, inner) => { out.alt.add(inner[0]); return inner; });
     s = s.replace(/[（()）]/g, "");
@@ -634,7 +784,7 @@ const CONJ = (() => {
       // クラス名の直後に小文字が続く場合はクラス名ではない(falte, fain= 等)
       const cm = CLASSES.find(c => t.toLowerCase().startsWith(c) && !/^[a-zà-ÿ]/.test(t.slice(c.length)));
       if (cm) { out.cls = cm; t = t.slice(cm.length); }
-      else if (!/^[A-GNL]/.test(t)) { out.rest.push(seg); continue; }   // 続きの格指定でもない
+      else if (!/^[A-GNL]/.test(t)) continue;   // 続きの格指定でもない
       if (t.startsWith("=")) { const m = /^=([^A-GNI0-9]*)/.exec(t); out.tail = m[1]; t = t.slice(m[0].length); }
       let i = 0;
       while (i < t.length) {
@@ -665,15 +815,15 @@ const CONJ = (() => {
         if (t.startsWith("II", i)) { out.roman = 2; i += 2; continue; }
         if (ch === "I") { out.roman = 1; i++; continue; }
         if (/[0-9]/.test(ch)) { out.eVar = +ch; i++; continue; }
-        out.rest.push(t[i]); i++;
+        i++;                                 // 読めない文字は無視
       }
     }
     return out;
   }
 
   /* ---- 語尾からのクラス推定（コードが無い語用） ---- */
-  function splitEnding(word, cls) {
-    const { ending } = splitStem(word, null, cls);
+  function splitEnding(word) {
+    const { ending } = splitStem(word, null, null);
     const m = /^([^bcdfghjklmnpqrstvwxzçĥĵ]*)(.*)$/i.exec(ending);
     return { v: (m[1] || "").toLowerCase(), c: (m[2] || "").toLowerCase() };
   }
@@ -732,7 +882,7 @@ const CONJ = (() => {
       return base + t;
     }
     const rows = [];
-    for (const key of ORDER[kind]) {
+    for (const key of Object.keys(LABEL[kind])) {
       const spec = code.cases[key] || {};
       const alt = code.alt.has(key);
       let forms = [];
@@ -767,15 +917,18 @@ const CONJ = (() => {
   const POS_KIND = { "名詞":"noun", "動詞":"verb", "他動詞":"verb", "自動詞":"verb",
     "分離動詞":"verb", "自・他動詞":"verb", "形容詞":"adj" };
   const NO_INFLECT = ["自非変動詞","他非変動詞","非変化動詞","非変化分離動詞","副詞","前置詞","接続詞","間投詞","感動詞"];
+  /* 品詞タグ【…】と単語コード[…]で始まる行。表示(renderTranslation)と索引(formsOf)で共用 */
+  const POS_LINE = /^\s*【([^】\n]{1,12})】\s*(?:\[([^\]\n]{1,60})\])?/;
+  /* 変化表を開く際に「どの品詞行の表か」を突き合わせる目印 */
+  const lineKey = (pos, code) => pos + " " + (code || "");
 
-  /* ---- パネルのHTML ---- */
-  function panel(headword, pos, codeRaw) {
+  /* ---- 見出し語＋品詞＋コード → 変化表のもと ---- */
+  function analyze(headword, pos, codeRaw) {
     if (NO_INFLECT.includes(pos)) return null;
     let kind = POS_KIND[pos];
     if (!kind) return null;
     const irr = IRREGULAR[headword.toLowerCase()];
-    const code = codeRaw ? parseCode(codeRaw)
-      : { cls:null, roman:1, all:false, cases:{}, eVar:null, tail:null, alt:new Set(), rest:[] };
+    const code = codeRaw ? parseCode(codeRaw) : emptyCode();
     let cls = code.cls, inferred = false;
     if (cls && KIND_OF_CLASS[cls]) kind = KIND_OF_CLASS[cls];   // コードのクラスを優先
     if (!cls) { cls = inferClass(kind, headword); inferred = true; }
@@ -789,6 +942,44 @@ const CONJ = (() => {
       if (!b) return null;
       rows = b.rows; stem = b.stem; ending = b.ending;
     }
+    return { rows, stem, ending, kind, cls, code, inferred, irr: !!irr };
+  }
+
+  /* ---- 訳文にある【品詞】[コード]をすべて拾い、変化形 → 変化形の名前 を返す ----
+   * 一つの見出し語が名詞と動詞を兼ねることがあるので、行ごとに別の表を作って束ねる。
+   * 見出し語と同じ形は入れない（見出し語そのもので拾えるため）。 */
+  function formsOf(headword, translation) {
+    const out = new Map();                        // 変化形(綴りのまま) → {labels, srcs}
+    const done = new Set();
+    const hw = headword.toLowerCase();
+    for (const line of String(translation).split("\n")) {
+      const m = POS_LINE.exec(line);
+      if (!m) continue;
+      const key = lineKey(m[1], m[2]);
+      if (done.has(key)) continue;                // 同じ品詞・同じコードの行は一度だけ
+      done.add(key);
+      let a;
+      // コードが読めない語で辞書全体の構築を止めない
+      try { a = analyze(headword, m[1], m[2]); } catch (e) { continue; }
+      if (!a) continue;
+      for (const [label, forms] of a.rows) {
+        for (const f of forms) {
+          if (!f || f.toLowerCase() === hw) continue;
+          let v = out.get(f);
+          if (!v) out.set(f, v = { labels: [], srcs: [] });
+          if (!v.labels.includes(label)) v.labels.push(label);
+          if (!v.srcs.includes(key)) v.srcs.push(key);   // どの品詞の行から出た形か
+        }
+      }
+    }
+    return out;
+  }
+
+  /* ---- パネルのHTML ---- */
+  function panel(headword, pos, codeRaw) {
+    const a = analyze(headword, pos, codeRaw);
+    if (!a) return null;
+    const { rows, stem, ending, kind, cls, code, inferred, irr } = a;
 
     const head = (irr ? "完全不規則" : (CLASS_NAME[cls] || cls) +
         (kind !== "adj" && kind !== "enoule" ? "・" + (code.roman === 2 ? "Ⅱ" : "Ⅰ") : "")) +
@@ -798,34 +989,23 @@ const CONJ = (() => {
     if (codeRaw) h += '<span class="ccode">[' + esc(codeRaw) + "]</span>";
     h += "</div><table class=\"ctab\"><tbody>";
     for (const [label, forms] of rows)
-      h += "<tr><th>" + esc(label) + "</th><td>" + forms.map(f => esc(f)).join(" / ") + "</td></tr>";
+      h += "<tr><th>" + esc(label) + "</th><td>" + forms.map(f =>
+        esc(f) + ' <span class="cpron">/' + esc(PRON.pron(f)) + "/</span>").join(" / ") + "</td></tr>";
     h += "</tbody></table></div>";
     return h;
   }
 
-  return { panel, splitStem, parseCode, inferClass };
+  return { formsOf, panel, POS_LINE, lineKey };
 })();
 
-/* ==================== 表示 ==================== */
-function renderTranslation(t, query, headword) {
-  const lines = t.replace(/\r\n?/g, "\n").split("\n");
-  let out = "";
-  lines.forEach((line, i) => {
-    const nl = i < lines.length - 1 ? "\n" : "";
-    let panel = null;
-    if (headword) {
-      const m = /^\s*【([^】\n]{1,12})】\s*(?:\[([^\]\n]{1,60})\])?/.exec(line);
-      if (m) panel = CONJ.panel(headword, m[1], m[2]);
-    }
-    // パネルは改行のあとに置く。閉じているときは行が普通に流れ、
-    // 開くとその行と次の行の間にブロックとして現れる。
-    out += renderInline(line, query) +
-      (panel ? ' <button class="conjbtn" type="button" aria-expanded="false">活用</button>' : "") +
-      nl + (panel || "");
-  });
-  return out;
+/* ==================== 8. 表示 ==================== */
+/* 検索語のハイライト。素の文字で検索しても記号付きの一致箇所が光るよう、
+   検索と同じFLEXで正規表現を作る(正規表現モードの入力はそのままでは使えないため対象外) */
+function highlighter(query) {
+  return query ? new RegExp("(" + FLEX(unifyE(query.toLowerCase())) + ")", "gi") : null;
 }
-function renderInline(t, query) {
+
+function renderInline(t, hi) {
   let html = esc(t);
   // URLをリンク化(別タブで開く)。末尾の和文句読点・閉じ括弧は除外する
   html = html.replace(/https?:\/\/[^\s<>]+/g, m => {
@@ -841,34 +1021,63 @@ function renderInline(t, query) {
   html = html.replace(/\[(語法|文化|語源|補足)\]/g, '<span class="usage">[$1]</span>');
   // 語源行: 「20140928*achés.ve&lt;ashsim.li:秒」のように日付から始まる行
   html = html.replace(/^(\d{6,8}[*＊].*)$/gm, '<span class="ety">$1</span>');
-  if (query) {
-    try {
-      const re = new RegExp("(" + query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "gi");
-      html = html.split(/(<[^>]+>)/).map(seg =>
-        seg.startsWith("<") ? seg : seg.replace(re, "<mark>$1</mark>")).join("");
-    } catch (e) {}
+  if (hi) {
+    html = html.split(/(<[^>]+>)/).map(seg =>
+      seg.startsWith("<") ? seg : seg.replace(hi, "<mark>$1</mark>")).join("");
   }
   return html;
 }
 
-function entryHTML(w, query) {
-  let h = '<article class="entry"><h2>' + esc(w.h);
-  if (w.p && w.p.length) h += '<span class="pron">/' + esc(w.p.join(", ")) + "/</span>";
-  h += '<a class="plink" href="#w/' + encodeURIComponent(w.h) +
-       '" data-plink="' + esc(w.h) + '" title="この単語へのリンク（クリックでURL反映・コピー）">リンク</a>';
-  h += "</h2>";
-  h += '<div class="tl">' + renderTranslation(w.t, query, w.h) + "</div>";
-  for (const ex of w.e || []) h += '<div class="ex">' + renderTranslation(ex, query) + "</div>";
-  if (w.iL && w.iL.length) {
-    const mb = (w.iL.reduce((s, x) => s + x.len, 0) / 1e6).toFixed(1);
-    h += '<div class="imgs" data-h="' + esc(w.h) + '">' +
-         '<button class="imgload" data-h="' + esc(w.h) + '">画像を読み込む（' +
-         w.iL.length + '枚・約' + mb + 'MB）</button></div>';
-  }
-  return h + "</article>";
+/* openKeys: 変化形で引き当てたとき、その形を出した品詞行の目印(CONJ.lineKeyの列)。
+   名詞と動詞を兼ねる語もあるので、当たったほうの表だけを開く。 */
+function renderTranslation(t, hi, headword, openKeys) {
+  const lines = t.split("\n");
+  let out = "";
+  lines.forEach((line, i) => {
+    const nl = i < lines.length - 1 ? "\n" : "";
+    let panel = null, open = false;
+    if (headword) {
+      const m = CONJ.POS_LINE.exec(line);
+      if (m) {
+        panel = CONJ.panel(headword, m[1], m[2]);
+        open = !!panel && !!openKeys && openKeys.includes(CONJ.lineKey(m[1], m[2]));
+      }
+    }
+    if (open) panel = panel.replace('<div class="conj" hidden>', '<div class="conj">');
+    // パネルは改行のあとに置く。閉じているときは行が普通に流れ、
+    // 開くとその行と次の行の間にブロックとして現れる。
+    out += renderInline(line, hi) +
+      (panel ? ' <button class="conjbtn" type="button" aria-expanded="' + (open ? "true" : "false") +
+        '">' + (open ? "閉じる" : "活用") + "</button>" : "") +
+      nl + (panel || "");
+  });
+  return out;
 }
 
-function pageCount() { return Math.max(1, Math.ceil(current.length / PAGE)); }
+const wordHash = h => "#w/" + encodeURIComponent(h);
+
+/* 1語の項目全体。inflIdx: 変化形で引き当てたときはその添字、それ以外は -1 */
+function entryHTML(w, hi, inflIdx) {
+  let h = '<article class="entry"><h2>' + esc(w.h);
+  if (w.p) h += '<span class="pron">/' + esc(w.p.join(", ")) + "/</span>";
+  else {
+    // 辞書に発音欄が無い語は読み規則からの生成で補う。目安である印に「?」を添える
+    const g = PRON.pron(w.h);
+    if (g) h += '<span class="pron pron-gen" title="辞書に発音欄が無いため、正書法の読み規則から補完した目安">/' +
+                esc(g) + "/<sup>?</sup></span>";
+  }
+  h += '<a class="plink" href="' + wordHash(w.h) +
+       '" data-plink="' + esc(w.h) + '" title="この単語へのリンク（クリックでURL反映・コピー）">リンク</a>';
+  h += "</h2>";
+  if (inflIdx >= 0)                               // 変化形で引き当てたときはその旨を添える
+    h += '<div class="fhit"><b>' + esc(w.fk[inflIdx]) + '</b> <span class="cpron">/' +
+         esc(PRON.pron(w.fk[inflIdx])) + "/</span> は " + esc(w.h) + " の " +
+         esc(w.fLab[inflIdx]) + "</div>";
+  h += '<div class="tl">' +
+       renderTranslation(w.t, hi, w.h, inflIdx >= 0 ? w.fSrc[inflIdx] : null) + "</div>";
+  for (const ex of w.e || []) h += '<div class="ex">' + renderTranslation(ex, hi) + "</div>";
+  return h + "</article>";
+}
 
 function pageNumbers(cur, last) {
   // 1, …, cur-1, cur, cur+1, …, last の形に間引く
@@ -883,26 +1092,67 @@ function pageNumbers(cur, last) {
   return out;
 }
 
+/* ==================== 9. 検索UI ==================== */
+/* 表示中の結果。search()の戻りをそのまま持つ(inflは語→当たった変化形の添字) */
+const view = { list: [], infl: new Map(), page: 1 };
+
+const $ = id => document.getElementById(id);
+const checkedValue = name => document.querySelector(`input[name="${name}"]:checked`).value;
+
+function pageCount() { return Math.max(1, Math.ceil(view.list.length / PAGE)); }
+
 function renderPage(p, scroll) {
-  page = Math.min(Math.max(1, p), pageCount());
-  const q = document.getElementById("q").value.trim();
-  const slice = current.slice((page - 1) * PAGE, page * PAGE);
-  document.getElementById("results").innerHTML = slice.map(w => entryHTML(w, q)).join("");
-  const pager = document.getElementById("pager");
-  if (current.length <= PAGE) { pager.innerHTML = ""; }
+  view.page = Math.min(Math.max(1, p), pageCount());
+  const hi = highlighter($("q").value.trim());
+  const slice = view.list.slice((view.page - 1) * PAGE, view.page * PAGE);
+  $("results").innerHTML = slice.map(w =>
+    entryHTML(w, hi, view.infl.has(w) ? view.infl.get(w) : -1)).join("");
+  const pager = $("pager");
+  if (view.list.length <= PAGE) { pager.innerHTML = ""; }
   else {
     const last = pageCount();
-    let h = '<button data-page="' + (page - 1) + '" aria-label="前のページ"' +
-            (page === 1 ? " disabled" : "") + '>&larr;</button>';
-    for (const n of pageNumbers(page, last)) {
+    let h = '<button data-page="' + (view.page - 1) + '" aria-label="前のページ"' +
+            (view.page === 1 ? " disabled" : "") + '>&larr;</button>';
+    for (const n of pageNumbers(view.page, last)) {
       h += n === null ? '<span class="gap">&hellip;</span>'
-        : '<button data-page="' + n + '"' + (n === page ? ' aria-current="page"' : "") + ">" + n + "</button>";
+        : '<button data-page="' + n + '"' + (n === view.page ? ' aria-current="page"' : "") + ">" + n + "</button>";
     }
-    h += '<button data-page="' + (page + 1) + '" aria-label="次のページ"' +
-         (page === last ? " disabled" : "") + '>&rarr;</button>';
+    h += '<button data-page="' + (view.page + 1) + '" aria-label="次のページ"' +
+         (view.page === last ? " disabled" : "") + '>&rarr;</button>';
     pager.innerHTML = h;
   }
   if (scroll) window.scrollTo({ top: 0 });
+}
+
+function runDict() {
+  const q = $("q").value.trim();
+  const scope = checkedValue("scope"), mode = checkedValue("mode");
+  const useInfl = $("useinfl").checked;
+  $("searcherr").innerHTML = "";
+  $("notice").innerHTML = "";
+  $("results").innerHTML = "";
+  view.list = []; view.infl = new Map();
+  if (q === "") {
+    // 未入力時は何も表示しない（ランダム表示はシャッフルボタンで明示的に）
+    $("count").textContent = "";
+    $("pager").innerHTML = "";
+    return;
+  }
+  try { ({ words: view.list, infl: view.infl } = search(q, scope, mode, useInfl)); }
+  catch (e) {
+    $("searcherr").innerHTML = '<div class="err">正規表現エラー: ' + esc(String(e.message)) + "</div>";
+    $("count").textContent = ""; $("pager").innerHTML = ""; return;
+  }
+  $("count").textContent = view.list.length + " 件" +
+    (view.infl.size ? "（うち変化形での一致 " + view.infl.size + " 件）" : "");
+  if (view.list.length === 0) {
+    $("results").innerHTML = '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、' +
+      (useInfl ? "対象を「全文」に広げてみてください。"
+               : "「変化形も探す」を入れてみてください。") + "</div>";
+    $("pager").innerHTML = "";
+    return;
+  }
+  renderPage(1, false);
 }
 
 function fisherYates(arr) {
@@ -913,156 +1163,83 @@ function fisherYates(arr) {
   }
   return a;
 }
-const RANDOM_COUNT = 50;
-
-function runDict() {
-  const q = document.getElementById("q").value.trim();
-  const scope = document.querySelector('input[name="scope"]:checked').value;
-  const mode = document.querySelector('input[name="mode"]:checked').value;
-  const results = document.getElementById("results");
-  const count = document.getElementById("count");
-  document.getElementById("regexerr").innerHTML = "";
-  document.getElementById("notice").innerHTML = "";
-  results.innerHTML = ""; current = [];
-  if (q === "") {
-    // 未入力時は何も表示しない（ランダム表示はシャッフルボタンで明示的に）
-    count.textContent = "";
-    document.getElementById("pager").innerHTML = "";
-    return;
-  }
-  try { current = search(q, scope, mode); }
-  catch (e) {
-    document.getElementById("regexerr").innerHTML =
-      '<div class="err">正規表現エラー: ' + esc(String(e.message)) + "</div>";
-    count.textContent = ""; document.getElementById("pager").innerHTML = ""; return;
-  }
-  count.textContent = current.length + " 件";
-  if (current.length === 0) {
-    results.innerHTML =
-      '<div class="none">見つかりませんでした。検索方式を「部分一致」にするか、対象を「全文」に広げてみてください。</div>';
-    document.getElementById("pager").innerHTML = "";
-    return;
-  }
-  renderPage(1, false);
-}
-
-let timer = null;
-document.getElementById("q").addEventListener("input", () => {
-  clearTimeout(timer); timer = setTimeout(runDict, 120);
-});
-for (const el of document.querySelectorAll('#sec-dic input[type="radio"]')) {
-  el.addEventListener("change", runDict);
-}
-document.getElementById("pager").addEventListener("click", e => {
-  const b = e.target.closest("button[data-page]");
-  if (b && !b.disabled) renderPage(parseInt(b.dataset.page, 10), true);
-});
-document.getElementById("shuffle").addEventListener("click", () => {
-  const q = document.getElementById("q").value.trim();
-  if (q === "") {                               // 未入力: ランダム50件を表示/引き直し
-    current = fisherYates(N).slice(0, RANDOM_COUNT);
-    document.getElementById("count").textContent = "ランダム表示 " + current.length + " 件";
-    document.getElementById("notice").innerHTML = "";
-    renderPage(1, false);
-    return;
-  }
-  if (current.length < 2) return;
-  current = fisherYates(current);               // 検索結果の表示順をシャッフル
-  renderPage(1, false);
-});
-
-/* 辞書内リンク（画像ズーム・パーマリンク） */
-document.getElementById("sec-dic").addEventListener("click", e => {
-  const pl = e.target.closest("a.plink");
-  if (pl && navigator.clipboard) {
-    const url = location.href.split("#")[0] + "#w/" + encodeURIComponent(pl.dataset.plink);
-    navigator.clipboard.writeText(url).then(() => {
-      const t0 = pl.textContent; pl.textContent = "コピーしました";
-      setTimeout(() => { pl.textContent = t0; }, 1200);
-    }).catch(() => {});
-    // hrefのデフォルト動作でハッシュも更新される
-  }
-  const cj = e.target.closest("button.conjbtn");
-  if (cj) {
-    const box = cj.nextElementSibling;          // 改行はテキストノードなので飛ばされる
-    if (box && box.classList.contains("conj")) {
-      box.hidden = !box.hidden;
-      cj.setAttribute("aria-expanded", String(!box.hidden));
-      cj.textContent = box.hidden ? "活用" : "閉じる";
-    }
-    return;
-  }
-  const im = e.target.closest(".imgs img");
-  if (im) {
-    document.getElementById("zoomimg").src = im.src;
-    document.getElementById("zoom").showModal();
-  }
-});
 
 /* パーマリンク（#w/単語）。完全一致で引き、無ければ部分一致にフォールバック */
-function wordHash(h) { return "#w/" + encodeURIComponent(h); }
 function handleHash() {
   const m = /^#w\/(.+)$/.exec(location.hash);
   if (!m) return;
   let term;
   try { term = decodeURIComponent(m[1]); } catch (e) { return; }
-  lookupCore(term);
-}
-window.addEventListener("hashchange", handleHash);
-function lookupCore(term) {
-  document.getElementById("q").value = term;
+  $("q").value = term;
   document.querySelector('input[name="scope"][value="head"]').checked = true;
   document.querySelector('input[name="mode"][value="exact"]').checked = true;
   runDict();
-  if (current.length === 0) {
+  if (view.list.length === 0) {
     document.querySelector('input[name="mode"][value="partial"]').checked = true;
     runDict();
-    document.getElementById("notice").innerHTML =
+    $("notice").innerHTML =
       '<div class="fallback">「' + esc(term) + '」の完全一致がなかったため、部分一致で表示しています。</div>';
   }
   window.scrollTo({ top: 0 });
 }
 
-/* ==================== 画像の遅延読み込み ==================== */
-const IMG_SIGS = [[[0xff,0xd8,0xff],"image/jpeg"], [[0x89,0x50,0x4e,0x47],"image/png"],
-                  [[0x47,0x49,0x46,0x38],"image/gif"], [[0x42,0x4d],"image/bmp"]];
-function sliceImage(bytes) {
-  for (let i = 0; i < Math.min(bytes.length, 4096); i++) {
-    for (const [sig, mime] of IMG_SIGS) {
-      if (sig.every((v, k) => bytes[i + k] === v)) return [bytes.subarray(i), mime];
-    }
-  }
-  return null;
-}
-async function loadImagesFor(headword, container, btn) {
-  const w = DICT.find(x => x.h === headword && x.iL);
-  if (!w || !READER) return;
-  btn.disabled = true; btn.textContent = "読み込み中…";
-  try {
-    const html = [];
-    for (const { off, len } of w.iL) {
-      const bytes = await READER.read(off, len);
-      const r = sliceImage(bytes);
-      if (!r) continue;
-      const url = URL.createObjectURL(new Blob([r[0]], { type: r[1] }));
-      html.push('<img src="' + url + '" alt="' + esc(w.h) + ' の画像">');
-    }
-    container.innerHTML = html.length ? html.join("") : "（画像を認識できませんでした）";
-  } catch (e) {
-    btn.disabled = false; btn.textContent = "読み込み失敗・再試行（" + e.message + "）";
-  }
-}
-document.getElementById("results").addEventListener("click", e => {
-  const b = e.target.closest("button.imgload");
-  if (b) loadImagesFor(b.dataset.h, b.closest(".imgs"), b);
-});
+/* ---- イベント配線(検索まわりはここに集約) ---- */
+{
+  let timer = null;
+  $("q").addEventListener("input", () => {
+    clearTimeout(timer); timer = setTimeout(runDict, 120);
+  });
+  for (const el of document.querySelectorAll('#sec-dic input[type="radio"], #sec-dic input[type="checkbox"]'))
+    el.addEventListener("change", runDict);
 
-/* ==================== 初期化(ライブロード+キャッシュ) ==================== */
-document.getElementById("zoom").addEventListener("click", () => document.getElementById("zoom").close());
+  $("pager").addEventListener("click", e => {
+    const b = e.target.closest("button[data-page]");
+    if (b && !b.disabled) renderPage(parseInt(b.dataset.page, 10), true);
+  });
 
-/* --- IndexedDBキャッシュ。使えない環境(古いブラウザ・一部のプライベートモード)では
-       自動的に毎回ネットワーク読み込みにフォールバックする --- */
-const CACHE_VERSION = 1;   // 構築ルールを変えたらここを上げる(旧キャッシュを無効化)
+  $("shuffle").addEventListener("click", () => {
+    if ($("q").value.trim() === "") {             // 未入力: ランダム50件を表示/引き直し
+      view.list = fisherYates(WORDS).slice(0, RANDOM_COUNT);
+      view.infl = new Map();
+      $("count").textContent = "ランダム表示 " + view.list.length + " 件";
+      $("notice").innerHTML = "";
+      renderPage(1, false);
+      return;
+    }
+    if (view.list.length < 2) return;
+    view.list = fisherYates(view.list);           // 検索結果の表示順をシャッフル
+    renderPage(1, false);
+  });
+
+  /* 結果内のクリック(パーマリンク・活用の開閉・画像ズーム) */
+  $("sec-dic").addEventListener("click", e => {
+    const pl = e.target.closest("a.plink");
+    if (pl && navigator.clipboard) {
+      const url = location.href.split("#")[0] + wordHash(pl.dataset.plink);
+      navigator.clipboard.writeText(url).then(() => {
+        const t0 = pl.textContent; pl.textContent = "コピーしました";
+        setTimeout(() => { pl.textContent = t0; }, 1200);
+      }).catch(() => {});
+      // hrefのデフォルト動作でハッシュも更新される
+    }
+    const cj = e.target.closest("button.conjbtn");
+    if (cj) {
+      const box = cj.nextElementSibling;          // 改行はテキストノードなので飛ばされる
+      if (box && box.classList.contains("conj")) {
+        box.hidden = !box.hidden;
+        cj.setAttribute("aria-expanded", String(!box.hidden));
+        cj.textContent = box.hidden ? "活用" : "閉じる";
+      }
+      return;
+    }
+  });
+
+  window.addEventListener("hashchange", handleHash);
+}
+
+/* ==================== 10. キャッシュと起動 ==================== */
+/* IndexedDBに生エントリ列を保存する。使えない環境(古いブラウザ・一部の
+   プライベートモード)では自動的に毎回ネットワーク読み込みにフォールバックする */
 function idb() {
   return new Promise((res, rej) => {
     const req = indexedDB.open("vaifise-dic", 1);
@@ -1091,31 +1268,22 @@ async function cacheSet(key, val) {
 }
 
 function applyEntries(entries, sourceNote, extra) {
-  const built = buildData(entries, sourceNote);
-  DICT = built.dict; META = built.meta;
-  buildN();
-  document.getElementById("stat").textContent = DICT.length.toLocaleString() + " 項目";
-  document.getElementById("datastatus").innerHTML =
-    esc(META.source + (extra || "")) +
+  WORDS = buildWords(entries);
+  $("stat").textContent = WORDS.length.toLocaleString() + " 項目";
+  $("datastatus").innerHTML =
+    esc(sourceNote + `（見出し語${WORDS.length}件）` + (extra || "")) +
     ' <button id="refresh" class="cmore" style="margin:0 0 0 8px">最新に更新</button>';
-  document.getElementById("refresh").addEventListener("click", () => bootLive(true));
-  if (document.getElementById("q").value.trim() !== "") runDict();
+  $("refresh").addEventListener("click", () => bootLive(true));
+  if ($("q").value.trim() !== "") runDict();
 }
 
 async function bootLive(forceNetwork) {
-  const loading = document.getElementById("loading");
-  const msg = document.getElementById("loadmsg");
-  const bar = document.getElementById("loadbarin");
-  const err = document.getElementById("loaderr");
+  const loading = $("loading"), msg = $("loadmsg"), bar = $("loadbarin"), err = $("loaderr");
   loading.hidden = false; err.innerHTML = "";
 
   if (!forceNetwork) {
     const cached = await cacheGet("dic");
     if (cached && cached.version === CACHE_VERSION && Array.isArray(cached.entries)) {
-      READER = new RangeReader(DIC_URL);            // 画像の遅延取得用
-      READER.lastModified = cached.lastModified;
-      READER.size = cached.size;
-      DIC_CACHED_AT = cached.savedAt;
       applyEntries(cached.entries, "Vaifise.dic (キャッシュから起動)",
         (cached.lastModified ? " / 辞書更新: " + cached.lastModified : "") +
         " / 保存: " + new Date(cached.savedAt).toLocaleString());
@@ -1128,45 +1296,20 @@ async function bootLive(forceNetwork) {
     const { entries, reader } = await loadDictionary(DIC_URL, (m, frac) => {
       msg.textContent = m; bar.style.width = Math.round(frac * 100) + "%";
     });
-    READER = reader;
-    DIC_CACHED_AT = null;
     msg.textContent = "辞書を構築中…"; bar.style.width = "97%";
-    await new Promise(r => setTimeout(r, 0));
+    await new Promise(r => setTimeout(r, 0));       // プログレス表示を描画させる
     applyEntries(entries, "Vaifise.dic (GitHub) から取得",
       reader.lastModified ? " / 辞書更新: " + reader.lastModified : "");
     loading.hidden = true;
     handleHash();
     cacheSet("dic", { version: CACHE_VERSION, savedAt: Date.now(),
-      lastModified: reader.lastModified, size: reader.size, entries });
+      lastModified: reader.lastModified, entries });
   } catch (e) {
     msg.textContent = "辞書の読み込みに失敗しました";
-    err.innerHTML = esc(String(e.message)) +
-      ' <button onclick="bootLive(true)">再試行</button>';
+    err.innerHTML = esc(String(e.message)) + ' <button id="retry">再試行</button>';
+    $("retry").addEventListener("click", () => bootLive(true));
   }
 }
-
-/* キャッシュ起動時、画像取得前に辞書ファイルが変わっていないか軽量チェック(1バイト) */
-let DIC_CACHED_AT = null, DIC_FRESH = null;
-async function dicIsFresh() {
-  if (DIC_CACHED_AT === null) return true;        // ネットワーク起動なら常に新鮮
-  if (DIC_FRESH !== null) return DIC_FRESH;
-  try {
-    const res = await fetch(DIC_URL, { headers: { Range: "bytes=0-0" } });
-    const cr = res.headers.get("Content-Range");
-    const size = cr ? parseInt(cr.split("/")[1], 10) : null;
-    const lm = res.headers.get("Last-Modified");
-    DIC_FRESH = (size === READER.size) && (!lm || !READER.lastModified || lm === READER.lastModified);
-  } catch (e) { DIC_FRESH = true; }               // 確認不能時はそのまま試す
-  return DIC_FRESH;
-}
-const _origLoadImages = loadImagesFor;
-loadImagesFor = async function(headword, container, btn) {
-  if (!(await dicIsFresh())) {
-    btn.textContent = "辞書が更新されています。「最新に更新」後にお試しください";
-    return;
-  }
-  return _origLoadImages(headword, container, btn);
-};
 
 bootLive(false);
 </script>
